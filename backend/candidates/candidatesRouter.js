@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const Candidate = require('./Candidate')
 
-router.get('/', (req, res) => {
+router.get('/candidates', (req, res) => {
+
     Candidate.find()
         .then(candidates => {
             res.status(200).json(candidates)
@@ -12,5 +13,15 @@ router.get('/', (req, res) => {
         })
 })
 
-module.exports = router
+router.post('/', (req, res) => {
+    const candidate = new Candidate(req.body)
+    candidate.save()
+        .then(() => {
+            res.status(200).json(candidate)
+        })
+        .catch(err => {
+            res.status(500).json({ error: err.message })
+        })
+})
 
+module.exports = router
