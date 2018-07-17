@@ -13,6 +13,7 @@ export default class Step2 extends Component {
   render() {
     return (
       <div className="step step2">
+      
       </div>
     )
   }
