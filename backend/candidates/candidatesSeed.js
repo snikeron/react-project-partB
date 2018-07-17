@@ -29,5 +29,5 @@ const candidates = [
 ]
 Candidate.create(candidates)
     .then(()=> {
-        console.log('seeded candidates');
+        console.info('seeded candidates');
     })
