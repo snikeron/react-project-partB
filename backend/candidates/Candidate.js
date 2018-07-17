@@ -1,4 +1,5 @@
 const mongoose = require('../db/connectdb')
+
 const {Schema} = mongoose
 
 const candidateSchema = new Schema ({
