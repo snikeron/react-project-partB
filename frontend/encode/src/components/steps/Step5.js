@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-export default class Step3 extends Component {
+export default class Step5 extends Component {
   constructor(props) {
     super(props);
 
@@ -12,7 +12,7 @@ export default class Step3 extends Component {
 
   render() {
     return (
-      <div className="step step3">
+      <div className="step step5">
         
       </div>
     )

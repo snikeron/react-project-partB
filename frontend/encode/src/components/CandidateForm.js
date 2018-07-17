@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import StepZilla from 'react-stepzilla'
 import Step1 from './steps/Step1'
 import Step2 from './steps/Step2'
@@ -9,8 +9,8 @@ import Step6 from './steps/Step6'
 
 export default class CandidateForm extends Component {
     constructor(props) {
-      super(props);
-      this.state = {};
+      super(props)
+      this.state = {}
   
       this.candidateData = {
         savedToCloud: false
@@ -33,12 +33,12 @@ export default class CandidateForm extends Component {
     render() {
       const steps =
       [
-        {name: 'Step1', component: <Step1 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
-        {name: 'Step2', component: <Step2 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
-        {name: 'Step3', component: <Step3 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
-        {name: 'step4', component: <Step4 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
-        {name: 'Step5', component: <Step5 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
-        {name: 'Step6', component: <Step6 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />}
+        {name: 'Welcome', component: <Step1 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
+        {name: 'Contact Details', component: <Step2 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
+        {name: 'Current Status', component: <Step3 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
+        {name: 'Aspirations', component: <Step4 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
+        {name: 'Review', component: <Step5 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />},
+        {name: 'Thank You', component: <Step6 getData={() => (this.getData())} updateData={(u) => {this.updateData(u)}} />}
       ]
   
       return (

@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
-import CandidateForm from './form/CandidateForm'
+import CandidateForm from './components/CandidateForm'
 
 class App extends Component {
   render() {
