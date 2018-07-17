@@ -13,7 +13,6 @@ const candidateSchema = new Schema ({
     CurrentEmployer: String,
     roleType: String,
     responsibilities: String,
-    technologies: [String],
     minSalary: Number,
     expectedJobTitle: String,
     techStack: [String],
@@ -28,6 +27,8 @@ const candidateSchema = new Schema ({
     updatedAt: Date
 
 })
+
+candidateSchema.index({ '$**': 'text' })
 
 const Candidate = mongoose.model('Candidates', candidateSchema)
 
