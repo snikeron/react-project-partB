@@ -24,7 +24,7 @@ Content-Type: application/json
     "isActive": true,
     "createdAt": "new Date('15 July 2018')",
     "updatedAt": "new Date('16 July 2018')"
-}
+}   
 
 ###
 GET http://localhost:3000/candidates

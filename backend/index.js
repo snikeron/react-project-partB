@@ -8,8 +8,10 @@ const PORT = 3000
 const candidatesRouter = require('./candidates/candidatesRouter')
 
 const app = express()
+app.use(cors())
 app.use(bodyParser.json())
-app.use(cors)
+
+
 
 app.use('/candidates', candidatesRouter)
 
