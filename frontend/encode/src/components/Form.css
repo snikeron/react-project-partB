@@ -116,6 +116,10 @@ ol.progtrckr li.progtrckr-done:hover:before {
   background: #FFFFFF;
 }
 
+form {
+  color: #4f4f4f;
+}
+
 input, textarea, select {
   background-color: #FFFFFF;
   border: 0;
@@ -125,7 +129,7 @@ input, textarea, select {
   padding: 0.5em;
   font-family: 'Roboto', sans-serif;
   margin-bottom: 0.5em;
-  border-bottom: 0.5px solid #545454;
+  border-bottom: 0.5px solid #b9b7b7;
 }
 input:focus, textarea:focus, select:focus {
   border-bottom: 0.5px solid #F54F1A;
