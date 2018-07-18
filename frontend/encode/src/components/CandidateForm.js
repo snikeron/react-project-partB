@@ -6,6 +6,7 @@ import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
 import Step5 from './steps/Step5'
 import Step6 from './steps/Step6'
+require('./Form.css')
 
 export default class CandidateForm extends Component {
     constructor(props) {
