@@ -130,11 +130,24 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   border-bottom: 0.5px solid #F54F1A;
 }
-
 textarea {
   height: 100px;
 }
-
+select { 
+  display: block;
+  padding: 10px 70px 10px 13px !important; 
+  background: url("../icon-polygon.png") right center no-repeat; 
+  appearance: none; 
+  /* this is must */ -webkit-appearance: none; 
+  -moz-appearance: none; 
+} 
+/* for IE and Edge */ 
+select::-ms-expand { 
+  display: none; 
+} 
+select:disabled::-ms-expand { 
+  background: #f60; 
+}
 input[type=text] {
   box-sizing: border-box;
 }
@@ -174,19 +187,3 @@ button:hover {
   text-align: center;
 }
 
-/* body select.select_box */ 
-select { 
-  display: block;
-  padding: 10px 70px 10px 13px !important; 
-  background: url("../icon-polygon.png") right center no-repeat; 
-  appearance: none; 
-  /* this is must */ -webkit-appearance: none; 
-  -moz-appearance: none; 
-} 
-/* for IE and Edge */ 
-select::-ms-expand { 
-  display: none; 
-} 
-select:disabled::-ms-expand { 
-  background: #f60; 
-}
