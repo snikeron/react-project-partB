@@ -50,7 +50,7 @@ export default class CandidateForm extends Component {
               steps={steps}
               preventEnterSubmission={true}
               nextTextOnFinalActionStep={"Save"}
-            //   hocValidationAppliedTo={[3]}
+              hocValidationAppliedTo={[1]}
               startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
               onStepChange={(step) => window.sessionStorage.setItem('step', step)}
              />
