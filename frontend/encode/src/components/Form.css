@@ -141,13 +141,15 @@ select {
   /* this is must */ -webkit-appearance: none; 
   -moz-appearance: none; 
 } 
-/* for IE and Edge */ 
+/* Start: select for IE and Edge */ 
 select::-ms-expand { 
   display: none; 
 } 
 select:disabled::-ms-expand { 
   background: #f60; 
 }
+/* End: select for IE and Edge */
+
 input[type=text] {
   box-sizing: border-box;
 }
