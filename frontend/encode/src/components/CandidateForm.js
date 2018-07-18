@@ -6,7 +6,7 @@ import Step3 from './steps/Step3'
 import Step4 from './steps/Step4'
 import Step5 from './steps/Step5'
 import Step6 from './steps/Step6'
-require('./Form.css')
+import './Form.css'
 
 export default class CandidateForm extends Component {
     constructor(props) {
@@ -43,6 +43,7 @@ export default class CandidateForm extends Component {
       ]
   
       return (
+        <div className='flex-container'>
         <div className='candidateForm'>
           <div className='step-progress'>
             <StepZilla
@@ -54,6 +55,7 @@ export default class CandidateForm extends Component {
               onStepChange={(step) => window.sessionStorage.setItem('step', step)}
              />
           </div>
+        </div>
         </div>
       )
     }
