@@ -2,5 +2,5 @@ POST http://localhost:3000/search
 Content-Type: application/json
 
 {
-    "query": "python"
+    "query": "tech"
 }
