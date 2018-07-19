@@ -34,17 +34,17 @@ ol.progtrckr li span {
 
 ol.progtrckr li.progtrckr-todo {
   color: silver;
-  border-bottom: 4px solid silver;
+  border-bottom: 1px solid silver;
 }
 
 ol.progtrckr li.progtrckr-doing {
   color: black;
-  border-bottom: 4px solid #CCCCCC;
+  border-bottom: 2px solid #CCCCCC;
 }
 
 ol.progtrckr li.progtrckr-done {
   color: black;
-  border-bottom: 4px solid #5cb85c;
+  border-bottom: 2px solid #5cb85c;
 }
 
 ol.progtrckr li:after {
@@ -73,7 +73,7 @@ ol.progtrckr li.progtrckr-todo:hover:before {
 ol.progtrckr li.progtrckr-doing:before {
   content: "\2022";
   color: white;
-  background-color: #545454; /* #CCCCCC */
+  background-color: #ff4500; /* #CCCCCC #545454 */
   width: 1.2em;
   line-height: 1.2em;
   border-radius: 1.2em;
@@ -130,6 +130,7 @@ input, textarea, select {
   font-family: 'Roboto', sans-serif;
   margin-bottom: 0.5em;
   border-bottom: 0.5px solid #b9b7b7;
+  box-sizing: border-box;
 }
 input:focus, textarea:focus, select:focus {
   border-bottom: 0.5px solid #F54F1A;
@@ -154,9 +155,7 @@ select:disabled::-ms-expand {
 }
 /* End: select for IE and Edge */
 
-input[type=text] {
-  box-sizing: border-box;
-}
+
 input[type="checkbox"] {
   width: 1.5em;
 }
