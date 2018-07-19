@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './components/Form.css'
 import CandidateForm from './components/CandidateForm'
 
 class App extends Component {

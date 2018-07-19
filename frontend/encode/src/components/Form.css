@@ -4,94 +4,197 @@ ol.progtrckr {
     padding: 0;
   }
   
-  ol.progtrckr li {
-    display: inline-block;
-    text-align: center;
-    line-height: 4.5rem;
-    cursor: pointer;
-  }
-  
-  ol.progtrckr li span {
-    padding: 0 1.5rem;
-  }
-  
-  @media (max-width: 650px) {
-    .progtrckr li span {
-      display: none;
-    }
-  }
-  .progtrckr em {
+ol.progtrckr li {
+  display: inline-block;
+  text-align: center;
+  line-height: 4.5rem;
+  cursor: pointer;
+}
+
+ol.progtrckr li span {
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 650px) {
+  .progtrckr li span {
     display: none;
-    font-weight: 700;
-    padding-left: 1rem;
   }
+}
+.progtrckr em {
+  display: none;
+  font-weight: 700;
+  padding-left: 1rem;
+}
+
+@media (max-width: 650px) {
+  .progtrckr em {
+    display: inline;
+  }
+}
+
+ol.progtrckr li.progtrckr-todo {
+  color: silver;
+  border-bottom: 1px solid silver;
+}
+
+ol.progtrckr li.progtrckr-doing {
+  color: black;
+  border-bottom: 2px solid #CCCCCC;
+}
+
+ol.progtrckr li.progtrckr-done {
+  color: black;
+  border-bottom: 2px solid #5cb85c;
+}
+
+ol.progtrckr li:after {
+  content: "\00a0\00a0";
+}
+
+ol.progtrckr li:before {
+  position: relative;
+  bottom: -3.7rem;
+  float: left;
+  left: 50%;
+}
+
+ol.progtrckr li.progtrckr-todo:before {
+  content: "\039F";
+  color: silver;
+  background-color: white;
+  width: 1.2em;
+  line-height: 1.4em;
+}
+
+ol.progtrckr li.progtrckr-todo:hover:before {
+  color: #ff4500;
+}
+
+ol.progtrckr li.progtrckr-doing:before {
+  content: "\2022";
+  color: white;
+  background-color: #ff4500; /* #CCCCCC #545454 */
+  width: 1.2em;
+  line-height: 1.2em;
+  border-radius: 1.2em;
+}
+
+ol.progtrckr li.progtrckr-doing:hover:before {
+  color: #ff4500;
+}
+
+ol.progtrckr li.progtrckr-done:before {
+  content: "\2713";
+  color: white;
+  background-color: #5cb85c;
+  width: 1.2em;
+  line-height: 1.2em;
+  border-radius: 1.2em;
+}
+
+ol.progtrckr li.progtrckr-done:hover:before {
+  color: #333;
+}
+
+
+/* Styles for Form field */
+
+/* form starting stylings ------------------------------- */
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   
-  @media (max-width: 650px) {
-    .progtrckr em {
-      display: inline;
-    }
-  }
-  
-  ol.progtrckr li.progtrckr-todo {
-    color: silver;
-    border-bottom: 4px solid silver;
-  }
-  
-  ol.progtrckr li.progtrckr-doing {
-    color: black;
-    border-bottom: 4px solid #CCCCCC;
-  }
-  
-  ol.progtrckr li.progtrckr-done {
-    color: black;
-    border-bottom: 4px solid #5cb85c;
-  }
-  
-  ol.progtrckr li:after {
-    content: "\00a0\00a0";
-  }
-  
-  ol.progtrckr li:before {
-    position: relative;
-    bottom: -3.7rem;
-    float: left;
-    left: 50%;
-  }
-  
-  ol.progtrckr li.progtrckr-todo:before {
-    content: "\039F";
-    color: silver;
-    background-color: white;
-    width: 1.2em;
-    line-height: 1.4em;
-  }
-  
-  ol.progtrckr li.progtrckr-todo:hover:before {
-    color: #ff4500;
-  }
-  
-  ol.progtrckr li.progtrckr-doing:before {
-    content: "\2022";
-    color: white;
-    background-color: #CCCCCC;
-    width: 1.2em;
-    line-height: 1.2em;
-    border-radius: 1.2em;
-  }
-  
-  ol.progtrckr li.progtrckr-doing:hover:before {
-    color: #ff4500;
-  }
-  
-  ol.progtrckr li.progtrckr-done:before {
-    content: "\2713";
-    color: white;
-    background-color: #5cb85c;
-    width: 1.2em;
-    line-height: 1.2em;
-    border-radius: 1.2em;
-  }
-  
-  ol.progtrckr li.progtrckr-done:hover:before {
-    color: #333;
-  }
+}
+.flex-item {
+  width: 80%;
+  max-width: 25em;
+  margin: 0.5em;
+  padding: 1em;
+  background: #FFFFFF;
+}
+
+form {
+  color: #4f4f4f;
+}
+
+input, textarea, select {
+  background-color: #FFFFFF;
+  border: 0;
+  color: #545454;
+  width: 100%;
+  font-size: 1em;
+  padding: 0.5em;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0.5em;
+  border-bottom: 0.5px solid #b9b7b7;
+  box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus {
+  border-bottom: 0.5px solid #F54F1A;
+}
+textarea {
+  height: 100px;
+}
+select { 
+  display: block;
+  padding: 10px 70px 10px 13px !important; 
+  background: url("../icon-polygon.png") right center no-repeat; 
+  appearance: none; 
+  /* this is must */ -webkit-appearance: none; 
+  -moz-appearance: none; 
+} 
+/* Start: select for IE and Edge */ 
+select::-ms-expand { 
+  display: none; 
+} 
+select:disabled::-ms-expand { 
+  background: #f60; 
+}
+/* End: select for IE and Edge */
+
+
+input[type="checkbox"] {
+  width: 1.5em;
+}
+input[type="submit"] {
+  width: 10em;
+  background: #FCEE21;
+  border: 0;
+  color: #545454;
+  margin-top: 5px;
+  text-align: center;  
+  float: right;
+  margin-left: 1em;
+  border-radius: 0.5em;
+}
+input[type="submit"]:hover {
+  background: #FDAD28;
+  color: #545454;
+}
+button {
+  display: inline-block;
+  background: #F54F1A;
+  border: 0;
+  color: #FFFFFF;  
+  padding:  0.5em 2em;
+  margin: 0.5em 3em;
+  text-decoration: none;
+  border-radius: 0.5em;
+  font-size: 0.9em;
+}
+button:hover {
+  background: #FF7900 !important;   
+}
+.footer-buttons {
+  text-align: center;
+}
+
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #a94442;
+}
