@@ -15,6 +15,7 @@ const candidateSchema = new Schema ({
     responsibilities: String,
     minSalary: Number,
     expectedJobTitle: String,
+    expectedRoleType: String,
     techStack: [String],
     contactSource: String,
     clientNotes: String,
