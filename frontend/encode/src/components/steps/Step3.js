@@ -46,9 +46,9 @@ class Step3 extends Component {
 
         // only update store if something changed
         if (this.props.getData().techStack !== this.state.techStack) { 
-          console.log(this.state)
           this.props.updateData({
-            ...this.state,
+            // ...this.state,
+            ...this.getValidatorData(),
             savedToCloud: false 
           });  
         }
