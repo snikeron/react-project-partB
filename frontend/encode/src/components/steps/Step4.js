@@ -62,7 +62,7 @@ class Step4 extends Component {
 
   getValidatorData() {
     return {
-      priority: this.refs.priority.value,
+      priority: this.priority.value,
       expectedJobTitle: this.refs.expectedJobTitle.value,
       expectedCompany: this.refs.expectedCompany.value,
       minSalary: this.refs.minSalary.value,
