@@ -24,4 +24,27 @@ router.post('/', (req, res) => {
         })
 })
 
+router.put('/:id', (req, res, next) => {
+    Candidate.findByIdAndUpdate(req.params.id, req.body, function (err, candidate) {
+        candidate.save()
+            .then(() => {
+                res.status(200).json(candidate)
+            })
+            .catch(err => {
+                res.status(500).json({ error: err.message })
+            })
+    })
+})
+
+router.get('/:id', (req, res, next) => {
+    console.log(req.params.id)
+    
+    Candidate.findById(req.params.id, (err, candidate) => {
+        if (err) return next(err);
+        res.json(candidate);
+    })
+})
+
+
+
 module.exports = router

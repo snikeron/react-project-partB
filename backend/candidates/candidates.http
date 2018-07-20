@@ -28,3 +28,14 @@ Content-Type: application/json
 
 ###
 GET https://backend-bzorbvezmq.now.sh/candidates
+
+###
+PUT http://localhost:3000/candidates/5b5023ada851b545528b755d
+Content-Type: application/json
+
+{
+    "clientNotes": "Testing put route!!"
+}
+
+###
+GET http://localhost:3000/candidates/5b5023ada851b545528b755d
