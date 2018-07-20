@@ -12,18 +12,20 @@ class Step3 extends Component {
     this.state = {
       techStack: props.getData().techStack,
       currentJobTitle: props.getData().currentJobTitle,
+      currentEmployer: props.getData().currentEmployer,
     };
 
     this.validatorTypes = {
       techStack: Joi.array().items(Joi.string().required(), Joi.string().required()),
-      currentJobTitle: Joi.string().required().label('Current job title'),
+      currentJobTitle: Joi.string().required().label('Current Job Title'),
+      currentEmployer: Joi.string().required().label('Current Employer'),
       
     };
 
     this.getValidatorData = this.getValidatorData.bind(this);
     this.renderHelpText = this.renderHelpText.bind(this);
     this.isValidated = this.isValidated.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleFormChange = this.handleFormChange.bind(this);
     this.handleTechChange = this.handleTechChange.bind(this);
 
   }
@@ -51,9 +53,11 @@ class Step3 extends Component {
     });
   }
 
-  getValidatorData(e) {
+  getValidatorData() {
     return {
-      techStack: this.state.techStack
+      techStack: this.state.techStack,
+      currentJobTitle: this.refs.currentJobTitle.value,
+      currentEmployer: this.refs.currentEmployer.value,
     }
   };
 
@@ -65,7 +69,7 @@ class Step3 extends Component {
     }) 
   }
 
-  handleChange(e) {
+  handleFormChange(e) {
     let newState = {}
     newState[e.target.name] = e.target.value
     this.setState(newState)
@@ -79,16 +83,78 @@ class Step3 extends Component {
 
   render() {
     return (
-      <div className="step step3">
-      <TechStack 
-        ref="techStack"
-        name="techStack"
-        required
-        raiseData={this.handleTechChange}
-        onBlur={this.props.handleValidation('techStack')}
-        { ...this.state } />
-        {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
-      </div>
+
+      <div className="flex-container">
+          <div className="flex-item">
+            <form>
+
+                <div className="input-field">
+                    <label>Current Job Title</label>
+                    <input 
+                      ref="currentJobTitle"
+                      name="currentJobTitle"
+                      defaultValue={this.state.currentJobTitle}
+                      required
+                      placeholder="" 
+                      onChange={this.handleFormChange}
+                      onBlur={this.props.handleValidation('currentJobTitle')}
+                      type="text" />
+                      {this.props.getValidationMessages('currentJobTitle').map(this.renderHelpText)}
+                </div>       
+                
+                <div className="input-field">
+                    <label>Current Employer</label>
+                    <input 
+                      ref="currentEmployer"
+                      name="currentEmployer"
+                      defaultValue={this.state.currentEmployer}
+                      required
+                      placeholder="" 
+                      onChange={this.handleFormChange}
+                      onBlur={this.props.handleValidation('currentEmployer')}
+                      type="text" />
+                      {this.props.getValidationMessages('currentEmployer').map(this.renderHelpText)}
+                </div>       
+
+                <div className="input-field"> 
+                      <label>Location</label>     
+                      <select
+                        ref="location"
+                        name="location"
+                        defaultValue={this.state.location}
+                        autoComplete="off"
+                        required
+                        value={this.state.location}
+                        onChange={this.handleForm}
+                        onBlur={this.validationCheck}>
+                        >
+                        <option value="" disabled selected>Please select</option>
+                        <option value={"Melbourne"}>Melbourne</option>
+                        <option value={"Adelaide"}>Adelaide</option>
+                        <option value={"Sydney"}>Sydney</option>
+                        <option value={"Brisbane"}>Brisbane</option>
+                        <option value={"Canberra"}>Canberra</option>
+                        <option value={"Perth"}>Perth</option>
+                      </select>
+                      {this.props.getValidationMessages('location').map(this.renderHelpText)}
+                </div>
+                
+                <div className="input-tech-field">
+                  <TechStack 
+                    ref="techStack"
+                    name="techStack"
+                    required
+                    raiseData={this.handleTechChange}
+                    onBlur={this.props.handleValidation('techStack')}
+                    { ...this.state } />
+                  {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
+                </div>
+            
+            </form>
+          </div>
+        </div>
+
+      
     )
   }
 }
