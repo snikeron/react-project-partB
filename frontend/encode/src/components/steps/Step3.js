@@ -11,10 +11,12 @@ class Step3 extends Component {
 
     this.state = {
       techStack: props.getData().techStack,
+      currentJobTitle: props.getData().currentJobTitle,
     };
 
     this.validatorTypes = {
       techStack: Joi.array().items(Joi.string().required(), Joi.string().required()),
+      currentJobTitle: Joi.string().required().label('Current job title'),
       
     };
 
