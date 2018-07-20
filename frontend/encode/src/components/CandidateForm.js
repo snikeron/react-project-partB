@@ -11,24 +11,21 @@ import './Form.css'
 export default class CandidateForm extends Component {
     constructor(props) {
       super(props)
-      this.state = {}
   
-      this.candidateData = {
+      this.state = {
         savedToCloud: false
       };
     }
   
-    componentDidMount() {}
-  
     getData() {
-      return this.candidateData;
+      return this.state;
     }
   
     updateData(update) {
-      this.candidateData = {
-        ...this.candidateData,
+      this.setState({
+        ...this.state,
         ...update,
-      }
+      })
     }
   
     render() {
@@ -50,7 +47,7 @@ export default class CandidateForm extends Component {
               steps={steps}
               preventEnterSubmission={true}
               nextTextOnFinalActionStep={"Save"}
-              hocValidationAppliedTo={[1]}
+              hocValidationAppliedTo={[1, 2]}
               startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
               onStepChange={(step) => window.sessionStorage.setItem('step', step)}
              />

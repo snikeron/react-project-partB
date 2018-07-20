@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
+// import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -287,15 +287,14 @@ const styles = theme => ({
 
 class IntegrationReactSelect extends React.Component {
   state = {
-    single: null,
-    multi: null,
-    multiLabel: null,
+    techStack: null,
   };
 
   handleChange = name => value => {
     this.setState({
       [name]: value,
     });
+    this.props.raiseData(value)
   };
 
   render() {
@@ -303,26 +302,11 @@ class IntegrationReactSelect extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Input
-          fullWidth
-          inputComponent={SelectWrapped}
-          value={this.state.multi}
-          onChange={this.handleChange('multi')}
-          placeholder="Select Your Technologies"
-          name="react-select-chip"
-          inputProps={{
-            classes,
-            multi: true,
-            instanceId: 'react-select-chip',
-            id: 'react-select-chip',
-            simpleValue: true,
-            options: suggestions,
-          }}
-        />
+        
         <TextField
           fullWidth
-          value={this.state.multiLabel}
-          onChange={this.handleChange('multiLabel')}
+          value={this.state.techStack}
+          onChange={this.handleChange('techStack')}
           placeholder="Select Technologies"
           name="react-select-chip-label"
           label="With label"

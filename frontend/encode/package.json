@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "@material-ui/icons": "^1.1.0",
     "joi": "^13.4.0",
     "joi-validation-strategy": "^0.3.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
+    "react-select": "^1.2.1",
     "react-stepzilla": "^4.7.2",
     "react-validation-mixin": "^5.4.0"
   },

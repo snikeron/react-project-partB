@@ -38,9 +38,6 @@ class Step2 extends Component {
           reject(); // form contains errors
           return;
         }
-
-        const fields = ["firstName", "lastName", "email", "location"]
-
         
           if (this.props.getData().firstName !== this.getValidatorData().firstName ||
               this.props.getData().lastName !== this.getValidatorData().lastName ||
