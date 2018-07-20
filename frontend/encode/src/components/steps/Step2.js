@@ -38,20 +38,19 @@ class Step2 extends Component {
           reject(); // form contains errors
           return;
         }
-        
-          if (this.props.getData().firstName !== this.getValidatorData().firstName ||
-              this.props.getData().lastName !== this.getValidatorData().lastName ||
-              this.props.getData().phoneNumber!== this.getValidatorData().phoneNumber ||
-              this.props.getData().emailAddress !== this.getValidatorData().emailAddress ||
-              this.props.getData().location !== this.getValidatorData().location) { // only update data if something changed
-              
-                this.props.updateData({
-              ...this.getValidatorData(),
-              savedToCloud: false // use this to notify step2 that some changes took place and prompt the user to save again
-            });  // Update data here
-          }
 
-        
+        // Run validation over any data that gets updated
+        if (this.props.getData().firstName !== this.getValidatorData().firstName ||
+            this.props.getData().lastName !== this.getValidatorData().lastName ||
+            this.props.getData().phoneNumber!== this.getValidatorData().phoneNumber ||
+            this.props.getData().emailAddress !== this.getValidatorData().emailAddress ||
+            this.props.getData().location !== this.getValidatorData().location) { // only update data if something changed
+            
+              this.props.updateData({
+            ...this.getValidatorData(),
+            savedToCloud: false // use this to notify step2 that some changes took place and prompt the user to save again
+          });  // Update data here
+        }
 
         resolve() // form is valid, fire action
       })
@@ -172,6 +171,8 @@ class Step2 extends Component {
                       </select>
                       {this.props.getValidationMessages('location').map(this.renderHelpText)}
                 </div>
+                
+            
             </form>
           </div>
         </div>

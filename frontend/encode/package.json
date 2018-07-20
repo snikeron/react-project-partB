@@ -8,6 +8,7 @@
     "joi": "^13.4.0",
     "joi-validation-strategy": "^0.3.3",
     "react": "^16.4.1",
+    "react-beautiful-dnd": "^8.0.5",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "react-select": "^1.2.1",
@@ -17,7 +18,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jest": "^23.4.1"
   }
 }
