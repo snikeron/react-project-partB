@@ -7,10 +7,12 @@ class Preference extends Component {
       super(props)
 
       this.state = {
+        priority: this.props.priority,
         items: items
       }
 
       this.onDragEnd = this.onDragEnd.bind(this)
+      
     }
   
     onDragEnd(result) {
@@ -28,6 +30,8 @@ class Preference extends Component {
       this.setState({
         items
       })
+
+      this.props.raiseData(this.state.items)
 
     }
   
