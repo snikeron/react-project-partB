@@ -13,12 +13,14 @@ class Step3 extends Component {
       techStack: props.getData().techStack,
       currentJobTitle: props.getData().currentJobTitle,
       currentEmployer: props.getData().currentEmployer,
+      roleType: props.getData().roleType,
     };
 
     this.validatorTypes = {
       techStack: Joi.array().items(Joi.string().required(), Joi.string().required()),
       currentJobTitle: Joi.string().required().label('Current Job Title'),
       currentEmployer: Joi.string().required().label('Current Employer'),
+      roleType: Joi.string().required().label('Role Type'),
       
     };
 
@@ -58,6 +60,7 @@ class Step3 extends Component {
       techStack: this.state.techStack,
       currentJobTitle: this.refs.currentJobTitle.value,
       currentEmployer: this.refs.currentEmployer.value,
+      roleType: this.refs.roleType.value,
     }
   };
 
@@ -117,26 +120,22 @@ class Step3 extends Component {
                 </div>       
 
                 <div className="input-field"> 
-                      <label>Location</label>     
+                      <label>Role Type</label>     
                       <select
-                        ref="location"
-                        name="location"
-                        defaultValue={this.state.location}
+                        ref="roleType"
+                        name="roleType"
+                        defaultValue={this.state.roleType}
                         autoComplete="off"
                         required
-                        value={this.state.location}
-                        onChange={this.handleForm}
+                        value={this.state.roleType}
+                        onChange={this.handleFormChange}
                         onBlur={this.validationCheck}>
                         >
                         <option value="" disabled selected>Please select</option>
-                        <option value={"Melbourne"}>Melbourne</option>
-                        <option value={"Adelaide"}>Adelaide</option>
-                        <option value={"Sydney"}>Sydney</option>
-                        <option value={"Brisbane"}>Brisbane</option>
-                        <option value={"Canberra"}>Canberra</option>
-                        <option value={"Perth"}>Perth</option>
+                        <option value={"Permanent"}>Permanent</option>
+                        <option value={"Contract"}>Contract</option>
                       </select>
-                      {this.props.getValidationMessages('location').map(this.renderHelpText)}
+                      {this.props.getValidationMessages('roleType').map(this.renderHelpText)}
                 </div>
                 
                 <div className="input-tech-field">
