@@ -11,26 +11,27 @@ class Step4 extends Component {
 
     this.state = {
       priority: props.getData().priority,
-      expectedJobTitle: props.getData().expectedJobTitle,
-      expectedCompany: props.getData().expectedCompany,
-      minSalary: props.getData().minSalary,
-      expectedRoleType: props.getData().expectedRoleType,
-      contactSource: props.getData().contactSource,
+      // expectedJobTitle: props.getData().expectedJobTitle,
+      // expectedCompany: props.getData().expectedCompany,
+      // minSalary: props.getData().minSalary,
+      // expectedRoleType: props.getData().expectedRoleType,
+      // contactSource: props.getData().contactSource,
     }
 
     this.validatorTypes = {
-      expectedJobTitle: Joi.string().required().label('Types of Roles'),
-      expectedCompany: Joi.string().required().label('Types of Companies'),
-      minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
-      expectedRoleType: Joi.string().required().label('Contract Role Types'),
-      contactSource: Joi.string().required().label('Source')
+      priority: Joi.array().items(Joi.string().required(), Joi.string().required()),
+      // expectedJobTitle: Joi.string().required().label('Types of Roles'),
+      // expectedCompany: Joi.string().required().label('Types of Companies'),
+      // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
+      // expectedRoleType: Joi.string().required().label('Contract Role Types'),
+      // contactSource: Joi.string().required().label('Source')
     };
 
     this.handleChange = this.handleChange.bind(this)
     this.getValidatorData = this.getValidatorData.bind(this)
     this.renderHelpText = this.renderHelpText.bind(this)
     this.isValidated = this.isValidated.bind(this)
-    this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
+    this.handleAChange = this.handleAChange.bind(this)
   }
 
 
@@ -42,15 +43,16 @@ class Step4 extends Component {
           return;
         }
 
-        if (this.props.getData().priority !== this.getValidatorData().priority ||
-            this.props.getData().expectedJobTitle !== this.getValidatorData().expectedJobTitle ||
-            this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
-            this.props.getData().minSalary !== this.getValidatorData().minSalary ||
-            this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
-            this.props.getData().contactSource !== this.getValidatorData().contactSource ) { // only update data if something changed
+        if (this.props.getData().priority !== this.state.priority ) { 
+            // this.props.getData().expectedJobTitle !== this.getValidatorData().expectedJobTitle ||
+            // this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
+            // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
+            // this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
+            // this.props.getData().contactSource !== this.getValidatorData().contactSource 
+          // only update data if something changed
             
               this.props.updateData({
-            ...this.getValidatorData(),
+            ...this.state,
             savedToCloud: false // use this to notify step2 that some changes took place and prompt the user to save again
           });  // Update data here
         }
@@ -62,12 +64,12 @@ class Step4 extends Component {
 
   getValidatorData() {
     return {
-      priority: this.priority.value,
-      expectedJobTitle: this.refs.expectedJobTitle.value,
-      expectedCompany: this.refs.expectedCompany.value,
-      minSalary: this.refs.minSalary.value,
-      expectedRoleType: this.refs.expectedRoleType.value,
-      contactSource: this.refs.contactSource.value
+      priority: this.state.priority,
+      // expectedJobTitle: this.refs.expectedJobTitle.value,
+      // expectedCompany: this.refs.expectedCompany.value,
+      // minSalary: this.refs.minSalary.value,
+      // expectedRoleType: this.refs.expectedRoleType.value,
+      // contactSource: this.refs.contactSource.value
     }
   };
 
@@ -77,7 +79,7 @@ class Step4 extends Component {
     this.setState(newState)
   }
 
-  handlePreferenceChange(data) {
+  handleAChange(data) {
     this.setState({
       priority: data
     })
@@ -103,7 +105,11 @@ class Step4 extends Component {
                   <label>Please rank in order of importance for
                     yourself the following criteria: </label>
                   <div className="flex-container">
-                    <Preference onDragEnd={this.handlePreferenceChange} />
+                    <Preference 
+                      ref="priority"
+                      name="priority"
+                      raiseData={this.handleAChange} 
+                      {...this.state}/>
                   </div>
               </div>
 
