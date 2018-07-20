@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/candidates
+GET https://backend-bzorbvezmq.now.sh/candidates
