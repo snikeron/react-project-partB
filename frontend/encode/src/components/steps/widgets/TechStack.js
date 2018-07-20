@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// HELLO
 
 import React from 'react';
 import PropTypes from 'prop-types';
