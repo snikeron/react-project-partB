@@ -24,4 +24,30 @@ router.post('/', (req, res) => {
         })
 })
 
+router.get('/candidates/:id', async(req, res) => {
+    const id = req.params.id
+    try {
+        const candidate = await Candidate.find(id)
+        res.status(200).json(candidate)
+    } catch(err){
+        res.status(500).json(err)
+    }
+})
+
+// Update a single Candidate in the collection.
+router.put('/candidates/:id',function(req, res){
+    const id = req.params.id
+    
+    Candidate.findOneAndUpdate(id, req.body, {new: true}, function (err, candidate) {
+        
+        if(err){
+            return res.send(err);
+        } 
+        console.log({message:"candidate updated"});
+        res.status(200).json(candidate);
+    
+    });
+});
+
 module.exports = router
+
