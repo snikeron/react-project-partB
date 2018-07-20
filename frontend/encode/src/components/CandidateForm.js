@@ -23,12 +23,10 @@ export default class CandidateForm extends Component {
     }
   
     updateData(update) {
-      this.setState = {
+      this.setState({
         ...this.state,
         ...update,
-      }
-      console.log(this.state)
-    }
+      })}
   
     render() {
       const steps =
@@ -61,3 +59,5 @@ export default class CandidateForm extends Component {
     }
   }
   
+
+

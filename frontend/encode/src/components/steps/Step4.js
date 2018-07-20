@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import validation from 'react-validation-mixin'
 import strategy from 'joi-validation-strategy'
 import Joi from 'joi'
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import Preference from './widgets/Preference'
 
 class Step4 extends Component {
