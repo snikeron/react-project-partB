@@ -37,8 +37,8 @@ class Step3 extends Component {
           console.log(this.state)
           this.props.updateData({
             ...this.state,
-            savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
-          });  // Update store here (this is just an example, in reality you will do it via redux or flux)
+            savedToCloud: false 
+          });  
         }
 
         resolve(); // form is valid, fire action

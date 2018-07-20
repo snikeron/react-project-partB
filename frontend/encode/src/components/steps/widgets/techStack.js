@@ -287,7 +287,7 @@ const styles = theme => ({
 
 class IntegrationReactSelect extends React.Component {
   state = {
-    techStack: null,
+    techStack: this.props.techStack,
   };
 
   handleChange = name => value => {
