@@ -39,6 +39,7 @@ class Step2 extends Component {
           return;
         }
 
+        // Run validation over any data that gets updated
         if (this.props.getData().firstName !== this.getValidatorData().firstName ||
             this.props.getData().lastName !== this.getValidatorData().lastName ||
             this.props.getData().phoneNumber!== this.getValidatorData().phoneNumber ||

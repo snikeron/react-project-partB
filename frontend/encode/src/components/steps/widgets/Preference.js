@@ -28,12 +28,13 @@ class Preference extends Component {
       this.setState({
         items
       })
+
     }
   
     // Normally you would want to split things out into separate components.
     // But in this example everything is just done in one place for simplicity
     render() {
-      console.log(this.state.items);
+
       return (
         <div className="">
           <DragDropContext onDragEnd={this.onDragEnd}>
@@ -128,37 +129,38 @@ class Preference extends Component {
     }
   ];
   
-  // a little function to help us with reordering the result
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-  
-    return result;
-  };
-  
-  const grid = 8;
-  
-  const itemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: "none",
-    padding: grid * 2,
-    margin: `0 0 ${grid}px 0`,
-    "border-radius": "3px",
-  
-    // change background colour if dragging
-    background: isDragging ? "dodgerblue" : "#FF7900",
-  
-    // styles we need to apply on draggables
-    ...draggableStyle
-  });
-  
-  const getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? "lightgrey" : "#fff",
-    padding: grid,
-    width: 250,
-    border: "solid 0.5px lightgrey",
-    margin: "1.5em"
-  });
+    // a little function to help us with reordering the result
+    const reorder = (list, startIndex, endIndex) => {
+      const result = Array.from(list);
+      const [removed] = result.splice(startIndex, 1);
+      result.splice(endIndex, 0, removed);
+    
+      return result;
+    };
+    
+    const grid = 8;
+    
+    const itemStyle = (isDragging, draggableStyle) => ({
+      // some basic styles to make the items look a bit nicer
+      userSelect: "none",
+      padding: grid * 2,
+      margin: `0 0 ${grid}px 0`,
+      "border-radius": "3px",
+    
+      // change background colour if dragging
+      background: isDragging ? "dodgerblue" : "#FF7900",
+    
+      // styles we need to apply on draggables
+      ...draggableStyle
+    });
+    
+    const getListStyle = isDraggingOver => ({
+      background: isDraggingOver ? "lightgrey" : "#fff",
+      padding: grid,
+      width: 250,
+      border: "solid 0.5px lightgrey",
+      margin: "1.5em"
+    });
+
 
   export default Preference

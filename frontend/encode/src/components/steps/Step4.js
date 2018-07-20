@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import validation from 'react-validation-mixin'
 import strategy from 'joi-validation-strategy'
 import Joi from 'joi'
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import Preference from './widgets/Preference'
 
 class Step4 extends Component {
@@ -30,7 +31,9 @@ class Step4 extends Component {
     this.getValidatorData = this.getValidatorData.bind(this)
     this.renderHelpText = this.renderHelpText.bind(this)
     this.isValidated = this.isValidated.bind(this)
+    this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
   }
+
 
   isValidated() {
     return new Promise((resolve, reject) => {
@@ -75,6 +78,12 @@ class Step4 extends Component {
     this.setState(newState)
   }
 
+  handlePreferenceChange(data) {
+    this.setState({
+      priority: data
+    })
+  }
+
   renderHelpText(message) {
     return (
      <span className='help-block'>{message}</span>
@@ -84,79 +93,80 @@ class Step4 extends Component {
 
   render() {
 
-    
     return (
 
-        <div className="flex-container">
-          <div className="flex-item">
-            <form>
+      <div className="flex-container">
+        <div className="flex-item">
+          <form>
 
-                <div className="input-field">
-                    <label>Please rank in order of importance for
-                      yourself the following criteria: </label>
-                    <div className="flex-container">
-                      <Preference 
-                      refs/>
-                    </div>
-                </div>
+              {/* Drap & Drop for preferences */}
+              <div className="input-field">
+                  <label>Please rank in order of importance for
+                    yourself the following criteria: </label>
+                  <div className="flex-container">
+                    <Preference onDragEnd={this.handlePreferenceChange} />
+                  </div>
+              </div>
 
-                <div className="input-field">
-                    <label>What type of roles would you like to be
-                          contacted about?</label>
-                    <input 
-                      ref="expectedJobTitle"
-                      name="expectedJobTitle"
-                      defaultValue={this.state.expectedJobTitle}
+              {/* <div className="input-field">
+                  <label>What type of roles would you like to be
+                        contacted about?</label>
+                  <input 
+                    ref="expectedJobTitle"
+                    name="expectedJobTitle"
+                    defaultValue={this.state.expectedJobTitle}
+                    required
+                    placeholder="" 
+                    onChange={this.handleChange}
+                    onBlur={this.props.handleValidation('expectedJobTitle')}
+                    type="text" />
+                    {this.props.getValidationMessages('expectedJobTitle').map(this.renderHelpText)}
+              </div>
+
+              <div className="input-field">
+                  <label>What type of company would you like to
+                          work in next? </label>
+                  
+              </div>
+
+              <div className="input-field">
+                  <label>What is your minimum salary expectation?</label>
+                  
+              </div>
+
+              <div className="input-field">
+                  <label>Are you looking for:</label>
+                  <select
+                      ref="expectedRoleType"
+                      name="expectedRoleType"
+                      defaultValue={this.state.expectedRoleType}
+                      autoComplete="off"
                       required
-                      placeholder="" 
+                      value={this.state.expectedRoleType}
                       onChange={this.handleChange}
-                      onBlur={this.props.handleValidation('expectedJobTitle')}
-                      type="text" />
-                      {this.props.getValidationMessages('expectedJobTitle').map(this.renderHelpText)}
-                </div>
+                      onBlur={this.validationCheck}>
+                      >
+                      <option value="" disabled selected>Please select role type</option>
+                      <option value={"Contract"}>Contract</option>
+                      <option value={"Permanent"}>Permanent</option>
+                      <option value={"Either"}>Either</option>
+                    </select>
+                    {this.props.getValidationMessages('expectedRoleType').map(this.renderHelpText)}
+              </div>
 
-                <div className="input-field">
-                    <label>What type of company would you like to
-                            work in next? </label>
-                    
-                </div>
-
-                <div className="input-field">
-                    <label>What is your minimum salary expectation?</label>
-                    
-                </div>
-
-                <div className="input-field">
-                    <label>Are you looking for:</label>
-                    <select
-                        ref="expectedRoleType"
-                        name="expectedRoleType"
-                        defaultValue={this.state.expectedRoleType}
-                        autoComplete="off"
-                        required
-                        value={this.state.expectedRoleType}
-                        onChange={this.handleChange}
-                        onBlur={this.validationCheck}>
-                        >
-                        <option value="" disabled selected>Please select role type</option>
-                        <option value={"Contract"}>Contract</option>
-                        <option value={"Permanent"}>Permanent</option>
-                        <option value={"Either"}>Either</option>
-                      </select>
-                      {this.props.getValidationMessages('expectedRoleType').map(this.renderHelpText)}
-                </div>
-
-                <div className="input-field">
-                    <label>How did you hear about Encode Talent Management?</label>
-                    
-                </div>
-                
-            
-            </form>
-          </div>
+              <div className="input-field">
+                  <label>How did you hear about Encode Talent Management?</label>
+                  
+              </div> */}
+              
+          
+          </form>
         </div>
+      </div>
 
-    )
+  )
+    
+    
   }
 }
 

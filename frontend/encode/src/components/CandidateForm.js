@@ -14,7 +14,8 @@ export default class CandidateForm extends Component {
   
       this.state = {
         savedToCloud: false
-      };
+      }
+
     }
   
     getData() {
@@ -22,10 +23,11 @@ export default class CandidateForm extends Component {
     }
   
     updateData(update) {
-      this.setState({
+      this.setState = {
         ...this.state,
         ...update,
-      })
+      }
+      console.log(this.state)
     }
   
     render() {
