@@ -14,6 +14,7 @@ class Step3 extends Component {
       currentJobTitle: props.getData().currentJobTitle,
       currentEmployer: props.getData().currentEmployer,
       roleType: props.getData().roleType,
+      responsibilities: props.getData().responsibilities,
     };
 
     this.validatorTypes = {
@@ -21,6 +22,7 @@ class Step3 extends Component {
       currentJobTitle: Joi.string().required().label('Current Job Title'),
       currentEmployer: Joi.string().required().label('Current Employer'),
       roleType: Joi.string().required().label('Role Type'),
+      responsibilities: Joi.string().required().label('Current Responsibilities'),
       
     };
 
@@ -42,7 +44,8 @@ class Step3 extends Component {
           return;
         }
 
-        if (this.props.getData().techStack !== this.state.techStack) { // only update store if something changed
+        // only update store if something changed
+        if (this.props.getData().techStack !== this.state.techStack) { 
           console.log(this.state)
           this.props.updateData({
             ...this.state,
@@ -61,6 +64,8 @@ class Step3 extends Component {
       currentJobTitle: this.refs.currentJobTitle.value,
       currentEmployer: this.refs.currentEmployer.value,
       roleType: this.refs.roleType.value,
+      responsibilities: this.refs.responsibilities.value,
+
     }
   };
 
@@ -88,70 +93,84 @@ class Step3 extends Component {
     return (
 
       <div className="flex-container">
-          <div className="flex-item">
-            <form>
+        <div className="flex-item">
+          <form>
 
-                <div className="input-field">
-                    <label>Current Job Title</label>
-                    <input 
-                      ref="currentJobTitle"
-                      name="currentJobTitle"
-                      defaultValue={this.state.currentJobTitle}
-                      required
-                      placeholder="" 
-                      onChange={this.handleFormChange}
-                      onBlur={this.props.handleValidation('currentJobTitle')}
-                      type="text" />
-                      {this.props.getValidationMessages('currentJobTitle').map(this.renderHelpText)}
-                </div>       
-                
-                <div className="input-field">
-                    <label>Current Employer</label>
-                    <input 
-                      ref="currentEmployer"
-                      name="currentEmployer"
-                      defaultValue={this.state.currentEmployer}
-                      required
-                      placeholder="" 
-                      onChange={this.handleFormChange}
-                      onBlur={this.props.handleValidation('currentEmployer')}
-                      type="text" />
-                      {this.props.getValidationMessages('currentEmployer').map(this.renderHelpText)}
-                </div>       
-
-                <div className="input-field"> 
-                      <label>Role Type</label>     
-                      <select
-                        ref="roleType"
-                        name="roleType"
-                        defaultValue={this.state.roleType}
-                        autoComplete="off"
-                        required
-                        value={this.state.roleType}
-                        onChange={this.handleFormChange}
-                        onBlur={this.validationCheck}>
-                        >
-                        <option value="" disabled selected>Please select</option>
-                        <option value={"Permanent"}>Permanent</option>
-                        <option value={"Contract"}>Contract</option>
-                      </select>
-                      {this.props.getValidationMessages('roleType').map(this.renderHelpText)}
-                </div>
-                
-                <div className="input-tech-field">
-                  <TechStack 
-                    ref="techStack"
-                    name="techStack"
-                    required
-                    raiseData={this.handleTechChange}
-                    onBlur={this.props.handleValidation('techStack')}
-                    { ...this.state } />
-                  {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
-                </div>
+            <div className="input-field">
+              <label>Current Job Title</label>
+              <input 
+                ref="currentJobTitle"
+                name="currentJobTitle"
+                defaultValue={this.state.currentJobTitle}
+                required
+                placeholder="" 
+                onChange={this.handleFormChange}
+                onBlur={this.props.handleValidation('currentJobTitle')}
+                type="text" />
+                {this.props.getValidationMessages('currentJobTitle').map(this.renderHelpText)}
+            </div>       
             
-            </form>
-          </div>
+            <div className="input-field">
+              <label>Current Employer</label>
+              <input 
+                ref="currentEmployer"
+                name="currentEmployer"
+                defaultValue={this.state.currentEmployer}
+                required
+                placeholder="" 
+                onChange={this.handleFormChange}
+                onBlur={this.props.handleValidation('currentEmployer')}
+                type="text" />
+                {this.props.getValidationMessages('currentEmployer').map(this.renderHelpText)}
+            </div>       
+
+            <div className="input-field"> 
+              <label>Role Type</label>     
+              <select
+                ref="roleType"
+                name="roleType"
+                defaultValue={this.state.roleType}
+                autoComplete="off"
+                required
+                value={this.state.roleType}
+                onChange={this.handleFormChange}
+                onBlur={this.validationCheck}>
+                >
+                <option value="" disabled selected>Please select</option>
+                <option value={"Permanent"}>Permanent</option>
+                <option value={"Contract"}>Contract</option>
+              </select>
+              {this.props.getValidationMessages('roleType').map(this.renderHelpText)}
+            </div>
+
+            <div className="input-field">
+              <label>What are your current responsibilities?</label>
+              <textarea 
+                ref="responsibilities"
+                name="responsibilities"
+                defaultValue={this.state.responsibilities}
+                required
+                placeholder="" 
+                onChange={this.handleFormChange}
+                onBlur={this.props.handleValidation('responsibilities')}
+                type="text" />
+                {this.props.getValidationMessages('responsibilities').map(this.renderHelpText)}
+            </div> 
+            
+            <div className="input-tech-field">
+              <TechStack 
+                ref="techStack"
+                name="techStack"
+                required
+                raiseData={this.handleTechChange}
+                onBlur={this.props.handleValidation('techStack')}
+                { ...this.state } />
+              {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
+            </div>
+          
+          </form>
         </div>
+      </div>
 
       
     )
