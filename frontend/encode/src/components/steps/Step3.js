@@ -14,13 +14,16 @@ class Step3 extends Component {
     };
 
     this.validatorTypes = {
-      techStack: Joi.array().items(Joi.string().required(), Joi.string().required())
+      techStack: Joi.array().items(Joi.string().required(), Joi.string().required()),
+      
     };
 
     this.getValidatorData = this.getValidatorData.bind(this);
     this.renderHelpText = this.renderHelpText.bind(this);
     this.isValidated = this.isValidated.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleTechChange = this.handleTechChange.bind(this);
+
   }
 
   
@@ -52,12 +55,18 @@ class Step3 extends Component {
     }
   };
 
-  handleChange(e) {
+  handleTechChange(e) {
     let data = e.split(',')
 
     this.setState({ 
       techStack: data
     }) 
+  }
+
+  handleChange(e) {
+    let newState = {}
+    newState[e.target.name] = e.target.value
+    this.setState(newState)
   }
 
   renderHelpText(message) {
@@ -73,7 +82,7 @@ class Step3 extends Component {
         ref="techStack"
         name="techStack"
         required
-        raiseData={this.handleChange}
+        raiseData={this.handleTechChange}
         onBlur={this.props.handleValidation('techStack')}
         { ...this.state } />
         {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
