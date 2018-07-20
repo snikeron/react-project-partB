@@ -14,7 +14,8 @@ export default class CandidateForm extends Component {
   
       this.state = {
         savedToCloud: false
-      };
+      }
+
     }
   
     getData() {
@@ -25,8 +26,7 @@ export default class CandidateForm extends Component {
       this.setState({
         ...this.state,
         ...update,
-      })
-    }
+      })}
   
     render() {
       const steps =
@@ -46,8 +46,9 @@ export default class CandidateForm extends Component {
             <StepZilla
               steps={steps}
               preventEnterSubmission={true}
-              nextTextOnFinalActionStep={"Save"}
               hocValidationAppliedTo={[1, 2]}
+              nextTextOnFinalActionStep={"Confirm & Submit"}
+              nextButtonText={"Save & Next"}
               startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}
               onStepChange={(step) => window.sessionStorage.setItem('step', step)}
              />
@@ -58,3 +59,5 @@ export default class CandidateForm extends Component {
     }
   }
   
+
+
