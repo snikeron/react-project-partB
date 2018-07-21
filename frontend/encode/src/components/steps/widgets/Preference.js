@@ -8,7 +8,6 @@ class Preference extends Component {
 
       this.state = {
         priority: this.props.priority,
-        items: items
       }
 
       this.onDragEnd = this.onDragEnd.bind(this)
@@ -21,17 +20,17 @@ class Preference extends Component {
         return;
       }
   
-      const items = reorder(
-        this.state.items,
+      const priority = reorder(
+        this.state.priority,
         result.source.index,
         result.destination.index
       )
   
       this.setState({
-        items
+        priority
       })
 
-      this.props.raiseData(this.state.items)
+      this.props.raiseData(this.state.priority)
 
     }
   
@@ -49,7 +48,7 @@ class Preference extends Component {
                   style={getListStyle(snapshot.isDraggingOver)}
                   className={"dnd flex-item"}
                 >
-                  {this.state.items.map((item, index) => (
+                  {this.state.priority.map((item, index) => (
                     <Draggable key={item.id} draggableId={item.id} index={index}>
                       {(provided, snapshot) => (
                         <div
@@ -75,63 +74,6 @@ class Preference extends Component {
       );
     }
   }
-  
-
-
-  const items = [
-    {
-      id: "item-1",
-      content: "Technologies"
-    },
-    {
-      id: "item-2",
-      content: "Salary"
-    },
-    {
-      id: "item-3",
-      content: "Location"
-    },
-    {
-      id: "item-4",
-      content: "Job Title"
-    },
-    {
-      id: "item-5",
-      content: "Role Responsibilities"
-    },
-    {
-      id: "item-6",
-      content: "Training and Professional Development"
-    },
-    {
-      id: "item-7",
-      content: "The Team"
-    },
-    {
-      id: "item-8",
-      content: "Office Environment"
-    },
-    {
-      id: "item-9",
-      content: "The Company’s Purpose and Products"
-    },
-    {
-      id: "item-10",
-      content: "Management"
-    },
-    {
-      id: "item-11",
-      content: "The Hours"
-    },
-    {
-      id: "item-12",
-      content: "Ability to work from home"
-    },
-    {
-      id: "item-13",
-      content: "Travel (work related as a consistent part of the role)"
-    }
-  ];
   
     // a little function to help us with reordering the result
     const reorder = (list, startIndex, endIndex) => {
