@@ -46,7 +46,7 @@ export default class CandidateForm extends Component {
             <StepZilla
               steps={steps}
               preventEnterSubmission={true}
-              hocValidationAppliedTo={[1, 2]}
+              hocValidationAppliedTo={[1, 2, 3]}
               nextTextOnFinalActionStep={"Confirm & Submit"}
               nextButtonText={"Save & Next"}
               startAtStep={window.sessionStorage.getItem('step') ? parseFloat(window.sessionStorage.getItem('step')) : 0}

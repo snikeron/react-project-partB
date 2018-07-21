@@ -19,7 +19,7 @@ class Step4 extends Component {
     }
 
     this.validatorTypes = {
-      priority: Joi.array().items(Joi.string().required(), Joi.string().required()),
+      priority: Joi.array(),
       // expectedJobTitle: Joi.string().required().label('Types of Roles'),
       // expectedCompany: Joi.string().required().label('Types of Companies'),
       // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
@@ -44,15 +44,15 @@ class Step4 extends Component {
         }
 
         if (this.props.getData().priority !== this.state.priority ) { 
-            // this.props.getData().expectedJobTitle !== this.getValidatorData().expectedJobTitle ||
-            // this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
-            // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
-            // this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
-            // this.props.getData().contactSource !== this.getValidatorData().contactSource 
+          // this.props.getData().expectedJobTitle !== this.getValidatorData().expectedJobTitle ||
+          // this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
+          // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
+          // this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
+          // this.props.getData().contactSource !== this.getValidatorData().contactSource 
           // only update data if something changed
             
-              this.props.updateData({
-            ...this.state,
+          this.props.updateData({
+            ...this.getValidatorData(),
             savedToCloud: false // use this to notify step2 that some changes took place and prompt the user to save again
           });  // Update data here
         }
@@ -102,15 +102,15 @@ class Step4 extends Component {
 
               {/* Drap & Drop for preferences */}
               <div className="input-field">
-                  <label>Please rank in order of importance for
-                    yourself the following criteria: </label>
-                  <div className="flex-container">
-                    <Preference 
-                      ref="priority"
-                      name="priority"
-                      raiseData={this.handleAChange} 
-                      {...this.state}/>
-                  </div>
+                <label>Please rank in order of importance for
+                  yourself the following criteria: </label>
+                <div className="flex-container">
+                  <Preference 
+                    ref="priority"
+                    name="priority"
+                    raiseData={this.handleAChange} 
+                    {...this.state}/>
+                </div>
               </div>
 
               {/* <div className="input-field">
