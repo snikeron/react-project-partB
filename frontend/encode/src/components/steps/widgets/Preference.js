@@ -7,7 +7,7 @@ class Preference extends Component {
       super(props)
 
       this.state = {
-        priority: this.props.priority,
+        priority: this.props.priority
       }
 
       this.onDragEnd = this.onDragEnd.bind(this)
@@ -34,8 +34,6 @@ class Preference extends Component {
 
     }
   
-    // Normally you would want to split things out into separate components.
-    // But in this example everything is just done in one place for simplicity
     render() {
 
       return (

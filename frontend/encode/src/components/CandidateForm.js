@@ -13,7 +13,6 @@ export default class CandidateForm extends Component {
       super(props)
   
       this.state = {
-        savedToCloud: false,
         priority: [
           {
             id: "item-1",
@@ -69,6 +68,7 @@ export default class CandidateForm extends Component {
           }
         ],
         
+        savedToCloud: false     
       }
 
     }
