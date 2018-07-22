@@ -39,7 +39,8 @@ class Step2 extends Component {
           return;
         }
 
-        // Run validation over any data that gets updated
+        // Run validation over any data that gets updated 
+        // Only update central stored state if something changed
         if (this.props.getData().firstName !== this.getValidatorData().firstName ||
             this.props.getData().lastName !== this.getValidatorData().lastName ||
             this.props.getData().phoneNumber!== this.getValidatorData().phoneNumber ||

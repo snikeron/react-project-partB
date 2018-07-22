@@ -11,7 +11,7 @@ class Step4 extends Component {
 
     this.state = {
       priority: props.getData().priority,
-      // expectedJobTitle: props.getData().expectedJobTitle,
+      expectedJobTitle: props.getData().expectedJobTitle,
       // expectedCompany: props.getData().expectedCompany,
       // minSalary: props.getData().minSalary,
       // expectedRoleType: props.getData().expectedRoleType,
@@ -20,7 +20,7 @@ class Step4 extends Component {
 
     this.validatorTypes = {
       priority: Joi.array(),
-      // expectedJobTitle: Joi.string().required().label('Types of Roles'),
+      expectedJobTitle: Joi.string().required().label('Types of Roles'),
       // expectedCompany: Joi.string().required().label('Types of Companies'),
       // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
       // expectedRoleType: Joi.string().required().label('Contract Role Types'),
@@ -43,8 +43,10 @@ class Step4 extends Component {
           return;
         }
 
+        // Run validation over any data that gets updated 
+        // Only update central stored state if something changed
         if (this.props.getData().priority !== this.state.priority ) { 
-          // this.props.getData().expectedJobTitle !== this.getValidatorData().expectedJobTitle ||
+          this.props.getData().expectedJobTitle !== this.state.expectedJobTitle ||
           // this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
           // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
           // this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
@@ -65,7 +67,7 @@ class Step4 extends Component {
   getValidatorData() {
     return {
       priority: this.state.priority,
-      // expectedJobTitle: this.refs.expectedJobTitle.value,
+      expectedJobTitle: this.refs.expectedJobTitle.value,
       // expectedCompany: this.refs.expectedCompany.value,
       // minSalary: this.refs.minSalary.value,
       // expectedRoleType: this.refs.expectedRoleType.value,
@@ -113,7 +115,7 @@ class Step4 extends Component {
                 </div>
               </div>
 
-              {/* <div className="input-field">
+              <div className="input-field">
                   <label>What type of roles would you like to be
                         contacted about?</label>
                   <input 
@@ -128,7 +130,7 @@ class Step4 extends Component {
                     {this.props.getValidationMessages('expectedJobTitle').map(this.renderHelpText)}
               </div>
 
-              <div className="input-field">
+              {/* <div className="input-field">
                   <label>What type of company would you like to
                           work in next? </label>
                   
