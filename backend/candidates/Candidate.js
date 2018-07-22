@@ -21,6 +21,7 @@ const candidateSchema = new Schema ({
     clientNotes: String,
     personalNotes: String, 
     priority: [{
+        _id: false,
         id: String,
         content: String
     }],
