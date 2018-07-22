@@ -20,13 +20,21 @@ const candidateSchema = new Schema ({
     contactSource: String,
     clientNotes: String,
     personalNotes: String, 
-    priority: [String],
+    priority: [{
+        id: String,
+        content: String
+    }],
     expectedCompany: [String],
     resumeUrl: String,
     isActive: Boolean,
     createdAt: Date,
     updatedAt: Date
-
+}, 
+{
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
+    }
 })
 
 candidateSchema.index({ '$**': 'text' })
