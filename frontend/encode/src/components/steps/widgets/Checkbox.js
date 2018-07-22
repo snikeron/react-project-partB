@@ -23,21 +23,22 @@ class Checkbox extends Component {
     const { isChecked } = this.state
 
     return (
-      <div className="checkbox">
-        <label>
+      <div className="checkbox-container">
+        <label className={isChecked ? "checkbox checked" : "checkbox" }>
+          {label}
           <input
             type="checkbox"
             value={label}
             checked={isChecked}
             onChange={this.toggleCheckboxChange}
           />
-
-          {label}
+          <span class="checkmark"></span>
         </label>
       </div>
     )
   }
 }
+
 
 
 export default Checkbox

@@ -156,11 +156,11 @@ select:disabled::-ms-expand {
 /* End: select for IE and Edge */
 
 /* Customize the label (the container) */
-.checkbox-container {
+.checkbox {
   display: block;
   position: relative;
-  padding-left: 1.8em;
-  margin-bottom: 0.8em;
+  padding: 0.8em 1em 0.8em 2.8em;
+  margin-bottom: 0.4em;
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
   -webkit-user-select: none;
@@ -170,7 +170,7 @@ select:disabled::-ms-expand {
 }
 
 /* Hide the browser's default checkbox */
-.checkbox-container input {
+.checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -181,19 +181,29 @@ select:disabled::-ms-expand {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 1.55em;
+  width: 1.55em;
   background-color: #eee;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
 }
 
-/* On mouse-over, add a grey background color */
-.checkbox-container:hover input ~ .checkmark {
-  background-color: #ccc;
+/* On mouse-over, add a background color */
+.checkbox:hover {
+  background-color: #FFEBD9;
 }
 
-/* When the checkbox is checked, add a blue background */
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #2196F3;
+.checkbox:hover input ~ .checkmark {
+  background-color: #FF7900;
+}
+
+/* When the checkbox is checked, add an orange background */
+.checked {
+  background-color: #FFEBD9;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: #FF7900;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -204,12 +214,12 @@ select:disabled::-ms-expand {
 }
 
 /* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
+.checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.checkbox-container .checkmark:after {
+.checkbox .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -221,9 +231,6 @@ select:disabled::-ms-expand {
   transform: rotate(45deg);
 }
 
-input[type="checkbox"] {
-  width: 1.5em;
-}
 input[type="submit"] {
   width: 10em;
   background: #FCEE21;
