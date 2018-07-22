@@ -3,6 +3,22 @@ import validation from 'react-validation-mixin'
 import strategy from 'joi-validation-strategy'
 import Joi from 'joi'
 import Preference from './widgets/Preference'
+import Checkbox from './widgets/Checkbox'
+
+const companyTypes = [
+  'Enterprise Companies',
+  'Start Ups',
+  'Consultancies',
+  'Small Businesses',
+  'Technology Companies',
+  'Not For Profits',
+  'Government',
+  'Education',
+  'Utilities',
+  'Telecommunications'
+]
+
+const selectedCheckboxes = new Set()
 
 class Step4 extends Component {
 
@@ -12,44 +28,48 @@ class Step4 extends Component {
     this.state = {
       priority: props.getData().priority,
       expectedJobTitle: props.getData().expectedJobTitle,
-      // expectedCompany: props.getData().expectedCompany,
+      expectedCompany: props.getData().expectedCompany,
       // minSalary: props.getData().minSalary,
-      // expectedRoleType: props.getData().expectedRoleType,
+      expectedRoleType: props.getData().expectedRoleType,
       // contactSource: props.getData().contactSource,
     }
 
     this.validatorTypes = {
       priority: Joi.array(),
       expectedJobTitle: Joi.string().required().label('Types of Roles'),
-      // expectedCompany: Joi.string().required().label('Types of Companies'),
+      expectedCompany: Joi.array().required().label('Types of Companies'),
       // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
-      // expectedRoleType: Joi.string().required().label('Contract Role Types'),
+      expectedRoleType: Joi.string().required().label('Contract Role Types'),
       // contactSource: Joi.string().required().label('Source')
-    };
+    }
 
-    this.handleChange = this.handleChange.bind(this)
     this.getValidatorData = this.getValidatorData.bind(this)
     this.renderHelpText = this.renderHelpText.bind(this)
     this.isValidated = this.isValidated.bind(this)
-    this.handleAChange = this.handleAChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
+    this.toggleCheckbox = this.toggleCheckbox.bind(this)
   }
 
+  componentWillMount = () => {
+    this.selectedCheckboxes = new Set();
+  }
 
   isValidated() {
     return new Promise((resolve, reject) => {
       this.props.validate((error) => {
         if (error) {
-          reject(); // form contains errors
-          return;
+          reject() // form contains errors
+          return
         }
 
         // Run validation over any data that gets updated 
         // Only update central stored state if something changed
         if (this.props.getData().priority !== this.state.priority ) { 
           this.props.getData().expectedJobTitle !== this.state.expectedJobTitle ||
-          // this.props.getData().expectedCompany!== this.getValidatorData().expectedCompany ||
+          this.props.getData().expectedCompany!== this.state.expectedCompany ||
           // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
-          // this.props.getData().expectedRoleType !== this.getValidatorData().expectedRoleType ||
+          this.props.getData().expectedRoleType !== this.state.expectedRoleType ||
           // this.props.getData().contactSource !== this.getValidatorData().contactSource 
           // only update data if something changed
             
@@ -68,12 +88,44 @@ class Step4 extends Component {
     return {
       priority: this.state.priority,
       expectedJobTitle: this.refs.expectedJobTitle.value,
-      // expectedCompany: this.refs.expectedCompany.value,
+      expectedCompany: this.state.expectedCompany,
       // minSalary: this.refs.minSalary.value,
-      // expectedRoleType: this.refs.expectedRoleType.value,
+      expectedRoleType: this.refs.expectedRoleType.value,
       // contactSource: this.refs.contactSource.value
     }
-  };
+  }
+
+  toggleCheckbox = label => {
+
+    if (this.selectedCheckboxes.has(label)) {
+      this.selectedCheckboxes.delete(label);
+    } else {
+      this.selectedCheckboxes.add(label);
+    }
+
+    const companies = []
+
+    for (const checkbox of this.selectedCheckboxes) {
+      companies.push(checkbox)
+    }
+  
+    this.setState({
+      expectedCompany: companies
+    })
+    
+  }
+
+  createCheckbox = label => (
+    <Checkbox
+      label={label}
+      handleCheckboxChange={this.toggleCheckbox}
+      key={label}
+    />
+  )
+
+  createCheckboxes = () => (
+    companyTypes.map(this.createCheckbox)
+  )
 
   handleChange(e) {
     let newState = {}
@@ -81,7 +133,7 @@ class Step4 extends Component {
     this.setState(newState)
   }
 
-  handleAChange(data) {
+  handlePreferenceChange(data) {
     this.setState({
       priority: data
     })
@@ -110,7 +162,7 @@ class Step4 extends Component {
                   <Preference 
                     ref="priority"
                     name="priority"
-                    raiseData={this.handleAChange} 
+                    raiseData={this.handlePreferenceChange} 
                     {...this.state}/>
                 </div>
               </div>
@@ -130,16 +182,20 @@ class Step4 extends Component {
                     {this.props.getValidationMessages('expectedJobTitle').map(this.renderHelpText)}
               </div>
 
-              {/* <div className="input-field">
+              <div className="input-field">
                   <label>What type of company would you like to
                           work in next? </label>
-                  
+
+                  {this.createCheckboxes()}
+                  {this.props.getValidationMessages('expectedCompany').map(this.renderHelpText)}
               </div>
 
+              {/* 
               <div className="input-field">
                   <label>What is your minimum salary expectation?</label>
                   
               </div>
+              */}
 
               <div className="input-field">
                   <label>Are you looking for:</label>
@@ -164,7 +220,7 @@ class Step4 extends Component {
               <div className="input-field">
                   <label>How did you hear about Encode Talent Management?</label>
                   
-              </div> */}
+              </div> 
               
           
           </form>
