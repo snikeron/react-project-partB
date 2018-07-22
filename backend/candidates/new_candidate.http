@@ -2,8 +2,8 @@ POST http://localhost:3000/candidates
 Content-Type: application/json
 
 {
-    "firstName": "Michael",
-    "lastName": "Jackson",
+    "firstName": "Pluto",
+    "lastName": "Verailles",
     "phoneNumber": "0411111111",
     "emailAddress": "mikejack@awesome.com",
     "location": "Perth",
@@ -13,7 +13,7 @@ Content-Type: application/json
     "responsibilities": "Writing code, mentoring juniors, bringing good vibes",
     "minSalary": 180000,
     "expectedJobTitle": "Senior Boss of Bosses",
-    "techStack": ["Python", "JavaScript", "Ruby", "MongoDB"],
+    "techStack": ["Go", "Haskell", "JavaScript", "Ruby", "MongoDB"],
     "contactSource": "Friend",
     "clientNotes": "",
     "personalNotes": "",
