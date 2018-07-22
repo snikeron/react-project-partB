@@ -263,6 +263,9 @@ button:hover {
 .footer-buttons {
   text-align: center;
 }
+.input-field {
+  margin-top: 2em;
+}
 
 .help-block {
   display: block;

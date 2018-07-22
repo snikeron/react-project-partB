@@ -13,6 +13,61 @@ export default class CandidateForm extends Component {
       super(props)
   
       this.state = {
+        priority: [
+          {
+            id: "item-1",
+            content: "Technologies"
+          },
+          {
+            id: "item-2",
+            content: "Salary"
+          },
+          {
+            id: "item-3",
+            content: "Location"
+          },
+          {
+            id: "item-4",
+            content: "Job Title"
+          },
+          {
+            id: "item-5",
+            content: "Role Responsibilities"
+          },
+          {
+            id: "item-6",
+            content: "Training and Professional Development"
+          },
+          {
+            id: "item-7",
+            content: "The Team"
+          },
+          {
+            id: "item-8",
+            content: "Office Environment"
+          },
+          {
+            id: "item-9",
+            content: "The Company’s Purpose and Products"
+          },
+          {
+            id: "item-10",
+            content: "Management"
+          },
+          {
+            id: "item-11",
+            content: "The Hours"
+          },
+          {
+            id: "item-12",
+            content: "Ability to work from home"
+          },
+          {
+            id: "item-13",
+            content: "Travel (work related as a consistent part of the role)"
+          }
+        ],
+        
         savedToCloud: false     
       }
 

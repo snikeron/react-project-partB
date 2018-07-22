@@ -54,11 +54,13 @@ class Step4 extends Component {
     this.isValidated = this.isValidated.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
-    this.toggleCheckbox = this.toggleCheckbox.bind(this)
+    this.toggleCompanyTypesCheckbox = this.toggleCompanyTypesCheckbox.bind(this)
+    this.toggleSourcesCheckbox = this.toggleSourcesCheckbox.bind(this)
   }
 
   componentWillMount = () => {
-    this.selectedCheckboxes = new Set();
+    this.selectedCompanies = new Set()
+    this.selectedSources = new Set()
   }
 
   isValidated() {
@@ -71,12 +73,12 @@ class Step4 extends Component {
 
         // Run validation over any data that gets updated 
         // Only update central stored state if something changed
-        if (this.props.getData().priority !== this.state.priority ) { 
+        if (this.props.getData().priority !== this.state.priority ||
           this.props.getData().expectedJobTitle !== this.state.expectedJobTitle ||
           this.props.getData().expectedCompany!== this.state.expectedCompany ||
           // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
           this.props.getData().expectedRoleType !== this.state.expectedRoleType ||
-          this.props.getData().contactSource !== this.state.contactSource 
+          this.props.getData().contactSource !== this.state.contactSource ) { 
           // only update data if something changed
             
           this.props.updateData({
@@ -101,17 +103,17 @@ class Step4 extends Component {
     }
   }
 
-  toggleCheckbox = label => {
+  toggleCompanyTypesCheckbox = label => {
 
-    if (this.selectedCheckboxes.has(label)) {
-      this.selectedCheckboxes.delete(label);
+    if (this.selectedCompanies.has(label)) {
+      this.selectedCompanies.delete(label);
     } else {
-      this.selectedCheckboxes.add(label);
+      this.selectedCompanies.add(label);
     }
 
     const companies = []
 
-    for (const checkbox of this.selectedCheckboxes) {
+    for (const checkbox of this.selectedCompanies) {
       companies.push(checkbox)
     }
   
@@ -121,20 +123,49 @@ class Step4 extends Component {
     
   }
 
-  createCheckbox = label => (
+  createCompanyTypesCheckbox = label => (
     <Checkbox
       label={label}
-      handleCheckboxChange={this.toggleCheckbox}
+      handleCheckboxChange={this.toggleCompanyTypesCheckbox}
       key={label}
     />
   )
 
   createCompanyTypesCheckboxes = () => (
-    companyTypes.map(this.createCheckbox)
+    companyTypes.map(this.createCompanyTypesCheckbox)
+  )
+
+
+  toggleSourcesCheckbox = label => {
+
+    if (this.selectedSources.has(label)) {
+      this.selectedSources.delete(label);
+    } else {
+      this.selectedSources.add(label);
+    }
+
+    const sources = []
+
+    for (const checkbox of this.selectedSources) {
+      sources.push(checkbox)
+    }
+  
+    this.setState({
+      contactSource: sources
+    })
+    
+  }
+
+  createSourcesCheckbox = label => (
+    <Checkbox
+      label={label}
+      handleCheckboxChange={this.toggleSourcesCheckbox}
+      key={label}
+    />
   )
 
   createSourcesCheckboxes = () => (
-    sources.map(this.createCheckbox)
+    sources.map(this.createSourcesCheckbox)
   )
 
   handleChange(e) {
