@@ -155,6 +155,10 @@ select:disabled::-ms-expand {
 }
 /* End: select for IE and Edge */
 
+.checkbox-container {
+  margin-top: 1em;
+}
+
 /* Customize the label (the container) */
 .checkbox {
   display: block;

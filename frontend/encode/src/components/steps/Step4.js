@@ -226,9 +226,10 @@ class Step4 extends Component {
               <div className="input-field">
                   <label>What type of company would you like to
                           work in next? </label>
-
-                  {this.createCompanyTypesCheckboxes()}
-                  {this.props.getValidationMessages('expectedCompany').map(this.renderHelpText)}
+                  <div className="checkbox-container">
+                    {this.createCompanyTypesCheckboxes()}
+                    {this.props.getValidationMessages('expectedCompany').map(this.renderHelpText)}
+                  </div>
               </div>
 
               {/* 
@@ -259,9 +260,11 @@ class Step4 extends Component {
               </div>
 
               <div className="input-field">
-                  <label>How did you hear about Encode Talent Management?</label>
-                  {this.createSourcesCheckboxes()}
-                  {this.props.getValidationMessages('contactSource').map(this.renderHelpText)}
+                  <label>How did you hear about Encode Talent Management?</label>         
+                  <div className="checkbox-container">
+                    {this.createSourcesCheckboxes()}
+                    {this.props.getValidationMessages('contactSource').map(this.renderHelpText)}
+                  </div>
               </div> 
 
                   
