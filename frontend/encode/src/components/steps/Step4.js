@@ -18,7 +18,13 @@ const companyTypes = [
   'Telecommunications'
 ]
 
-const selectedCheckboxes = new Set()
+const sources = [
+  'LinkedIn',
+  'Word of Mouth',
+  'Direct contact from us',
+  'Google',
+  'Other'
+]
 
 class Step4 extends Component {
 
@@ -31,16 +37,16 @@ class Step4 extends Component {
       expectedCompany: props.getData().expectedCompany,
       // minSalary: props.getData().minSalary,
       expectedRoleType: props.getData().expectedRoleType,
-      // contactSource: props.getData().contactSource,
+      contactSource: props.getData().contactSource,
     }
 
     this.validatorTypes = {
       priority: Joi.array(),
       expectedJobTitle: Joi.string().required().label('Types of Roles'),
-      expectedCompany: Joi.array().required().label('Types of Companies'),
+      expectedCompany: Joi.array().items(Joi.string().required()).label('Types of Companies'),
       // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
       expectedRoleType: Joi.string().required().label('Contract Role Types'),
-      // contactSource: Joi.string().required().label('Source')
+      contactSource: Joi.array().items(Joi.string().required()).label('Source')
     }
 
     this.getValidatorData = this.getValidatorData.bind(this)
@@ -70,7 +76,7 @@ class Step4 extends Component {
           this.props.getData().expectedCompany!== this.state.expectedCompany ||
           // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
           this.props.getData().expectedRoleType !== this.state.expectedRoleType ||
-          // this.props.getData().contactSource !== this.getValidatorData().contactSource 
+          this.props.getData().contactSource !== this.state.contactSource 
           // only update data if something changed
             
           this.props.updateData({
@@ -91,7 +97,7 @@ class Step4 extends Component {
       expectedCompany: this.state.expectedCompany,
       // minSalary: this.refs.minSalary.value,
       expectedRoleType: this.refs.expectedRoleType.value,
-      // contactSource: this.refs.contactSource.value
+      contactSource: this.state.contactSource
     }
   }
 
@@ -123,8 +129,12 @@ class Step4 extends Component {
     />
   )
 
-  createCheckboxes = () => (
+  createCompanyTypesCheckboxes = () => (
     companyTypes.map(this.createCheckbox)
+  )
+
+  createSourcesCheckboxes = () => (
+    sources.map(this.createCheckbox)
   )
 
   handleChange(e) {
@@ -186,7 +196,7 @@ class Step4 extends Component {
                   <label>What type of company would you like to
                           work in next? </label>
 
-                  {this.createCheckboxes()}
+                  {this.createCompanyTypesCheckboxes()}
                   {this.props.getValidationMessages('expectedCompany').map(this.renderHelpText)}
               </div>
 
@@ -219,10 +229,11 @@ class Step4 extends Component {
 
               <div className="input-field">
                   <label>How did you hear about Encode Talent Management?</label>
-                  
+                  {this.createSourcesCheckboxes()}
+                  {this.props.getValidationMessages('contactSource').map(this.renderHelpText)}
               </div> 
-              
-          
+
+                  
           </form>
         </div>
       </div>
