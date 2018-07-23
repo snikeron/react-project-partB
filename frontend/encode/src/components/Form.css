@@ -201,3 +201,11 @@ button:hover {
 .dnd {
   color: #FFFFFF;
 }
+
+.show {
+ visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}

@@ -34,7 +34,7 @@ PUT http://localhost:3000/candidates/5b5023ada851b545528b755d
 Content-Type: application/json
 
 {
-    "clientNotes": "Testing put route!!"
+    "clientNotes": "Hello Rashid And Mill"
 }
 
 ###

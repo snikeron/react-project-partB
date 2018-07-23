@@ -25,7 +25,7 @@ class Preference extends Component {
         result.source.index,
         result.destination.index
       )
-  
+
       this.setState({
         priority
       })
@@ -91,7 +91,7 @@ class Preference extends Component {
       userSelect: "none",
       padding: grid * 2,
       margin: `0 0 ${grid}px 0`,
-      "border-radius": "3px",
+      borderRadius: "12px",
     
       // change background colour if dragging
       background: isDragging ? "dodgerblue" : "#FF7900",

@@ -65,10 +65,11 @@ export default class CandidateForm extends Component {
           },
           {
             id: "item-13",
-            content: "Travel (work related as a consistent part of the role)"
+            content: "Travel (work-related as a consistent part of the role)"
           }
         ],
         
+
       }
 
     }

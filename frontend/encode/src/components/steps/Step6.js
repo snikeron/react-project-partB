@@ -13,7 +13,7 @@ export default class Step6 extends Component {
   render() {
     return (
       <div className="step step6">
-        
+        <h1>Successfully Updated Data!</h1>
       </div>
     )
   }

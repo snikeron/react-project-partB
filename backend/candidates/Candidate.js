@@ -13,18 +13,14 @@ const candidateSchema = new Schema ({
     CurrentEmployer: String,
     roleType: String,
     responsibilities: String,
-    minSalary: Number,
-    expectedJobTitle: String,
-    expectedRoleType: String,
+    minSalary: Number, //
+    expectedJobTitle: String, //
+    expectedRoleType: String, //
     techStack: [String],
-    contactSource: String,
-    clientNotes: String,
+    contactSource: String, //
+    clientNotes: String, //
     personalNotes: String, 
-    priority: [{
-        _id: false,
-        id: String,
-        content: String
-    }],
+    priority: [String],
     expectedCompany: [String],
     resumeUrl: String,
     isActive: Boolean,
