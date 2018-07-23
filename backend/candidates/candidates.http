@@ -1,4 +1,4 @@
-POST http://localhost:3000/candidates
+POST https://backend-izuntatfte.now.sh/candidates
 Content-Type: application/json
 
 {
@@ -27,10 +27,10 @@ Content-Type: application/json
 }
 
 ###
-GET https://backend-bzorbvezmq.now.sh/candidates
+GET https://backend-izuntatfte.now.sh/candidates
 
 ###
-PUT http://localhost:3000/candidates/5b5023ada851b545528b755d
+PUT https://backend-izuntatfte.now.sh/candidates/5b5023ada851b545528b755d
 Content-Type: application/json
 
 {
@@ -38,4 +38,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/candidates/5b5023ada851b545528b755d
+GET https://backend-izuntatfte.now.sh/candidates/5b5023ada851b545528b755d

@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend Project for Encode Candidate Management",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

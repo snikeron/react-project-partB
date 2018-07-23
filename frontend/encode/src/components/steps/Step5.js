@@ -55,7 +55,7 @@ export default class Step5 extends Component {
     }
     // Utilising Promise to asynchronously post candidate data
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:3000/candidates', candidateData)
+      axios.post('https://backend-izuntatfte.now.sh/candidates', candidateData)
         .then( (res) => {
           this.setState({
             saving: true
