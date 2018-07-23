@@ -5,7 +5,7 @@ const adminSchema = new Schema({
     email: String,
     password: String
 })
-
+//ELLO
 const Admin = mongoose.model('Admin', adminSchema)
 
 module.exports = Admin
