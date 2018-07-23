@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import validation from 'react-validation-mixin'
 import strategy from 'joi-validation-strategy'
-import Joi from 'joi'
+import Joi from 'joi-browser'
 import Preference from './widgets/Preference'
 import Checkbox from './widgets/Checkbox'
 import SalarySlider from './widgets/SalarySlider'

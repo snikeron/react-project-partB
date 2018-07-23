@@ -1,6 +1,6 @@
-POST http://localhost:3000/search
+POST https://backend-izuntatfte.now.sh/search
 Content-Type: application/json
 
 {
-    "query": "damon"
+    "query": "Perth"
 }
