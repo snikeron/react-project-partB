@@ -10,7 +10,7 @@ const candidateSchema = new Schema ({
     emailAddress: String,
     location: String,
     currentJobTitle: String,
-    CurrentEmployer: String,
+    currentEmployer: String,
     roleType: String,
     responsibilities: String,
     minSalary: Number, 

@@ -69,11 +69,7 @@ export default class CandidateForm extends Component {
         ],
         minSalary: 65,
         
-<<<<<<< HEAD
-
-=======
         savedToCloud: false     
->>>>>>> 71795ff1678a8ee9c14e55bec287dedcca3f2d9e
       }
 
     }

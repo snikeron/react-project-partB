@@ -163,11 +163,12 @@ class Step2 extends Component {
                         onBlur={this.validationCheck}>
                         >
                         <option value="" disabled selected>Please select</option>
-                        <option value={"Melbourne"}>Melbourne</option>
                         <option value={"Adelaide"}>Adelaide</option>
-                        <option value={"Sydney"}>Sydney</option>
                         <option value={"Brisbane"}>Brisbane</option>
                         <option value={"Canberra"}>Canberra</option>
+                        <option value={"Hobart"}>Hobart</option>
+                        <option value={"Melbourne"}>Melbourne</option>
+                        <option value={"Sydney"}>Sydney</option>
                         <option value={"Perth"}>Perth</option>
                       </select>
                       {this.props.getValidationMessages('location').map(this.renderHelpText)}

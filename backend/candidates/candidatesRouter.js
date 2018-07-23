@@ -17,10 +17,6 @@ router.post('/', (req, res) => {
     // Modify priority into array of Strings only
     const candidateData = Object.assign({}, req.body)
     candidateData.priority = []
-    console.log("req.body.priority")
-    console.log(req.body.priority)
-    console.log("candidateData.priority")
-    console.log(candidateData.priority)
     req.body.priority.forEach(item => {
         candidateData.priority.push(item.content)
     })
