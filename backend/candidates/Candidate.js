@@ -13,12 +13,12 @@ const candidateSchema = new Schema ({
     CurrentEmployer: String,
     roleType: String,
     responsibilities: String,
-    minSalary: Number, //
-    expectedJobTitle: String, //
-    expectedRoleType: String, //
+    minSalary: Number, 
+    expectedJobTitle: String, 
+    expectedRoleType: String, 
     techStack: [String],
-    contactSource: String, //
-    clientNotes: String, //
+    contactSource: String, 
+    clientNotes: String, 
     personalNotes: String, 
     priority: [String],
     expectedCompany: [String],
@@ -37,6 +37,5 @@ const candidateSchema = new Schema ({
 candidateSchema.index({ '$**': 'text' })
 
 const Candidate = mongoose.model('Candidates', candidateSchema)
-
 module.exports = Candidate
 
