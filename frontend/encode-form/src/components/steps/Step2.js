@@ -39,7 +39,8 @@ class Step2 extends Component {
           return;
         }
 
-        // Run validation over any data that gets updated
+        // Run validation over any data that gets updated 
+        // Only update central stored state if something changed
         if (this.props.getData().firstName !== this.getValidatorData().firstName ||
             this.props.getData().lastName !== this.getValidatorData().lastName ||
             this.props.getData().phoneNumber!== this.getValidatorData().phoneNumber ||
@@ -162,11 +163,12 @@ class Step2 extends Component {
                         onBlur={this.validationCheck}>
                         >
                         <option value="" disabled selected>Please select</option>
-                        <option value={"Melbourne"}>Melbourne</option>
                         <option value={"Adelaide"}>Adelaide</option>
-                        <option value={"Sydney"}>Sydney</option>
                         <option value={"Brisbane"}>Brisbane</option>
                         <option value={"Canberra"}>Canberra</option>
+                        <option value={"Hobart"}>Hobart</option>
+                        <option value={"Melbourne"}>Melbourne</option>
+                        <option value={"Sydney"}>Sydney</option>
                         <option value={"Perth"}>Perth</option>
                       </select>
                       {this.props.getValidationMessages('location').map(this.renderHelpText)}

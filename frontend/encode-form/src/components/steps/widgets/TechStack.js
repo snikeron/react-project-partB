@@ -309,7 +309,7 @@ class IntegrationReactSelect extends React.Component {
           onChange={this.handleChange('techStack')}
           placeholder="Select Technologies"
           name="react-select-chip-label"
-          label="With label"
+          label="Your Technology Stack"
           InputLabelProps={{
             shrink: true,
           }}

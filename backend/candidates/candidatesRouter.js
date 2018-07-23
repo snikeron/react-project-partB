@@ -14,7 +14,16 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const candidate = new Candidate(req.body)
+    // Modify priority into array of Strings only
+    const candidateData = Object.assign({}, req.body)
+    candidateData.priority = []
+    req.body.priority.forEach(item => {
+        candidateData.priority.push(item.content)
+    })
+
+    const candidate = new Candidate(candidateData)
+
+    console.log(candidate)
     candidate.save()
         .then(() => {
             res.status(200).json(candidate)
@@ -24,30 +33,28 @@ router.post('/', (req, res) => {
         })
 })
 
-router.get('/candidates/:id', async(req, res) => {
-    const id = req.params.id
-    try {
-        const candidate = await Candidate.find(id)
-        res.status(200).json(candidate)
-    } catch(err){
-        res.status(500).json(err)
-    }
+router.put('/:id', (req, res, next) => {
+    Candidate.findByIdAndUpdate(req.params.id, req.body, function (err, candidate) {
+        candidate.save()
+            .then(() => {
+                res.status(200).json(candidate)
+            })
+            .catch(err => {
+                res.status(500).json({ error: err.message })
+            })
+    })
 })
 
-// Update a single Candidate in the collection.
-router.put('/candidates/:id',function(req, res){
-    const id = req.params.id
+router.get('/:id', (req, res, next) => {
+    console.log(req.params.id)
     
-    Candidate.findOneAndUpdate(id, req.body, {new: true}, function (err, candidate) {
-        
-        if(err){
-            return res.send(err);
-        } 
-        console.log({message:"candidate updated"});
-        res.status(200).json(candidate);
-    
-    });
-});
+    Candidate.findById(req.params.id, (err, candidate) => {
+        if (err) return next(err);
+        res.json(candidate);
+    })
+})
+
+
 
 module.exports = router
 

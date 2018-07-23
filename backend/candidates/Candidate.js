@@ -10,15 +10,15 @@ const candidateSchema = new Schema ({
     emailAddress: String,
     location: String,
     currentJobTitle: String,
-    CurrentEmployer: String,
+    currentEmployer: String,
     roleType: String,
     responsibilities: String,
-    minSalary: Number,
-    expectedJobTitle: String,
-    expectedRoleType: String,
+    minSalary: Number, 
+    expectedJobTitle: String, 
+    expectedRoleType: String, 
     techStack: [String],
-    contactSource: String,
-    clientNotes: String,
+    contactSource: String, 
+    clientNotes: String, 
     personalNotes: String, 
     priority: [String],
     expectedCompany: [String],
@@ -26,12 +26,16 @@ const candidateSchema = new Schema ({
     isActive: Boolean,
     createdAt: Date,
     updatedAt: Date
-
+}, 
+{
+    timestamps: {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
+    }
 })
 
 candidateSchema.index({ '$**': 'text' })
 
 const Candidate = mongoose.model('Candidates', candidateSchema)
-
 module.exports = Candidate
 
