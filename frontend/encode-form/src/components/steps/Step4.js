@@ -19,14 +19,6 @@ const companyTypes = [
   'Telecommunications'
 ]
 
-const sources = [
-  'LinkedIn',
-  'Word of Mouth',
-  'Direct contact from us',
-  'Google',
-  'Other'
-]
-
 class Step4 extends Component {
 
   constructor(props) {
@@ -47,7 +39,7 @@ class Step4 extends Component {
       expectedCompany: Joi.array().items(Joi.string().required()).label('Types of Companies'),
       minSalary: Joi.number().min(1).required().label('Minimum Salary Expectation'),
       expectedRoleType: Joi.string().required().label('Contract Role Types'),
-      contactSource: Joi.array().items(Joi.string().required()).label('Source')
+      contactSource: Joi.string().required().label('Source')
     }
 
     this.getValidatorData = this.getValidatorData.bind(this)
@@ -56,13 +48,11 @@ class Step4 extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
     this.toggleCompanyTypesCheckbox = this.toggleCompanyTypesCheckbox.bind(this)
-    this.toggleSourcesCheckbox = this.toggleSourcesCheckbox.bind(this)
     this.handleSalaryChange = this.handleSalaryChange.bind(this)
   }
 
   componentWillMount = () => {
     this.selectedCompanies = new Set()
-    this.selectedSources = new Set()
   }
 
   isValidated() {
@@ -101,7 +91,7 @@ class Step4 extends Component {
       expectedCompany: this.state.expectedCompany,
       minSalary: this.state.minSalary,
       expectedRoleType: this.refs.expectedRoleType.value,
-      contactSource: this.state.contactSource
+      contactSource: this.refs.contactSource.value
     }
   }
 
@@ -126,6 +116,7 @@ class Step4 extends Component {
   }
 
   createCompanyTypesCheckbox = label => (
+
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCompanyTypesCheckbox}
@@ -137,38 +128,6 @@ class Step4 extends Component {
     companyTypes.map(this.createCompanyTypesCheckbox)
   )
 
-
-  toggleSourcesCheckbox = label => {
-
-    if (this.selectedSources.has(label)) {
-      this.selectedSources.delete(label);
-    } else {
-      this.selectedSources.add(label);
-    }
-
-    const sources = []
-
-    for (const checkbox of this.selectedSources) {
-      sources.push(checkbox)
-    }
-  
-    this.setState({
-      contactSource: sources
-    })
-    
-  }
-
-  createSourcesCheckbox = label => (
-    <Checkbox
-      label={label}
-      handleCheckboxChange={this.toggleSourcesCheckbox}
-      key={label}
-    />
-  )
-
-  createSourcesCheckboxes = () => (
-    sources.map(this.createSourcesCheckbox)
-  )
 
   handleChange(e) {
     let newState = {}
@@ -254,7 +213,7 @@ class Step4 extends Component {
                   </div>
                   {this.props.getValidationMessages('minSalary').map(this.renderHelpText)}
               </div>
-             
+
 
               <div className="input-field">
                   <label>Are you looking for:</label>
@@ -275,15 +234,29 @@ class Step4 extends Component {
                     </select>
                     {this.props.getValidationMessages('expectedRoleType').map(this.renderHelpText)}
               </div>
+             
 
               <div className="input-field">
-                  <label>How did you hear about Encode Talent Management?</label>         
-                  <div className="checkbox-container">
-                    {this.createSourcesCheckboxes()}
+                  <label>How did you hear about Encode Talent Management?</label>
+                  <select
+                      ref="contactSource"
+                      name="contactSource"
+                      defaultValue={this.state.contactSource}
+                      autoComplete="off"
+                      required
+                      value={this.state.contactSource}
+                      onChange={this.handleChange}
+                      onBlur={this.validationCheck}>
+                      >
+                      <option value="" disabled selected>Please select source</option>
+                      <option value={"LinkedIn"}>LinkedIn</option>
+                      <option value={"Word of Mouth"}>Word of Mouth</option>
+                      <option value={"Direct contact from us"}>Direct contact from us</option>
+                      <option value={"Google"}>Google</option>
+                      <option value={"Other"}>Other</option>
+                    </select>
                     {this.props.getValidationMessages('contactSource').map(this.renderHelpText)}
-                  </div>
-              </div> 
-
+              </div>
                   
           </form>
         </div>
