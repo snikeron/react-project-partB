@@ -270,6 +270,10 @@ button:hover {
 .input-field {
   margin-top: 2em;
 }
+.slider-container {
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
 
 .help-block {
   display: block;
