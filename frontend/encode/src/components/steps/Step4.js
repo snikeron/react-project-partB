@@ -116,6 +116,7 @@ class Step4 extends Component {
   }
 
   createCompanyTypesCheckbox = label => (
+
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCompanyTypesCheckbox}
