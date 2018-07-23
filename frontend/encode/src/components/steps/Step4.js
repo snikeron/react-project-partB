@@ -4,6 +4,7 @@ import strategy from 'joi-validation-strategy'
 import Joi from 'joi'
 import Preference from './widgets/Preference'
 import Checkbox from './widgets/Checkbox'
+import SalarySlider from './widgets/SalarySlider'
 
 const companyTypes = [
   'Enterprise Companies',
@@ -35,7 +36,7 @@ class Step4 extends Component {
       priority: props.getData().priority,
       expectedJobTitle: props.getData().expectedJobTitle,
       expectedCompany: props.getData().expectedCompany,
-      // minSalary: props.getData().minSalary,
+      minSalary: props.getData().minSalary,
       expectedRoleType: props.getData().expectedRoleType,
       contactSource: props.getData().contactSource,
     }
@@ -44,7 +45,7 @@ class Step4 extends Component {
       priority: Joi.array(),
       expectedJobTitle: Joi.string().required().label('Types of Roles'),
       expectedCompany: Joi.array().items(Joi.string().required()).label('Types of Companies'),
-      // minSalary: Joi.string().email().required().label('Minimum Salary Expectation'),
+      minSalary: Joi.number().min(1).required().label('Minimum Salary Expectation'),
       expectedRoleType: Joi.string().required().label('Contract Role Types'),
       contactSource: Joi.array().items(Joi.string().required()).label('Source')
     }
@@ -56,6 +57,7 @@ class Step4 extends Component {
     this.handlePreferenceChange = this.handlePreferenceChange.bind(this)
     this.toggleCompanyTypesCheckbox = this.toggleCompanyTypesCheckbox.bind(this)
     this.toggleSourcesCheckbox = this.toggleSourcesCheckbox.bind(this)
+    this.handleSalaryChange = this.handleSalaryChange.bind(this)
   }
 
   componentWillMount = () => {
@@ -76,7 +78,7 @@ class Step4 extends Component {
         if (this.props.getData().priority !== this.state.priority ||
           this.props.getData().expectedJobTitle !== this.state.expectedJobTitle ||
           this.props.getData().expectedCompany!== this.state.expectedCompany ||
-          // this.props.getData().minSalary !== this.getValidatorData().minSalary ||
+          this.props.getData().minSalary !== this.state.minSalary ||
           this.props.getData().expectedRoleType !== this.state.expectedRoleType ||
           this.props.getData().contactSource !== this.state.contactSource ) { 
           // only update data if something changed
@@ -97,7 +99,7 @@ class Step4 extends Component {
       priority: this.state.priority,
       expectedJobTitle: this.refs.expectedJobTitle.value,
       expectedCompany: this.state.expectedCompany,
-      // minSalary: this.refs.minSalary.value,
+      minSalary: this.state.minSalary,
       expectedRoleType: this.refs.expectedRoleType.value,
       contactSource: this.state.contactSource
     }
@@ -180,6 +182,12 @@ class Step4 extends Component {
     })
   }
 
+  handleSalaryChange(data){
+    this.setState({
+      minSalary: data
+    })
+  }
+
   renderHelpText(message) {
     return (
      <span className='help-block'>{message}</span>
@@ -232,12 +240,21 @@ class Step4 extends Component {
                   </div>
               </div>
 
-              {/* 
+              
               <div className="input-field">
                   <label>What is your minimum salary expectation?</label>
-                  
+                  <div className="slider-container">
+                    <SalarySlider 
+                      min={0} 
+                      max={200} 
+                      defaultValue={this.state.minSalary} 
+                      value={this.state.minSalary}
+                      raiseData={this.handleSalaryChange}
+                      />
+                  </div>
+                  {this.props.getValidationMessages('minSalary').map(this.renderHelpText)}
               </div>
-              */}
+             
 
               <div className="input-field">
                   <label>Are you looking for:</label>

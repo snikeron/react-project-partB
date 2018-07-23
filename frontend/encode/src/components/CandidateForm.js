@@ -67,6 +67,7 @@ export default class CandidateForm extends Component {
             content: "Travel (work related as a consistent part of the role)"
           }
         ],
+        minSalary: 65,
         
         savedToCloud: false     
       }
