@@ -64,7 +64,7 @@ export default class CandidateForm extends Component {
           },
           {
             id: "item-13",
-            content: "Travel (work-related as a consistent part of the role)"
+            content: "Travel (work related as a consistent part of the role)"
           }
         ],
         minSalary: 65,
@@ -97,11 +97,13 @@ export default class CandidateForm extends Component {
   
       return (
         <div className='flex-container'>
+        <div className='flex-item flex-item-large'>
         <div className='candidateForm'>
           <div className='step-progress'>
             <StepZilla
               steps={steps}
               preventEnterSubmission={true}
+              prevBtnOnLastStep={false}
               hocValidationAppliedTo={[1, 2, 3]}
               nextTextOnFinalActionStep={"Confirm & Submit"}
               nextButtonText={"Save & Next"}
@@ -111,9 +113,8 @@ export default class CandidateForm extends Component {
           </div>
         </div>
         </div>
+        </div>
       )
     }
   }
   
-
-

@@ -1,147 +1,208 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
+import axios from 'axios'
+
 export default class Step5 extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      saving: false
-    };
+      ...props.getData(),
+      saving: false,
+    }
 
-    this.isValidated = this.isValidated.bind(this);
+    this.isValidated = this.isValidated.bind(this)
   }
 
-  // This review screen had the 'Save' button, on clicking this is called
+  componentWillMount = () => {
+    window.scrollTo(0,0)
+  }
+
+  // This review screen had the 'Confirm and Submit' button, on clicking this is called
   isValidated() {
     // typically this method needs to return true or false (to indicate if the local forms are validated, so StepZilla can move to the next step),
-    // but in this example we simulate an ajax request which is async. In the case of async validation or server saving etc. return a Promise and StepZilla will wait
+    // In the case of async validation or server saving etc. return a Promise and StepZilla will wait
     // ... for the resolve() to work out if we can move to the next step
-    // So here are the rules:
-    // ~~~~~~~~~~~~~~~~~~~~~~~~
-    // SYNC action (e.g. local JS form validation).. if you return:
-    // true/undefined: validation has passed. Move to next step.
-    // false: validation failed. Stay on current step
-    // ~~~~~~~~~~~~~~~~~~~~~~~~
+
     // ASYNC return (server side validation or saving data to server etc).. you need to return a Promise which can resolve like so:
     // resolve(): validation/save has passed. Move to next step.
     // reject(): validation/save failed. Stay on current step
 
     this.setState({
-      saving: true,
-
-    });
+      saving: true
+    })
 
     const candidateData = {
-      firstName: this.props.getData().firstName,
-      lastName: this.props.getData().lastName,
-      phoneNumber: this.props.getData().phoneNumber,
-      emailAddress: this.props.getData().emailAddress,
-      location: this.props.getData().location,
-      currentJobTitle: this.props.getData().currentJobTitle,
-      currentEmployer: this.props.getData().currentEmployer,
-      roleType: this.props.getData().roleType,
-      responsibilities: this.props.getData().responsibilities,
-      minSalary: this.props.getData().minSalary, 
-      expectedJobTitle: this.props.getData().expectedJobTitle, 
-      expectedRoleType: this.props.getData().expectedRoleType, 
-      techStack: this.props.getData().techStack,
-      contactSource: "LinkedIn", // this.props.getData().contactSource, 
+      ...this.props.getData(),
       clientNotes: "", 
       personalNotes: "", 
-      priority: this.props.getData().priority,
-      expectedCompany: this.props.getData().expectedCompany,
-      resumeUrl: "https://resume.com/resume.pdf", // this.props.getData().resumeUrl,
-      isActive: true,
+      isActive: true
     }
-    // Utilising Promise to asynchronously post candidate data
+
     return new Promise((resolve, reject) => {
       axios.post('https://backend-izuntatfte.now.sh/candidates', candidateData)
         .then( (res) => {
           this.setState({
             saving: true
-          });          
+          })          
           this.props.updateData({
             savedToCloud: true
-          });
-          
-          console.log(res);
-          resolve();
+          })
+
+          console.log(res)
+          resolve()
         })
         .catch( (err) => {
-          console.error(err);         
-          reject();
+          console.error(err)      
+          reject()
         })
-    });
-  }
+    })
 
-  // jumpToStep(toStep) {
-  //   // We can explicitly move to a step (we -1 as its a zero based index)
-  //   this.props.jumpToStep(toStep-1); // The StepZilla library injects this jumpToStep utility into each component
-  // }
+  } 
 
   render() {
-    const savingCls = this.state.saving ? 'saving col-md-12 show' : 'saving col-md-12 hide';
+
+    const savingCls = this.state.saving ? 'saving' : 'hide'
+
+    const { 
+      firstName,
+      lastName,
+      phoneNumber,
+      emailAddress,
+      location,
+      techStack,
+      currentJobTitle,
+      currentEmployer,
+      roleType,
+      responsibilities,
+      priority,
+      expectedJobTitle,
+      expectedCompany,
+      minSalary,
+      expectedRoleType,
+      contactSource,
+    } = this.state
+
+    if (techStack) {
+      var myTechStack = techStack.map((tech) => 
+        <li className="list">{tech}</li>
+    )
+    }
+    
+    const myPriority = priority.map((priorityItem) => 
+        <li className="list">{priorityItem.content}</li>
+    )
+
+    if (expectedCompany) {
+      var myExpectedCompany = expectedCompany.map((company) => 
+        <li className="list">{company}</li>
+    )
+    }
+    
+    
 
     return (
-      <div className="step step5 review">
-        <div className="row">
-          <form id="Form" className="form-horizontal">
-            <div className="form-group">
-              <label className="col-md-12 control-label">
-                <h1>Step 4: Review your Details and Submit Form</h1>
-              </label>
-            </div>
-            <div className="form-group">
-              <div className="col-md-12 control-label">
-                <div className="col-md-12 txt">
-                  <div className="col-md-4">
-                    Full Name
-                  </div>
-                  <div className="col-md-4">
-                    {this.props.getData().firstName + this.props.getData().lastName}
-                  </div>
+
+      <div className="step step5">
+
+        <h2>Review</h2>
+        <div className="flex-container">
+
+          <div className="flex-item displayBlock">
+                <div className="displayField">
+                  <p className="labelField">First Name</p>
+                  <p className="resultField">{firstName}</p>
                 </div>
-                <div className="col-md-12 txt">
-                  <div className="col-md-4">
-                    Email
-                  </div>
-                  <div className="col-md-4">
-                    {this.props.getData().emailAddress}
-                  </div>
+
+                <div className="displayField">
+                  <p className="labelField">Last Name</p>
+                  <p className="resultField">{lastName}</p>
                 </div>
-                <div className="col-md-12 txt">
-                  <div className="col-md-4">
-                    Location
-                  </div>
-                  <div className="col-md-4">
-                    {this.props.getData().location}
-                  </div>
+
+                <div className="displayField">
+                  <p className="labelField">Mobile Number</p>
+                  <p className="resultField">{phoneNumber}</p>
                 </div>
-                <div className="col-md-12 txt">
-                  <div className="col-md-4">
-                    Tech Stack
-                  </div>
-                  <div className="col-md-4">
-                    {this.props.getData().techStack}
-                  </div>
+
+                <div className="displayField">
+                  <p className="labelField">Email</p>
+                  <p className="resultField">{emailAddress}</p>
                 </div>
-                <div className="col-md-12 txt">
-                  <div className="col-md-4">
-                    Minimum Salary
-                  </div>
-                  <div className="col-md-4">
-                    {this.props.getData().minSalary}
-                  </div>
+
+                <div className="displayField">
+                  <p className="labelField">Location</p>
+                  <p className="resultField">{location}</p>
                 </div>
-                {/* <div className="col-md-12 eg-jump-lnk">
-                  <a href="#" onClick={() => this.jumpToStep(1)}>e.g. showing how we use the jumpToStep method helper method to jump back to step 1</a>
-                </div> */}
-                <h2 className={savingCls}>Saving to Cloud, please wait ...</h2>
-              </div>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div className="flex-item displayBlock">
+                <div className="displayField">
+                  <p className="labelField">Current Job Title</p>
+                  <p className="resultField">{currentJobTitle}</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Current Employer</p>
+                  <p className="resultField">{currentEmployer}</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Currently in</p>
+                  <p className="resultField">{roleType} Role</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Day-to-Day Responsibilities</p>
+                  <p className="resultField">{responsibilities}</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Technologies</p>
+                  <p className="resultField"><ul>{techStack ? myTechStack : null }</ul></p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Reume (Optional)</p>
+                  <p className="resultField"></p>
+                </div>
+          </div>
+
+          <div className="flex-item displayBlock">
+                <div className="displayField">
+                  <p className="labelField">Order of Importance</p>
+                  <p className="resultField"><ol>{myPriority}</ol></p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Type of roles like to be contacted about</p>
+                  <p className="resultField">{expectedJobTitle}</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Type of company like to work in next</p>
+                  <p className="resultField"><ul>{expectedCompany ? myExpectedCompany : null }</ul></p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">Minimum salary expectation</p>
+                  <p className="resultField">${minSalary}K</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">You are looking for:</p>
+                  <p className="resultField">{expectedRoleType} Role</p>
+                </div>
+
+                <div className="displayField">
+                  <p className="labelField">How did you hear about Encode Talent Management?</p>
+                  <p className="resultField">{contactSource}</p>
+                </div>
+          </div>
+
+          <p className={savingCls}>Sending in progress, please wait ...</p>
+        
+        </div>       
       </div>
     )
+
+
   }
 }
