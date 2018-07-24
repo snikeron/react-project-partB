@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     // Modify priority into array of Strings only
     const candidateData = Object.assign({}, req.body)
+    console.log(candidateData)
     candidateData.priority = []
     req.body.priority.forEach(item => {
         candidateData.priority.push(item.content)
@@ -23,13 +24,15 @@ router.post('/', (req, res) => {
 
     const candidate = new Candidate(candidateData)
 
-    console.log(candidate)
     candidate.save()
         .then(() => {
             res.status(200).json(candidate)
+            console.log('Saved New Candidate')
+            console.log(candidate)
         })
         .catch(err => {
             res.status(500).json({ error: err.message })
+            console.error('Candidate Save Failure: ' + err)
         })
 })
 
