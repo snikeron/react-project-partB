@@ -1,99 +1,101 @@
 /* Styles for Step Zilla */
 ol.progtrckr {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-ol.progtrckr li {
-  display: inline-block;
+  list-style-type: none;
+  padding: 0;
   text-align: center;
-  line-height: 4.5rem;
-  cursor: pointer;
 }
 
-ol.progtrckr li span {
-  padding: 0 1.5rem;
+ol.progtrckr li {
+display: inline-block;
+text-align: center;
+line-height: 4.5rem;
+cursor: pointer;
 }
 
-@media (max-width: 650px) {
-  .progtrckr li span {
-    display: none;
-  }
+/* ol.progtrckr li span {
+padding: 0 1.5rem;
+} */
+
+/* 650px */
+@media (max-width: 834px) {
+.progtrckr li span {
+  display: none;
+}
 }
 .progtrckr em {
-  display: none;
-  font-weight: 700;
-  padding-left: 1rem;
+display: none;
+font-weight: 700;
+padding-left: 1rem;
 }
 
-@media (max-width: 650px) {
-  .progtrckr em {
-    display: inline;
-  }
+@media (max-width: 834px) {
+.progtrckr em {
+  display: inline;
+}
 }
 
 ol.progtrckr li.progtrckr-todo {
-  color: silver;
-  border-bottom: 1px solid silver;
+color: silver;
+border-bottom: 1px solid silver;
 }
 
 ol.progtrckr li.progtrckr-doing {
-  color: black;
-  border-bottom: 2px solid #CCCCCC;
+color: black;
+border-bottom: 2px solid #CCCCCC;
 }
 
 ol.progtrckr li.progtrckr-done {
-  color: black;
-  border-bottom: 2px solid #5cb85c;
+color: black;
+border-bottom: 2px solid #5cb85c;
 }
 
 ol.progtrckr li:after {
-  content: "\00a0\00a0";
+content: "\00a0\00a0";
 }
 
 ol.progtrckr li:before {
-  position: relative;
-  bottom: -3.7rem;
-  float: left;
-  left: 50%;
+position: relative;
+bottom: -3.7rem;
+float: left;
+left: 50%;
 }
 
 ol.progtrckr li.progtrckr-todo:before {
-  content: "\039F";
-  color: silver;
-  background-color: white;
-  width: 1.2em;
-  line-height: 1.4em;
+content: "\039F";
+color: silver;
+background-color: white;
+width: 1.2em;
+line-height: 1.4em;
 }
 
 ol.progtrckr li.progtrckr-todo:hover:before {
-  color: #ff4500;
+color: #ff4500;
 }
 
 ol.progtrckr li.progtrckr-doing:before {
-  content: "\2022";
-  color: white;
-  background-color: #ff4500; /* #CCCCCC #545454 */
-  width: 1.2em;
-  line-height: 1.2em;
-  border-radius: 1.2em;
+content: "\2022";
+color: white;
+background-color: #ff4500; /* #CCCCCC #545454 */
+width: 1.2em;
+line-height: 1.2em;
+border-radius: 1.2em;
 }
 
 ol.progtrckr li.progtrckr-doing:hover:before {
-  color: #ff4500;
+color: #ff4500;
 }
 
 ol.progtrckr li.progtrckr-done:before {
-  content: "\2713";
-  color: white;
-  background-color: #5cb85c;
-  width: 1.2em;
-  line-height: 1.2em;
-  border-radius: 1.2em;
+content: "\2713";
+color: white;
+background-color: #5cb85c;
+width: 1.2em;
+line-height: 1.2em;
+border-radius: 1.2em;
 }
 
 ol.progtrckr li.progtrckr-done:hover:before {
-  color: #333;
+color: #333;
 }
 
 
@@ -103,192 +105,218 @@ ol.progtrckr li.progtrckr-done:hover:before {
 
 
 .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+
 }
 .flex-item {
-  width: 80%;
-  max-width: 25em;
-  margin: 0.5em;
-  padding: 1em;
-  background: #FFFFFF;
+width: 80%;
+max-width: 25em;
+margin: 0.5em;
+padding: 1em;
+background: #FFFFFF;
+}
+.flex-item-large {
+max-width: 45em;
 }
 
 form {
-  color: #4f4f4f;
+color: #4f4f4f;
 }
 
 input, textarea, select {
-  background-color: #FFFFFF;
-  border: 0;
-  color: #545454;
-  width: 100%;
-  font-size: 1em;
-  padding: 0.5em;
-  font-family: 'Roboto', sans-serif;
-  margin-bottom: 0.5em;
-  border-bottom: 0.5px solid #b9b7b7;
-  box-sizing: border-box;
+background-color: #FFFFFF;
+border: 0;
+color: #545454;
+width: 100%;
+font-size: 1em;
+padding: 0.5em;
+font-family: 'Roboto', sans-serif;
+margin-bottom: 0.5em;
+border-bottom: 0.5px solid #b9b7b7;
+box-sizing: border-box;
 }
 input:focus, textarea:focus, select:focus {
-  border-bottom: 0.5px solid #F54F1A;
+border-bottom: 0.5px solid #F54F1A;
 }
 textarea {
-  height: 100px;
+height: 100px;
 }
 select { 
-  display: block;
-  padding: 10px 70px 10px 13px !important; 
-  background: url("../icon-polygon.png") right center no-repeat; 
-  appearance: none; 
-  /* this is must */ -webkit-appearance: none; 
-  -moz-appearance: none; 
+display: block;
+padding: 10px 70px 10px 13px !important; 
+background: url("../icon-polygon.png") right center no-repeat; 
+appearance: none; 
+/* this is must */ -webkit-appearance: none; 
+-moz-appearance: none; 
 } 
 /* Start: select for IE and Edge */ 
 select::-ms-expand { 
-  display: none; 
+display: none; 
 } 
 select:disabled::-ms-expand { 
-  background: #f60; 
+background: #f60; 
 }
 /* End: select for IE and Edge */
 
 .checkbox-container {
-  margin-top: 1em;
+margin-top: 1em;
 }
 
 /* Customize the label (the container) */
 .checkbox {
-  display: block;
-  position: relative;
-  padding: 0.8em 1em 0.8em 2.8em;
-  margin-bottom: 0.4em;
-  cursor: pointer;
-  font-family: 'Roboto', sans-serif;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+display: block;
+position: relative;
+padding: 0.8em 1em 0.8em 2.8em;
+margin-bottom: 0.4em;
+cursor: pointer;
+font-family: 'Roboto', sans-serif;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }
 
 /* Hide the browser's default checkbox */
 .checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+position: absolute;
+opacity: 0;
+cursor: pointer;
 }
 
 /* Create a custom checkbox */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 1.55em;
-  width: 1.55em;
-  background-color: #eee;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
+position: absolute;
+top: 0;
+left: 0;
+height: 1.55em;
+width: 1.55em;
+background-color: #eee;
+margin-top: 0.5em;
+margin-left: 0.5em;
 }
 
 /* On mouse-over, add a background color */
 .checkbox:hover {
-  background-color: #FFEBD9;
+background-color: #FFEBD9;
 }
 
 .checkbox:hover input ~ .checkmark {
-  background-color: #FF7900;
+background-color: #FF7900;
 }
 
 /* When the checkbox is checked, add an orange background */
 .checked {
-  background-color: #FFEBD9;
+background-color: #FFEBD9;
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: #FF7900;
+background-color: #FF7900;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+content: "";
+position: absolute;
+display: none;
 }
 
 /* Show the checkmark when checked */
 .checkbox input:checked ~ .checkmark:after {
-  display: block;
+display: block;
 }
 
 /* Style the checkmark/indicator */
 .checkbox .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+left: 9px;
+top: 5px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 3px 3px 0;
+-webkit-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+transform: rotate(45deg);
 }
 
 input[type="submit"] {
-  width: 10em;
-  background: #FCEE21;
-  border: 0;
-  color: #545454;
-  margin-top: 5px;
-  text-align: center;  
-  float: right;
-  margin-left: 1em;
-  border-radius: 0.5em;
+width: 10em;
+background: #FCEE21;
+border: 0;
+color: #545454;
+margin-top: 5px;
+text-align: center;  
+float: right;
+margin-left: 1em;
+border-radius: 0.5em;
 }
 input[type="submit"]:hover {
-  background: #FDAD28;
-  color: #545454;
+background: #FDAD28;
+color: #545454;
 }
 button {
-  display: inline-block;
-  background: #F54F1A;
-  border: 0;
-  color: #FFFFFF;  
-  padding:  0.5em 2em;
-  margin: 0.5em 3em;
-  text-decoration: none;
-  border-radius: 0.5em;
-  font-size: 0.9em;
+display: inline-block;
+background: #F54F1A;
+border: 0;
+color: #FFFFFF;  
+padding:  0.5em 2em;
+margin: 0.5em 3em;
+text-decoration: none;
+border-radius: 0.5em;
+font-size: 0.9em;
 }
 button:hover {
-  background: #FF7900 !important;   
+background: #FF7900 !important;   
 }
 .footer-buttons {
-  text-align: center;
+text-align: center;
 }
 .input-field {
-  margin-top: 2em;
+margin-top: 2em;
 }
 .slider-container {
-  margin-top: 3em;
-  margin-bottom: 3em;
+margin-top: 3em;
+margin-bottom: 3em;
 }
 
 .help-block {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  color: #a94442;
+display: block;
+margin-top: 5px;
+margin-bottom: 10px;
+color: #a94442;
 }
 .dnd {
-  color: #FFFFFF;
+color: #FFFFFF;
 }
 
-.show {
- visibility: visible;
+h2 {
+text-align: center;
+margin-bottom: 0.3em;
+margin-top: 1.5em;
 }
 
-.hide {
-  visibility: hidden;
+h3 {
+text-align: center;
+}
+
+.displayBlock {
+border: 0.75px solid #FF7A1D;
+}
+
+.labelField{
+margin-bottom: 0em;
+}
+
+.resultField {
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+margin-bottom: 1.3em;
+margin-top: 0.8em;
+}
+
+ol li.list, ul li.list{
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+padding-bottom: 0.3em;
 }
