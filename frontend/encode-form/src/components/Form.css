@@ -323,3 +323,13 @@ font-family: 'Roboto', sans-serif;
 font-weight: bold;
 padding-bottom: 0.3em;
 }
+
+.saving {
+  color: #FFFFFF;
+  background-color: #5bc0de;
+  padding: 0.6em 1em;
+}
+
+.hide {
+  display: none;
+}
