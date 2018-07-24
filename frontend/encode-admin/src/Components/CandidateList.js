@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import CandidateCard from './CandidateCard'
-import './CandidateList.css'
 import candidateAPI from '../api/Candidate'
+import './Encode-Admin.css'
 
 
 
