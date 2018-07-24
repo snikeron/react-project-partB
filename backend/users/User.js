@@ -50,7 +50,6 @@ userSchema.statics.loginAsAdmin = function loginAsAdmin(email, password) {
         if(!user.roles.find(role => role === 'admin')){
             return Promise.reject(new Error('No admin roles for user'))
         }
-        console.log(password)
 
         return bcrypt.compare(password, user.password)
         .then((result) => {
@@ -64,7 +63,6 @@ userSchema.statics.loginAsAdmin = function loginAsAdmin(email, password) {
 }
 
 
-//ELLO
 const User = mongoose.model('users', userSchema);
 
 module.exports = User
