@@ -10,7 +10,11 @@ const searchRouter = require('./search/searchRouter')
 
 const app = express()
 app.use(bodyParser.json())
-app.use(cors())
+
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONT_END_URL
+}))
 
 app.use('/candidates', candidatesRouter)
 app.use('/search', searchRouter)

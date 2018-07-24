@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import CandidateCard from './CandidateCard'
 import './CandidateList.css'
+import candidateAPI from '../api/Candidate'
 
-import axios from 'axios';
+
 
 export default class CandidateList extends React.Component {
     state = {
@@ -10,19 +11,18 @@ export default class CandidateList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`https://backend-izuntatfte.now.sh/candidates`)
-            .then(res => {
-                const candidates = res.data;
-                this.setState({ candidates });
-                console.log(res);
-            })
+        candidateAPI.fetchCandidates()
+        .then(candidates => {
+            this.setState({ candidates });
+        })
+        .catch(err => console.error(err))
     }
 
     render() {
-        return (
-            <div className="candidate-list-wrapper">
-                {this.state.candidates.map(candidate => <CandidateCard {...candidate} />)}
-            </div>
+        return (                        
+            <Fragment>
+                        {this.state.candidates.map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
+            </Fragment> 
         )
     }
 }
