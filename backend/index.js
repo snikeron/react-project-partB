@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const bodyParser = require('body-parser')
 
 const PORT = 3000
 
@@ -10,8 +9,12 @@ const searchRouter = require('./search/searchRouter')
 
 const app = express()
 // app.use(bodyParser.urlencoded({ extended: true })) // <-- this is for the aws s3 bucket 'resume upload'
-app.use(bodyParser.json())
-app.use(cors())
+app.use(express.json())
+
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONT_END_URL
+}))
 
 app.use('/candidates', candidatesRouter)
 app.use('/search', searchRouter)
