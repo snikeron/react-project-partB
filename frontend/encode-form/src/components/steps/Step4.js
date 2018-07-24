@@ -53,6 +53,7 @@ class Step4 extends Component {
 
   componentWillMount = () => {
     this.selectedCompanies = new Set()
+    window.scrollTo(0,0)
   }
 
   isValidated() {
@@ -157,6 +158,8 @@ class Step4 extends Component {
   render() {
 
     return (
+
+      
 
       <div className="flex-container">
         <div className="flex-item">

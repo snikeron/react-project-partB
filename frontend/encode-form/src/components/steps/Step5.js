@@ -13,6 +13,10 @@ export default class Step5 extends Component {
     this.isValidated = this.isValidated.bind(this)
   }
 
+  componentWillMount = () => {
+    window.scrollTo(0,0)
+  }
+
   // This review screen had the 'Confirm and Submit' button, on clicking this is called
   isValidated() {
     // typically this method needs to return true or false (to indicate if the local forms are validated, so StepZilla can move to the next step),
