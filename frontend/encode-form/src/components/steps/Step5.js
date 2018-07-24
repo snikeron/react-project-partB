@@ -41,11 +41,16 @@ export default class Step5 extends Component {
       resumeUrl: null,
       isActive: true
     }
-    return new Promise((resolve, reject) => {
-      
-      if (this.state.fileCV) {
+
+
+
+    if (this.state.fileCV) {
+      // returns this Promise if candidate inputs a file
+      return new Promise((resolve, reject) => {
         const formData = new FormData();
         formData.append('file', this.state.fileCV[0]);
+        
+        // File gets posted first, and the resulting AWS link is stored in candidateData as resumeUrl
         axios.post(`http://localhost:3000/upload`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -54,7 +59,33 @@ export default class Step5 extends Component {
           candidateData.resumeUrl =  "https://encode-resumes.s3.amazonaws.com/" + response.data.key
           
           console.log('Successful Upload:\n' + candidateData.resumeUrl)     
+          console.log(candidateData)
+          
+          // Once candidateData has been updated with resumeUrl, post entire data to backend
+          return axios.post('http://localhost:3000/candidates', candidateData)
+        }).then( (response) => {
+          this.setState({
+            saving: true
+          })          
 
+          this.props.updateData({
+            savedToCloud: true
+          })
+
+          console.log('Candidate Data Saved')
+          console.log(response)
+
+          resolve()
+        }).catch( (error) => {
+        console.log('Saving Candidate Data Failed')
+        console.error(error)      
+
+        reject()
+      })
+      })} else {
+        // No file input by candidate -- post candidateData to backend
+        return new Promise((resolve, reject) => {
+          console.log(candidateData)
           axios.post('http://localhost:3000/candidates', candidateData)
             .then( (response) => {
               this.setState({
@@ -70,39 +101,16 @@ export default class Step5 extends Component {
 
               resolve()
             })
-          }).catch( (error) => {
-            console.log('Saving Candidate Data Failed')
-            console.error(error)      
+            .catch( (error) => {
+              console.error('Saving Candidate Data Failed')
+              console.error(error)
 
-            reject()
-          })
-      } else {
-        console.log(candidateData)
-
-        axios.post('http://localhost:3000/candidates', candidateData)
-          .then( (response) => {
-            this.setState({
-              saving: true
-            })          
-
-            this.props.updateData({
-              savedToCloud: true
+              reject()
             })
-
-            console.log('Candidate Data Saved')
-            console.log(response)
-
-            resolve()
-          })
-          .catch( (error) => {
-            console.error('Saving Candidate Data Failed')
-            console.error(error)
-
-            reject()
-          })
+        }) 
       }
-    });
   };
+  
       
 
   render() {
