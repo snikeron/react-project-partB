@@ -29,3 +29,6 @@
   to { transform: rotate(360deg); }
 }
 
+.main-wrapper {
+   padding: .5em;
+}
