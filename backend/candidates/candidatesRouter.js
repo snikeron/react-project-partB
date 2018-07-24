@@ -27,10 +27,6 @@ const authorize = (req, res, next) => {
      }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e8257cfe07b358ee423e3384de960c960313d993
 router.get('/', authorize, (req, res) => {
     Candidate.find()
         .then(candidates => {
