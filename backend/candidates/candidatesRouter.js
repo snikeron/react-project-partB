@@ -27,7 +27,6 @@ const authorize = (req, res, next) => {
      }
 }
 
-
 router.get('/', authorize, (req, res) => {
     Candidate.find()
         .then(candidates => {
@@ -59,7 +58,7 @@ router.post('/', (req, res) => {
         })
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', authorize, (req, res, next) => {
     Candidate.findByIdAndUpdate(req.params.id, req.body, function (err, candidate) {
         candidate.save()
             .then(() => {

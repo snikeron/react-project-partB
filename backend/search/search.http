@@ -2,5 +2,5 @@ POST https://backend-izuntatfte.now.sh/search
 Content-Type: application/json
 
 {
-    "query": "Perth"
+    "query": "Melbourne Python"
 }

@@ -3,17 +3,15 @@ const mongoose = require('mongoose')
 if(process.env.NODE_ENV === 'production') {
     const url = process.env.MONGO_DB_URL
     const options = {
-        user: 'admin',
-        pass: process.env.MONGODB_USER_PASSWORD,
-        dbName: 'Encode0',
         useNewUrlParser: true,
+        dbName: 'Encode0',
         promiseLibrary: global.Promise
     }
 
     mongoose.connect(url, options)
     .then(() => {
         console.info(
-            'MongoDB Connection Established!'
+            'MongoDB ATLAS Connection Established!'
         )
     })
     .catch(err => {
@@ -27,7 +25,7 @@ if(process.env.NODE_ENV === 'production') {
     mongoose.connect(url, {useNewUrlParser: true })
     .then(() => {
         console.info(
-            'MongoDB Connection Established!'
+            'MongoDB LOCAL Connection Established!'
         )
     })
     .catch(err => {
