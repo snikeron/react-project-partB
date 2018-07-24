@@ -1,4 +1,4 @@
-POST https://backend-izuntatfte.now.sh/candidates
+POST http://localhost:3000/candidates
 Content-Type: application/json
 
 {
@@ -27,10 +27,17 @@ Content-Type: application/json
 }
 
 ###
-GET https://backend-izuntatfte.now.sh/candidates
+GET http://localhost:3000/candidates
+
+
+# with cookie
+###
+GET http://localhost:3000/candidates
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVuY29kZS5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTMyNDA2OTQzfQ.xzgfBFqfgWuCHi48Fi_ENrBicTtCm6TYYOXLdLYoa40; Max-Age=3; Path=/; Expires=Tue, 24 Jul 2018 04:35:47 GMT; HttpOnly
+
 
 ###
-PUT https://backend-izuntatfte.now.sh/candidates/5b5023ada851b545528b755d
+PUT http://localhost:3000/candidates/5b5023ada851b545528b755d
 Content-Type: application/json
 
 {
@@ -38,4 +45,4 @@ Content-Type: application/json
 }
 
 ###
-GET https://backend-izuntatfte.now.sh/candidates/5b5023ada851b545528b755d
+GET http://localhost:3000/candidates/5b5023ada851b545528b755d

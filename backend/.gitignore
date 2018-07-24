@@ -7,3 +7,8 @@ now.json
 .env
 .env.*
 
+./auth/auth.rest
+./candidates/candidates.rest
+./candidates/new_candidate.rest
+
+./db/seed.js
