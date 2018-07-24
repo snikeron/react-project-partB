@@ -137,18 +137,18 @@ export default class Step5 extends Component {
     } = this.state
 
     if (techStack) {
-      var myTechStack = techStack.map((tech) => 
-        <li className="list">{tech}</li>
+      var myTechStack = techStack.map((tech, i) => 
+        <li className="list" key={i}>{tech}</li>
     )
     }
     
-    const myPriority = priority.map((priorityItem) => 
-        <li className="list">{priorityItem.content}</li>
+    const myPriority = priority.map((priorityItem, i) => 
+        <li className="list" key={i}>{priorityItem.content}</li>
     )
 
     if (expectedCompany) {
-      var myExpectedCompany = expectedCompany.map((company) => 
-        <li className="list">{company}</li>
+      var myExpectedCompany = expectedCompany.map((company, i) => 
+        <li className="list" key={i}>{company}</li>
     )
     }
     
