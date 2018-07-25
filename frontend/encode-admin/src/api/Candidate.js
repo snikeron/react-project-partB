@@ -2,7 +2,8 @@ import axios from './init'
 
 export default {
     fetchCandidates,
-    fetchOneCandidate
+    fetchOneCandidate,
+    fetchSearchedCandidates
 }
 
 async function fetchCandidates() {
@@ -13,6 +14,12 @@ async function fetchCandidates() {
 async function fetchOneCandidate(_id) {
     const {data:candidate} = await axios.get(`/candidates/${_id}`)
     return candidate
+}
+
+async function fetchSearchedCandidates(query) {
+    console.log(query)
+    const {data:candidates} = await axios.post('/search', query)
+    return candidates
 }
 
 
