@@ -20,7 +20,7 @@ export default class Step5 extends Component {
     window.scrollTo(0,0)
   }
 
-  // This review screen had the 'Confirm and Submit' button, on clicking this is called
+  // This review screen has the 'Confirm and Submit' button, on clicking, isValidated() is called
   isValidated() {
     // typically this method needs to return true or false (to indicate if the local forms are validated, so StepZilla can move to the next step),
     // In the case of async validation or server saving etc. return a Promise and StepZilla will wait
@@ -214,7 +214,7 @@ export default class Step5 extends Component {
                 </div>
 
                 <div className="displayField">
-                  <p className="labelField">Reume (Optional)</p>
+                  <p className="labelField">Resume Uploaded</p>
                   <p className="resultField"></p>
                 </div>
           </div>
