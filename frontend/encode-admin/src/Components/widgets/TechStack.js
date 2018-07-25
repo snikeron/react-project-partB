@@ -243,7 +243,7 @@ const styles = theme => ({
       padding: 0,
     },
     '.Select-placeholder': {
-      opacity: 0.42,
+      opacity: 0.60,
       color: theme.palette.common.black,
     },
     '.Select-menu-outer': {
@@ -309,7 +309,7 @@ class IntegrationReactSelect extends React.Component {
           onChange={this.handleChange('techStack')}
           placeholder="Select Technologies"
           name="react-select-chip-label"
-          label="Your Technology Stack"
+          // label="Technology Stack"
           InputLabelProps={{
             shrink: true,
           }}

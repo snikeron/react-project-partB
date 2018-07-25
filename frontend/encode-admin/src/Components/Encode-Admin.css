@@ -47,12 +47,128 @@ textarea {
     height: 100px;
 }
 
+select { 
+    display: block;
+    padding: 10px 70px 10px 13px !important; 
+    background: url("../icon-polygon.png") right center no-repeat; 
+    appearance: none; 
+    /* this is must */ -webkit-appearance: none; 
+    -moz-appearance: none; 
+} 
+
+/* Start: select for IE and Edge */ 
+    select::-ms-expand { 
+    display: none; 
+} 
+select:disabled::-ms-expand { 
+    background: #f60; 
+}
+/* End: select for IE and Edge */
+
+.input-field {
+    margin-top: 1.5em;
+}
+.slider-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+input[type="submit"] {
+    width: 10em;
+    background: #FCEE21;
+    border: 0;
+    color: #545454;
+    margin-top: 5px;
+    text-align: center;  
+    float: right;
+    margin-left: 1em;
+    border-radius: 0.5em;
+    }
+input[type="submit"]:hover {
+    background: #FDAD28;
+    color: #545454;
+}
+button {
+    display: inline-block;
+    background: #F54F1A;
+    border: 0;
+    color: #FFFFFF;  
+    padding:  0.5em 2em;
+    margin: 0.5em 3em;
+    text-decoration: none;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+}
+button:hover {
+    background: #FF7900 !important;   
+}
+.footer-buttons {
+    text-align: center;
+}
 .input-field {
     margin-top: 2em;
 }
 .slider-container {
     margin-top: 3em;
     margin-bottom: 3em;
+}
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #a94442;
+}
+.dnd {
+    color: #FFFFFF;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 0.1em;
+}
+
+h3 {
+    text-align: center;
+}
+
+.displayBlock {
+    border: 0.75px solid #FF7A1D;
+}
+
+.labelField{
+    margin-bottom: 0em;
+}
+
+.resultField {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-bottom: 1.3em;
+    margin-top: 0.8em;
+}
+
+ol li.list, ul li.list{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    padding-bottom: 0.3em;
+}
+
+.saving {
+    color: #FFFFFF;
+    background-color: #5bc0de;
+    padding: 0.6em 1em;
+}
+
+.hide {
+    display: none;
+}
+
+.IntegrationReactSelect-root-1 {
+    height: auto !important;
+}
+.Select-placeholder {
+    padding-left: 0.5em !important;
 }
 
 /* ********************************* CandidateInfo **************************** */

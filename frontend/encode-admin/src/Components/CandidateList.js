@@ -10,9 +10,9 @@ export default class CandidateList extends React.Component {
     state = {
         candidates: [],
         keyword: '',
+        techStack: [],
         location: '',
         minSalary: 0,
-        techStack: [],
         query: {}
     }
 
@@ -46,6 +46,12 @@ export default class CandidateList extends React.Component {
           techStack: data
         }) 
     }
+
+    handleLocationChange =(e) => {
+        let newState = {}
+        newState[e.target.name] = e.target.value
+        this.setState(newState)
+      }
     
 
     render() {
@@ -62,13 +68,35 @@ export default class CandidateList extends React.Component {
                                 onChange={this.handleChange}
                                 type="text" /> 
                             </div>
-                            <div className="input-tech-field">
+                            
+                            <div className="input-field">
                                 <TechStack 
                                     ref="techStack"
                                     name="techStack"
                                     required
                                     raiseData={this.handleTechChange}
                                     />
+                            </div>
+                            
+                            <div className="input-field">    
+                                <select
+                                    ref="location"
+                                    name="location"
+                                    defaultValue={this.state.location}
+                                    autoComplete="off"
+                                    required
+                                    value={this.state.location}
+                                    onChange={this.handleLocationChange}
+                                    >
+                                    <option value="" disabled selected>Location</option>
+                                    <option value={"Melbourne"}>Melbourne</option>
+                                    <option value={"Adelaide"}>Adelaide</option>
+                                    <option value={"Brisbane"}>Brisbane</option>
+                                    <option value={"Canberra"}>Canberra</option>
+                                    <option value={"Hobart"}>Hobart</option>                
+                                    <option value={"Sydney"}>Sydney</option>
+                                    <option value={"Perth"}>Perth</option>
+                                </select>
                             </div>
 
 
