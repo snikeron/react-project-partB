@@ -14,7 +14,7 @@ Our planning structure, workflow, pretty pictures
 2. Pain points, issues
 3. Future considerations
 4. Learning points
-   
+
 ## Conclusion
 
 Thank our collaborators, client and audience
