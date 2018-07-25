@@ -9,8 +9,11 @@ export default class Step5 extends Component {
       ...props.getData(),
       saving: false,
     }
-
+    
     this.isValidated = this.isValidated.bind(this)
+
+    // this.SERVER = 'https://backend-izuntatfte.now.sh/candidates'
+    this.SERVER = 'http://localhost:3000/candidates'
   }
 
   componentWillMount = () => {
@@ -35,29 +38,80 @@ export default class Step5 extends Component {
       ...this.props.getData(),
       clientNotes: "", 
       personalNotes: "", 
+      resumeUrl: null,
       isActive: true
     }
 
-    return new Promise((resolve, reject) => {
-      axios.post('https://backend-izuntatfte.now.sh/candidates', candidateData)
-        .then( (res) => {
+
+
+    if (this.state.fileCV) {
+      // returns this Promise if candidate inputs a file
+      return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('file', this.state.fileCV[0]);
+        
+        // File gets posted first, and the resulting AWS link is stored in candidateData as resumeUrl
+        axios.post(`http://localhost:3000/upload`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(response => {
+          candidateData.resumeUrl =  "https://encode-resumes.s3.amazonaws.com/" + response.data.key
+          
+          console.log('Successful Upload:\n' + candidateData.resumeUrl)     
+          console.log(candidateData)
+          
+          // Once candidateData has been updated with resumeUrl, post entire data to backend
+          return axios.post('http://localhost:3000/candidates', candidateData)
+        }).then( (response) => {
           this.setState({
             saving: true
           })          
+
           this.props.updateData({
             savedToCloud: true
           })
 
-          console.log(res)
-          resolve()
-        })
-        .catch( (err) => {
-          console.error(err)      
-          reject()
-        })
-    })
+          console.log('Candidate Data Saved')
+          console.log(response)
 
-  } 
+          resolve()
+        }).catch( (error) => {
+        console.log('Saving Candidate Data Failed')
+        console.error(error)      
+
+        reject()
+      })
+      })} else {
+        // No file input by candidate -- post candidateData to backend
+        return new Promise((resolve, reject) => {
+          console.log(candidateData)
+          axios.post('http://localhost:3000/candidates', candidateData)
+            .then( (response) => {
+              this.setState({
+                saving: true
+              })          
+
+              this.props.updateData({
+                savedToCloud: true
+              })
+
+              console.log('Candidate Data Saved')
+              console.log(response)
+
+              resolve()
+            })
+            .catch( (error) => {
+              console.error('Saving Candidate Data Failed')
+              console.error(error)
+
+              reject()
+            })
+        }) 
+      }
+  };
+  
+      
 
   render() {
 
@@ -83,18 +137,18 @@ export default class Step5 extends Component {
     } = this.state
 
     if (techStack) {
-      var myTechStack = techStack.map((tech) => 
-        <li className="list">{tech}</li>
+      var myTechStack = techStack.map((tech, i) => 
+        <li className="list" key={i}>{tech}</li>
     )
     }
     
-    const myPriority = priority.map((priorityItem) => 
-        <li className="list">{priorityItem.content}</li>
+    const myPriority = priority.map((priorityItem, i) => 
+        <li className="list" key={i}>{priorityItem.content}</li>
     )
 
     if (expectedCompany) {
-      var myExpectedCompany = expectedCompany.map((company) => 
-        <li className="list">{company}</li>
+      var myExpectedCompany = expectedCompany.map((company, i) => 
+        <li className="list" key={i}>{company}</li>
     )
     }
     
