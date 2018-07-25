@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { DotLoader } from 'react-spinners'
+import { PacmanLoader} from 'react-spinners'
 import candidateAPI from '../api/Candidate'
 import './Encode-Admin.css'
 
@@ -28,8 +28,9 @@ export default class CandidateInfo extends Component {
     render() {
         const {candidate} = this.state
         if(!candidate) {
-            return <DotLoader />
+            return <PacmanLoader/>
         }
+
 
         const {
             firstName,
@@ -48,8 +49,8 @@ export default class CandidateInfo extends Component {
             expectedJobTitle,
             expectedRoleType,
             contactSource,
-            clientNotes,
-            personalNotes,
+            // clientNotes,
+            // personalNotes,
             resumeUrl
         } = candidate
 
@@ -62,7 +63,7 @@ export default class CandidateInfo extends Component {
                 <p>Mobile Number</p>
                 <a href={"tel:" + phoneNumber}><strong>{phoneNumber}</strong></a> 
                 <p>Email</p>
-                <p><strong>{emailAddress}</strong></p>
+                <a href={"mailto:" + emailAddress}><strong>{emailAddress}</strong></a>
                 <p>Location</p>
                 <p><strong>{location}</strong></p>
             </div>
@@ -106,35 +107,34 @@ export default class CandidateInfo extends Component {
                 </ul>
 
                 <p>What is your minimum salary expectation?</p>
-                <p><strong>{'$' +  minSalary + 'k' }</strong></p>
+                <p><strong>{'$' +  minSalary + ",000" }</strong></p>
                 
-                {/* This was not on figma, therefore I didn't know if I was to include it */}
-                {/* <p>Expected Job Title</p>
-                <p><strong>{expectedJobTitle}</strong></p> */}
+                <p>Expected Job Title</p>
+                <p><strong>{expectedJobTitle}</strong></p>
 
                 <p>What role are you looking for:</p>
                 <p><strong>{expectedRoleType}</strong></p>
                 <p>How did you hear about Encode Talent Management?</p>
                 <p><strong>{contactSource}</strong></p>
                 
-                {/* THE DOWNLOAD RESUME BUTTON goes here */}
-                <p>Download resume:</p>
-                <p>{resumeUrl} </p> 
-                
+                <p>Resume (optional)</p>
+                <a href={resumeUrl}>
+                    <button> Download Resume </button>
+                </a>  
+            
             </div>
            
             {/* THIS SECTION IS FOR SIMON TO ADD NOTES FOR THE CANDIDATE AND FOR HIMSELF */}
-            <div className = "orange-box">
-                {/* <p> Notes for client: </p>
-                <textarea>{clientNotes} </textarea>            
+            {/* <div className = "orange-box">
+                <p> Notes for client: </p>
+                <textarea> </textarea>            
                 <p> Notes for Myself: </p>
-                <textarea>{personalNotes}</textarea>*/}
-            </div> 
+                <textarea></textarea>
+            </div>  */}
 
-            <div>
-                {/* EXPORT AS CSV GOES HERE */}
-                {/* THE BACK BUTTON GOES HERE */}
-            </div>
+            {/* <div>
+                EXPORT AS CSV
+            </div> */}
 
         </Fragment>
     }
