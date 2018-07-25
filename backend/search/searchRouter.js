@@ -3,6 +3,8 @@ const router = express.Router()
 const Candidate = require('../candidates/Candidate')
 
 router.post('/', (req, res) => {
+    console.log('########### POST /search hit ###########')
+    console.log(req.body)
     Candidate.find({
         $text: {
             $search: new RegExp(req.body.query)

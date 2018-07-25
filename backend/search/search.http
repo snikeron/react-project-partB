@@ -1,4 +1,4 @@
-POST https://backend-izuntatfte.now.sh/search
+POST http://localhost:3000/search
 Content-Type: application/json
 
 {
