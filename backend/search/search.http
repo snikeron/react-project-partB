@@ -2,5 +2,22 @@ POST http://localhost:3000/search
 Content-Type: application/json
 
 {
-    "query": "Perth"
+    "query": "Melbourne"
+}
+
+###
+POST http://localhost:3000/search/salary
+Content-Type: application/json
+
+{
+    "minSalary": 200
+}
+
+###
+POST http://localhost:3000/search/test
+Content-Type: application/json
+
+{
+    "minSalary": 150,
+    "location:": "Melbourne"
 }
