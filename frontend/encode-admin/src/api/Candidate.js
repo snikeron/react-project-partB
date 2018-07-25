@@ -5,6 +5,8 @@ export default {
     fetchOneCandidate
 }
 
+// async function for login auth
+
 async function fetchCandidates() {
     const {data:candidates} = await axios.get('/candidates')
     return candidates    

@@ -106,11 +106,10 @@ export default class CandidateInfo extends Component {
                 </ul>
 
                 <p>What is your minimum salary expectation?</p>
-                <p><strong>{'$' +  minSalary + 'k' }</strong></p>
+                <p><strong>{'$' +  minSalary + ",000" }</strong></p>
                 
-                {/* This was not on figma, therefore I didn't know if I was to include it */}
-                {/* <p>Expected Job Title</p>
-                <p><strong>{expectedJobTitle}</strong></p> */}
+                <p>Expected Job Title</p>
+                <p><strong>{expectedJobTitle}</strong></p>
 
                 <p>What role are you looking for:</p>
                 <p><strong>{expectedRoleType}</strong></p>
@@ -118,17 +117,17 @@ export default class CandidateInfo extends Component {
                 <p><strong>{contactSource}</strong></p>
                 
                 {/* THE DOWNLOAD RESUME BUTTON goes here */}
-                <p>Download resume:</p>
-                <p>{resumeUrl} </p> 
+                {/* <p>Download resume:</p>
+                <button className = "resume-button" {resumeUrl} > </button>  */}
                 
             </div>
            
             {/* THIS SECTION IS FOR SIMON TO ADD NOTES FOR THE CANDIDATE AND FOR HIMSELF */}
             <div className = "orange-box">
-                {/* <p> Notes for client: </p>
-                <textarea>{clientNotes} </textarea>            
+                <p> Notes for client: </p>
+                <textarea> </textarea>  
                 <p> Notes for Myself: </p>
-                <textarea>{personalNotes}</textarea>*/}
+                <textarea></textarea>
             </div> 
 
             <div>
