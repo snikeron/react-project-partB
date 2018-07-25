@@ -1,3 +1,60 @@
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-item {
+    width: 80%;
+    max-width: 25em;
+    margin: 0.5em;
+    padding: 1em;
+    background: #FFFFFF;
+}
+.flex-item-large {
+    max-width: 45em;
+}
+.flex-item-medium {
+    max-width: 30em;
+}
+.flex-item-small {
+    width: 20em;
+    max-width: 20em;
+}
+
+
+form {
+    color: #4f4f4f;
+    }
+    
+input, textarea, select {
+    background-color: #FFFFFF;
+    border: 0;
+    color: #545454;
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0.5em;
+    border-bottom: 0.5px solid #b9b7b7;
+    box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus {
+    border-bottom: 0.5px solid #F54F1A;
+}
+textarea {
+    height: 100px;
+}
+
+.input-field {
+    margin-top: 2em;
+}
+.slider-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
 /* ********************************* CandidateInfo **************************** */
 
 .orange-box {
