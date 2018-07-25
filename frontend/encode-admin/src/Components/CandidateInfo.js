@@ -130,13 +130,6 @@ export default class CandidateInfo extends Component {
                 <textarea></textarea>
             </div> 
                        
-            {/* THIS SECTION IS FOR SIMON TO ADD NOTES FOR THE CANDIDATE AND FOR HIMSELF */}
-            {/* <div className = "orange-box">
-                <p> Notes for client: </p>
-                <textarea> </textarea>            
-                <p> Notes for Myself: </p>
-                <textarea></textarea>
-            </div>  */}
 
             {/* <div>
                 EXPORT AS CSV
