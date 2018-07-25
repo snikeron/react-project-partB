@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import CandidateCard from './CandidateCard'
 import candidateAPI from '../api/Candidate'
 import TechStack from './widgets/TechStack'
+import SalarySlider from './widgets/SalarySlider'
 import './Encode-Admin.css'
 
 
@@ -9,6 +10,7 @@ import './Encode-Admin.css'
 export default class CandidateList extends React.Component {
     state = {
         candidates: [],
+        displayedCandidates: [],
         keyword: '',
         techStack: [],
         location: '',
@@ -16,17 +18,16 @@ export default class CandidateList extends React.Component {
         query: {}
     }
 
-    componentDidMount() {
+    componentWillMount() {
         candidateAPI.fetchCandidates()
         .then(candidates => {
-            this.setState({ candidates });
+            this.setState({ candidates })
+            this.setState({ displayedCandidates: candidates})
         })
-        .catch(err => console.error(err))  
-        
-        
+        .catch(err => console.error(err))          
     }
 
-    handleChange = () => {
+    handleKeywordChange = () => {
 
         this.setState({
             keyword: this.search.value
@@ -41,17 +42,36 @@ export default class CandidateList extends React.Component {
 
     handleTechChange = (e) => {
         let data = e.split(',')
-    
         this.setState({ 
           techStack: data
-        }) 
+        })  
     }
 
-    handleLocationChange =(e) => {
+    handleSalaryChange = (data) => {
+
+        const {candidates} = this.state
+        const filteredResult = candidates.filter( candidate =>
+            candidate.minSalary >= data
+        )
+
+        this.setState({
+            displayedCandidates: filteredResult
+        })
+
+        // this.setState({
+        //   minSalary: data
+        // })
+    }
+
+    handleLocationChange = (e) => {
         let newState = {}
         newState[e.target.name] = e.target.value
         this.setState(newState)
       }
+
+    handleQuery = (e) => {
+
+    }
     
 
     render() {
@@ -65,20 +85,11 @@ export default class CandidateList extends React.Component {
                                 ref={input => this.search = input}
                                 name="searchKeyword"
                                 placeholder="Search keyword..." 
-                                onChange={this.handleChange}
+                                onChange={this.handleKeywordChange}
                                 type="text" /> 
                             </div>
-                            
-                            <div className="input-field">
-                                <TechStack 
-                                    ref="techStack"
-                                    name="techStack"
-                                    required
-                                    raiseData={this.handleTechChange}
-                                    />
-                            </div>
-                            
-                            <div className="input-field">    
+
+                            <div className="input-field min-input-height">    
                                 <select
                                     ref="location"
                                     name="location"
@@ -99,7 +110,27 @@ export default class CandidateList extends React.Component {
                                 </select>
                             </div>
 
-
+                            <div className="input-field">
+                                <label>Minimum salary expectation:</label>
+                                <div className="slider-container">
+                                    <SalarySlider 
+                                    min={0} 
+                                    max={200} 
+                                    defaultValue={this.state.minSalary} 
+                                    value={this.state.minSalary}
+                                    raiseData={this.handleSalaryChange}
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div className="input-field tech-height">
+                                <TechStack 
+                                    ref="techStack"
+                                    name="techStack"
+                                    required
+                                    raiseData={this.handleTechChange}
+                                    />
+                            </div>
 
                         </form>
 
@@ -108,7 +139,7 @@ export default class CandidateList extends React.Component {
 
                 </div>
 
-                {this.state.candidates.map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
+                {this.state.displayedCandidates.reverse().map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
             </Fragment> 
         )
     }

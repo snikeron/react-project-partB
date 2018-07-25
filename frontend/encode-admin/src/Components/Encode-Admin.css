@@ -48,16 +48,18 @@ textarea {
 }
 
 select { 
+    color: #757474;
     display: block;
     padding: 10px 70px 10px 13px !important; 
     background: url("../icon-polygon.png") right center no-repeat; 
+    background-size: 10px;
     appearance: none; 
     /* this is must */ -webkit-appearance: none; 
     -moz-appearance: none; 
 } 
 
 /* Start: select for IE and Edge */ 
-    select::-ms-expand { 
+select::-ms-expand { 
     display: none; 
 } 
 select:disabled::-ms-expand { 
@@ -164,11 +166,16 @@ ol li.list, ul li.list{
     display: none;
 }
 
-.IntegrationReactSelect-root-1 {
-    height: auto !important;
-}
+/* Overwrites */
 .Select-placeholder {
     padding-left: 0.5em !important;
+}
+.min-input-height{
+    margin-top: 1em;
+}
+.tech-height{
+    max-height: 5em !important;
+    padding-bottom: 3em;
 }
 
 /* ********************************* CandidateInfo **************************** */
