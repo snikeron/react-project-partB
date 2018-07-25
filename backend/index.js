@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 app.use(cors({
     credentials: true,
-    origin: process.env.FRONT_END_URL
+    origin: [process.env.FRONT_END_URL, process.env.FRONT_END_URL_DEV],
 }))
 
 app.use('/candidates', candidatesRouter)
