@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import CandidateCard from './CandidateCard'
 import candidateAPI from '../api/Candidate'
+import TechStack from './widgets/TechStack'
 import './Encode-Admin.css'
 
 
@@ -8,7 +9,11 @@ import './Encode-Admin.css'
 export default class CandidateList extends React.Component {
     state = {
         candidates: [],
-        query: '',
+        keyword: '',
+        location: '',
+        minSalary: 0,
+        techStack: [],
+        query: {}
     }
 
     componentDidMount() {
@@ -24,13 +29,21 @@ export default class CandidateList extends React.Component {
     handleChange = () => {
 
         this.setState({
-            query: this.search.value
+            keyword: this.search.value
         }, () => {
             candidateAPI.fetchSearchedCandidates(this.state)
             .then(candidates => {
                 this.setState({ candidates });
             })
             .catch(err => console.error(err)) 
+        }) 
+    }
+
+    handleTechChange = (e) => {
+        let data = e.split(',')
+    
+        this.setState({ 
+          techStack: data
         }) 
     }
     
@@ -49,11 +62,22 @@ export default class CandidateList extends React.Component {
                                 onChange={this.handleChange}
                                 type="text" /> 
                             </div>
+                            <div className="input-tech-field">
+                                <TechStack 
+                                    ref="techStack"
+                                    name="techStack"
+                                    required
+                                    raiseData={this.handleTechChange}
+                                    />
+                            </div>
+
+
 
                         </form>
 
-                        <p><b>Search for:</b> {this.state.query}</p>
+                        <p><b>Search for:</b> {this.state.keyword}</p>
                     </div>
+
                 </div>
 
                 {this.state.candidates.map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
