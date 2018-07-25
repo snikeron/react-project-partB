@@ -1,5 +1,5 @@
 import React from 'react'
-import './CandidateCard.css'
+import './Encode-Admin.css'
 import { Link } from 'react-router-dom'
 
 export default function CandidateCard({
@@ -18,7 +18,7 @@ export default function CandidateCard({
                     <p>{location}</p> 
                 </div>
             </Link>
-        <a className="call-icon" href={"tel:" + phoneNumber}><span>&#x2706;</span></a> 
+            <a className="call-icon" href={"tel:" + phoneNumber}><span>&#x2706;</span></a> 
         </div>
 }
 

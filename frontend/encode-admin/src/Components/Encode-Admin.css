@@ -1,10 +1,18 @@
+/* ********************************* CandidateInfo **************************** */
 
-/* .cand-details {
-  padding: 1.5em;
-  display: flex;
-  flex-direction: column;
+.orange-box {
+    border: 1px orange solid;
+    padding: 1em;
+    text-align: left;
+    margin-bottom: .3em;
+}
 
-} */
+.orange-box ul {
+    list-style: bullet;
+}
+
+
+/* ********************************* CandidateCard **************************** */
 
 .candidate {
   color: white;
@@ -17,7 +25,6 @@
   display: flex;
   justify-content: space-between;
  }
-
 
 .cand-name {
   font-size: 20px;
@@ -50,3 +57,4 @@
 .candidate-details {
   text-decoration: none;
 }
+
