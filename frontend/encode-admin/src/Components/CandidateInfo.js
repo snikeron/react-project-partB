@@ -51,7 +51,8 @@ export default class CandidateInfo extends Component {
             contactSource,
             // clientNotes,
             // personalNotes,
-            resumeUrl
+            resumeUrl,
+            
         } = candidate
 
         return <Fragment>
