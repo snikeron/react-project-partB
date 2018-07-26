@@ -2,7 +2,8 @@ import axios from './init'
 
 export default {
     fetchCandidates,
-    fetchOneCandidate
+    fetchOneCandidate,
+    updateOneCandidate
 }
 
 // async function for login auth
@@ -17,7 +18,10 @@ async function fetchOneCandidate(_id) {
     return candidate
 }
 
-
+async function updateOneCandidate(_id, notes) {
+    const {data:candidate} = await axios.put(`/candidates/${_id}`, notes)
+    return candidate    
+}
 
 
 
