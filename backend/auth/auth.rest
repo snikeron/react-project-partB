@@ -5,3 +5,8 @@ Content-Type: application/json
    "email": "admin@encode.com",
    "password": "12345678"
 }
+
+###
+POST http://localhost:3000/auth/logout
+Content-Type: application/json
+

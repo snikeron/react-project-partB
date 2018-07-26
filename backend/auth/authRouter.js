@@ -11,7 +11,7 @@ router.post('/login', (req, res) => {
     const {email, password} = req.body
     User.loginAsAdmin(email, password)
     .then(user => {
-        console.log('user', user)
+        
         const payload = {
             email: user.email,
             admin: true
@@ -20,9 +20,9 @@ router.post('/login', (req, res) => {
         const token = JWT.sign(payload, JWT_SECRET)
 
         res.cookie('access_token', token, {
-            secure: false,
+            // secure: false,
             httpOnly: true,
-            maxAge: 3600
+            maxAge: 36000
         })
 
         res.status(200)
@@ -30,9 +30,14 @@ router.post('/login', (req, res) => {
     })
     .catch(err => {
         res.status(400)
-        res.json({err: err.message})
+        throw new Error(err.message)
     })
 })
 
+router.delete('/logout', (req, res) => {
+    res.clearCookie('access_token')
+    res.status(200)
+    res.json({message: 'logged out'})
+})
 
 module.exports = router;
