@@ -14,11 +14,18 @@ const uploadRouter = require('./upload/uploadRouter')
 app.use(express.json());
 app.use(cookieParser())
 
-// app.use(bodyParser.json())
+let whitelist = [process.env.FORM_URL, process.env.ADMIN_URL]
 app.use(cors({
     credentials: true,
-    origin: [process.env.FRONT_END_URL, process.env.FRONT_END_URL_DEV],
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1) {
+          callback(null, true)
+        } else {
+          callback(new Error('Not allowed by CORS'))
+        }
+      }
 }))
+// app.use(cors())
 
 app.use('/auth', authRouter);
 app.use('/candidates', candidatesRouter)
