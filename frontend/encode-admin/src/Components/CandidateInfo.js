@@ -8,8 +8,13 @@ export default class CandidateInfo extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            candidate: null
+            candidate: null,
+            personalNotes: null,
+            clientNotes: null,
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
 
@@ -17,7 +22,10 @@ export default class CandidateInfo extends Component {
         candidateAPI.fetchOneCandidate(this.props._id)
         .then(candidate => {
             this.setState({
-                candidate
+                candidate,
+                personalNotes: candidate.personalNotes,
+                clientNotes: candidate.clientNotes
+
             })
         })
         .catch((err) => {
@@ -25,8 +33,8 @@ export default class CandidateInfo extends Component {
         })   
     }
 
-    handleChange() {
-        candidateAPI.updateOneCandidate(this.props._id)
+    handleSubmit() {
+        candidateAPI.updateOneCandidate(this.props._id, this.state)
             .then(candidate => {
                 this.setState({
                     candidate
@@ -37,12 +45,17 @@ export default class CandidateInfo extends Component {
             })
     }
 
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     render() {
         const {candidate} = this.state
         if(!candidate) {
             return <PacmanLoader/>
         }
-
 
         const {
             firstName,
@@ -61,8 +74,8 @@ export default class CandidateInfo extends Component {
             expectedJobTitle,
             expectedRoleType,
             contactSource,
-            // clientNotes,
-            // personalNotes,
+            clientNotes,
+            personalNotes,
             resumeUrl
         } = candidate
 
@@ -135,12 +148,17 @@ export default class CandidateInfo extends Component {
             </div>
            
             {/* THIS SECTION IS FOR SIMON TO ADD NOTES FOR THE CANDIDATE AND FOR HIMSELF */}
-            <div className = "orange-box">
-                <p> Notes for client: </p>
-                <textarea> </textarea>  
+            <form className="orange-box" onSubmit={this.handleSubmit}>
+                <p> Notes for Client: </p>
+                <textarea name="clientNotes" onChange={this.handleChange} defaultValue={clientNotes}>
+                </textarea>  
+
                 <p> Notes for Myself: </p>
-                <textarea></textarea>
-            </div> 
+                <textarea name="personalNotes" onChange={this.handleChange} defaultValue={personalNotes}>
+                </textarea>
+
+                <button type="submit"> Update Notes </button>
+            </form> 
                        
 
             {/* <div>
