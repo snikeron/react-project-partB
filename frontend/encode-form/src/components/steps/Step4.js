@@ -42,7 +42,6 @@ class Step4 extends Component {
   }
 
   componentWillMount = () => {
-    this.selectedCompanies = new Set()
     window.scrollTo(0,0)
   }
 
@@ -89,16 +88,17 @@ class Step4 extends Component {
 
   toggleCompanyTypesCheckbox = (id, type, isCheckedValue) => {
 
-    
-    if (this.selectedCompanies.has(type)) {
-      this.selectedCompanies.delete(type);
+    const { selectedCompanies } = this.props.getData()
+
+    if (selectedCompanies.has(type)) {
+      selectedCompanies.delete(type);
     } else {
-      this.selectedCompanies.add(type);
+      selectedCompanies.add(type);
     }
   
     const companies = []
 
-    for (const checkbox of this.selectedCompanies) {
+    for (const checkbox of selectedCompanies) {
       console.log(checkbox)
       companies.push(checkbox)
       console.log(companies)

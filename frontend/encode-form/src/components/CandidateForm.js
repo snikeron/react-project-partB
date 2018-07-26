@@ -13,6 +13,7 @@ export default class CandidateForm extends Component {
       super(props)
   
       this.state = {
+        selectedCompanies : new Set(),
         companyTypes : [
           {id: 0, type: 'Enterprise Companies', isChecked: false},
           {id: 1, type: 'Start Ups', isChecked: false},
