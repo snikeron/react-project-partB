@@ -1,6 +1,22 @@
-POST https://backend-izuntatfte.now.sh/search
+POST http://localhost:3000/search/
 Content-Type: application/json
 
 {
-    "query": "Rashid"
+    "keyword": "melbourne"
+}
+
+###
+POST http://localhost:3000/search/tech
+Content-Type: application/json
+
+{
+    "techStack": ["HTML", "JavaScript"]
+}
+
+###
+POST http://localhost:3000/search/location
+Content-Type: application/json
+
+{
+    "location:": "Melbourne"
 }

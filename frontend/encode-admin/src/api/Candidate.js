@@ -3,7 +3,10 @@ import axios from './init'
 export default {
     fetchCandidates,
     fetchOneCandidate,
-    updateOneCandidate
+    updateOneCandidate,
+    fetchSearchedCandidates,
+    fetchSearchedCandidatesByLocation,
+    fetchSearchedCandidatesByTech
 }
 
 // async function for login auth
@@ -23,5 +26,20 @@ async function updateOneCandidate(_id, notes) {
     return candidate    
 }
 
+async function fetchSearchedCandidates(query) {
+    console.log(query)
+    const {data:candidates} = await axios.post('/search', query)
+    return candidates
+}
 
+async function fetchSearchedCandidatesByLocation(location) {
+    console.log(location)
+    const {data:candidates} = await axios.post('/search/location', location)
+    return candidates
+}
 
+async function fetchSearchedCandidatesByTech(techStack) {
+    console.log(techStack)
+    const {data:candidates} = await axios.post('/search/tech', techStack)
+    return candidates
+}

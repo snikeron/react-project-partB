@@ -112,7 +112,7 @@ export default class CandidateInfo extends Component {
                 <p>Mobile Number</p>
                 <a href={"tel:" + phoneNumber}><strong>{phoneNumber}</strong></a> 
                 <p>Email</p>
-                <a href={"mailto:" + emailAddress}><strong>{emailAddress}</strong></a>
+                <p><a href={"mailto:" + emailAddress}><strong>{emailAddress}</strong></a></p>
                 <p>Location</p>
                 <p><strong>{location}</strong></p>
             </div>
