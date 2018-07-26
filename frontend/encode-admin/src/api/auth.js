@@ -1,27 +1,30 @@
 import axios from './init'
 
+
 export default {
-    loginUser,
-    logoutUser,
-    fetchUserAccount,
+    fetchToken,
+    fetchAccount
 }
 
-async function loginUser(email, password) {
-    await axios.post('/auth/login', {
-        email, 
+async function fetchToken(email, password) {
+    // pretending to post the email, password
+    // post gives back token if success
+    const response = await axios.post('/auth/login', {
+        email,
         password
+    }) 
+
+    const {token} = response.data
+    return token
+}
+
+async function fetchAccount(token) {
+    const response = await axios.get('/account', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     })
-    return true
-}
 
-async function logoutUser() {
-    await axios.delete('/auth/logout')
-    return true
-}
-
-async function fetchUserAccount(token) {
-    const response = await axios.get('/candidates')
     const user = response.data
     return user
 }
-

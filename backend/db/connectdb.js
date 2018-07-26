@@ -16,7 +16,7 @@ if(process.env.NODE_ENV === 'production') {
     })
     .catch(err => {
         console.error(
-            `MongoDB Failure: ${err.message}`
+            `MongoDB ATLAS Failure: ${err.message}`
         )
     })
 
@@ -30,13 +30,9 @@ if(process.env.NODE_ENV === 'production') {
     })
     .catch(err => {
         console.error(
-            `MongoDB Failure: ${err.message}`
+            `MongoDB LOCAL Failure: ${err.message}`
         )
     })
 }
 
-
-
 module.exports = mongoose
-
-

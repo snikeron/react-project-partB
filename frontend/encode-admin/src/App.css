@@ -1,16 +1,18 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 5em;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #000000;
+  height: 5em;
   color: white;
 }
 
@@ -29,6 +31,8 @@
   to { transform: rotate(360deg); }
 }
 
+
+/* THIS WAS ADDED BY RUEGEN  */
 .main-wrapper {
    padding: .5em;
 }

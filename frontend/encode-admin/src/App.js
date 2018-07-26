@@ -53,7 +53,7 @@ class App extends Component {
     const {isLoggedIn} = this.state
     console.log('reloaded',isLoggedIn)
     return (
-      <div className="App">
+      
           <Router>
                   <DefaultLayout logout={this.logout} isLoggedIn={isLoggedIn}>
                       <Route exact path="/" render={() => <Login isLoggedIn={isLoggedIn} login={this.login} />} />
@@ -65,8 +65,26 @@ class App extends Component {
                           }} />
                       </ProtectedRoutes>
                   </DefaultLayout>
+        
           </Router>
-      </div>
+      //     <div className="App">
+      //     <header className="App-header">
+      //     <img src={logo} className="App-logo" alt="logo" />
+      //   </header>
+
+      //   <main className="main-wrapper">
+      //     <Router>
+      //       <Switch>
+      //         {/* admin auth ROUTE */}
+      //         <Route exact path="/candidates" component={CandidateList} />
+      //         <Route path="/candidates/:id" render={({ match }) => {
+      //           const { id } = match.params
+      //           return <CandidateInfo _id={id} />
+      //         }} />
+      //       </Switch>
+      //       </Router>
+      //       </main>
+      // </div>
     );
   }
 }

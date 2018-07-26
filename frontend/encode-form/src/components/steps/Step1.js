@@ -1,29 +1,23 @@
 import React, { Component } from 'react'
 
 export default class Step1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {}
-
 
   render() {
     return (
-      <div className="step step1">
-      <div className="row">
-          <form id="Form" className="form-horizontal">
-            <div className="form-group">
-                <h4>Encode Talent</h4>
-                <h5>Candidate Profile Form</h5>
-                <div className="col s8 offset-s2">
-                  <p>
-                    Hi there, your information is protected by our privacy policy.
-                    If you consent to Encode Talent collecting your information for the sole purposes of our recruitment process, click "Next".
-                  </p>
-                </div>
-            </div>
+      <div className="flex-container">
+      <div className="flex-item flex-item-medium">
+          <form id="Form">
+            <h2>Candidate Profile Form</h2>
+
+            <p>Encode Talent Management exists to connect highly skilled IT professionals with outstanding businesses.</p>
+
+            <p>We’re keen to make sure we match you to opportunities that are ideal for you.</p>
+
+            <p>In order to do that, we want to understand a few things about you upfront.</p>
+
+            <p>Please take some time to tell us about yourself, your professional achievements and career aspirations by filling out this survey.</p>
+
+            <p>This information will be held in confidence and not shared with any third parties without your express written permission.</p>
           </form>
         </div>
       </div>

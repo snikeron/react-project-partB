@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "seed": "nodemon ./candidates/candidatesSeed.js",
+    "drop-candidates-atlas": "nodemon ./candidates/candidatesDrop.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "seedadmin": "nodemon ./db/seed.js"
@@ -15,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "aws-sdk": "^2.279.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
@@ -22,7 +24,10 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.5",
     "nan": "^2.10.0",
-    "node-pre-gyp": "^0.10.3"
+    "node-pre-gyp": "^0.10.3",
+    "file-type": "^8.1.0",
+    "fs": "0.0.1-security",
+    "multiparty": "^4.1.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.2"

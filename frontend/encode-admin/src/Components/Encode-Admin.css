@@ -1,0 +1,247 @@
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-item {
+    width: 80%;
+    max-width: 25em;
+    margin: 0.5em;
+    padding: 1em;
+    background: #FFFFFF;
+}
+.flex-item-large {
+    max-width: 45em;
+}
+.flex-item-medium {
+    max-width: 30em;
+}
+.flex-item-small {
+    width: 20em;
+    max-width: 20em;
+}
+
+
+form {
+    color: #4f4f4f;
+    }
+    
+input, textarea, select {
+    background-color: #FFFFFF;
+    border: 0;
+    color: #545454;
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0.5em;
+    border-bottom: 0.5px solid #b9b7b7;
+    box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus {
+    border-bottom: 0.5px solid #F54F1A;
+}
+textarea {
+    height: 100px;
+}
+
+select { 
+    color: #757474;
+    display: block;
+    padding: 10px 70px 10px 13px !important; 
+    background: url("../icon-polygon.png") right center no-repeat; 
+    background-size: 10px;
+    appearance: none; 
+    /* this is must */ -webkit-appearance: none; 
+    -moz-appearance: none; 
+} 
+
+/* Start: select for IE and Edge */ 
+select::-ms-expand { 
+    display: none; 
+} 
+select:disabled::-ms-expand { 
+    background: #f60; 
+}
+/* End: select for IE and Edge */
+
+.input-field {
+    margin-top: 1.5em;
+}
+.slider-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+input[type="submit"] {
+    width: 10em;
+    background: #FCEE21;
+    border: 0;
+    color: #545454;
+    margin-top: 5px;
+    text-align: center;  
+    float: right;
+    margin-left: 1em;
+    border-radius: 0.5em;
+    }
+input[type="submit"]:hover {
+    background: #FDAD28;
+    color: #545454;
+}
+button {
+    display: inline-block;
+    background: #F54F1A;
+    border: 0;
+    color: #FFFFFF;  
+    padding:  0.5em 2em;
+    margin: 0.5em 3em;
+    text-decoration: none;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+}
+button:hover {
+    background: #FF7900 !important;   
+}
+.footer-buttons {
+    text-align: center;
+}
+.input-field {
+    margin-top: 2em;
+}
+.slider-container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #a94442;
+}
+.dnd {
+    color: #FFFFFF;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 0.1em;
+}
+
+h3 {
+    text-align: center;
+}
+
+.displayBlock {
+    border: 0.75px solid #FF7A1D;
+}
+
+.labelField{
+    margin-bottom: 0em;
+}
+
+.resultField {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-bottom: 1.3em;
+    margin-top: 0.8em;
+}
+
+ol li.list, ul li.list{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    padding-bottom: 0.3em;
+}
+
+.saving {
+    color: #FFFFFF;
+    background-color: #5bc0de;
+    padding: 0.6em 1em;
+}
+
+.hide {
+    display: none;
+}
+
+/* Overwrites */
+.Select-placeholder {
+    padding-left: 0.5em !important;
+}
+.min-input-height{
+    margin-top: 1em;
+}
+.tech-height{
+    max-height: 2em !important;
+    padding-bottom: 3em;
+}
+
+.large-container {
+      width: 100vw;
+      display: grid;
+  }
+
+/* ********************************* CandidateInfo **************************** */
+
+.orange-box {
+    border: 1px orange solid;
+    padding: 1em;
+    text-align: left;
+    margin-bottom: .3em;
+}
+
+.orange-box ul {
+    list-style: bullet;
+}
+
+
+
+
+/* ********************************* CandidateCard **************************** */
+
+.candidate {
+  color: white;
+  background: #FF7900;
+  text-align: left;
+  padding: 1em;
+  box-sizing: border-box;
+  margin: 1em 0 1em 0; 
+  border-radius: .4em;
+  display: flex;
+  justify-content: space-between;
+ }
+
+.cand-name {
+  font-size: 20px;
+}
+
+.call-icon {
+    background: limegreen;
+    align-self: center;
+    font-size: 100%;
+    width: 2em;
+    height: 2em;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.call-icon span {
+    display: block;
+    font-size: 2em;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.candidate-details {
+  text-decoration: none;
+}
+

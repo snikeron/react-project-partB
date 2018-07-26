@@ -9,9 +9,13 @@ const app = express()
 const authRouter = require('./auth/authRouter')
 const candidatesRouter = require('./candidates/candidatesRouter')
 const searchRouter = require('./search/searchRouter')
+const uploadRouter = require('./upload/uploadRouter')
 
 app.use(express.json());
 app.use(cookieParser())
+const app = express()
+
+app.use(bodyParser.json())
 app.use(cors({
     credentials: true,
     origin: [process.env.FRONT_END_URL, process.env.FRONT_END_URL_DEV],
@@ -20,6 +24,7 @@ app.use(cors({
 app.use('/auth', authRouter);
 app.use('/candidates', candidatesRouter)
 app.use('/search', searchRouter)
+app.use('/upload', uploadRouter)
 
 // app.use(express.urlencoded({ extended: false }));
 
