@@ -10,12 +10,13 @@ import './Encode-Admin.css'
 export default class CandidateList extends React.Component {
     state = {
         candidates: [],
+        searchedCandidates: [],
         displayedCandidates: [],
         keyword: '',
         techStack: [],
-        location: '',
+        location: 'All',
         minSalary: 0,
-        query: {}
+        sortBy: 'new-old'
     }
 
     componentWillMount() {
@@ -27,14 +28,28 @@ export default class CandidateList extends React.Component {
         .catch(err => console.error(err))          
     }
 
-    handleKeywordChange = () => {
+    showAllCandidates = () => {
+        candidateAPI.fetchCandidates()
+        .then(candidates => {
+            this.setState({ candidates })
+            this.setState({ displayedCandidates: candidates})
+        })
+        .catch(err => console.error(err))      
+    }
 
+    handleKeywordChange = () => {
         this.setState({
             keyword: this.search.value
         }, () => {
             candidateAPI.fetchSearchedCandidates(this.state)
             .then(candidates => {
-                this.setState({ candidates });
+                this.setState({ displayedCandidates: candidates})
+                this.setState({ searchedCandidates: candidates})
+            })
+            .then( () => {
+                if (this.state.keyword === "") {
+                    this.setState({ displayedCandidates: this.state.candidates})
+                }
             })
             .catch(err => console.error(err)) 
         }) 
@@ -42,41 +57,77 @@ export default class CandidateList extends React.Component {
 
     handleTechChange = (e) => {
         let data = e.split(',')
-        this.setState({ 
-          techStack: data
-        })  
+
+        this.setState({
+            techStack: data
+        }, () => {
+            candidateAPI.fetchSearchedCandidatesByTech(this.state)
+            .then(candidates => {
+                this.setState({ displayedCandidates: candidates})
+                this.setState({ searchedCandidates: candidates})
+            })
+            .then( () => {
+                if (this.state.techStack === []) {
+                    this.setState({ displayedCandidates: this.state.candidates})
+                }
+            })
+            .catch(err => console.error(err)) 
+        })
+
     }
+
+    
+
+
+    handleLocationChange = (e) => {
+
+        this.setState({
+            location: e.target.value
+        }, () => {
+            candidateAPI.fetchSearchedCandidatesByLocation(this.state)
+            .then(candidates => {
+                this.setState({ displayedCandidates: candidates})
+                this.setState({ searchedCandidates: candidates})
+            })
+            .then( () => {
+                if (this.state.location === "All") {
+                    this.setState({ displayedCandidates: this.state.candidates})
+                }
+            })
+            .catch(err => console.error(err)) 
+        }) 
+      }
 
     handleSalaryChange = (data) => {
 
-        const {candidates} = this.state
-        const filteredResult = candidates.filter( candidate =>
-            candidate.minSalary >= data
-        )
+        let filteredResult = []
+
+        if (this.state.keyword) {
+            const {searchedCandidates} = this.state
+            filteredResult = searchedCandidates.filter( candidate =>
+                candidate.minSalary <= data
+            )
+        } else {
+            const {candidates} = this.state
+            filteredResult = candidates.filter( candidate =>
+                candidate.minSalary <= data
+            )
+        }
 
         this.setState({
             displayedCandidates: filteredResult
         })
 
-        // this.setState({
-        //   minSalary: data
-        // })
+        this.setState({
+            minSalary: data
+        })
     }
 
-    handleLocationChange = (e) => {
-        let newState = {}
-        newState[e.target.name] = e.target.value
-        this.setState(newState)
-      }
-
-    handleQuery = (e) => {
-
-    }
     
 
     render() {
-        return (                        
-            <Fragment>
+        return (
+            <div className="large-container">
                 <div className="flex-container">
                     <div className="flex-item">
                         <form>
@@ -99,19 +150,29 @@ export default class CandidateList extends React.Component {
                                     value={this.state.location}
                                     onChange={this.handleLocationChange}
                                     >
-                                    <option value="" disabled selected>Location</option>
-                                    <option value={"Melbourne"}>Melbourne</option>
-                                    <option value={"Adelaide"}>Adelaide</option>
-                                    <option value={"Brisbane"}>Brisbane</option>
-                                    <option value={"Canberra"}>Canberra</option>
-                                    <option value={"Hobart"}>Hobart</option>                
-                                    <option value={"Sydney"}>Sydney</option>
-                                    <option value={"Perth"}>Perth</option>
+                                    <option value="All">Search: All Locations</option>
+                                    <option value="Melbourne">Melbourne</option>
+                                    <option value="Adelaide">Adelaide</option>
+                                    <option value="Brisbane">Brisbane</option>
+                                    <option value="Canberra">Canberra</option>
+                                    <option value="Hobart">Hobart</option>                
+                                    <option value="Sydney">Sydney</option>
+                                    <option value="Perth">Perth</option>
                                 </select>
                             </div>
 
+                            <div className="input-field tech-height">
+                                <TechStack 
+                                    ref="techStack"
+                                    name="techStack"
+                                    required
+                                    raiseData={this.handleTechChange}
+                                    />
+                            </div>
+
                             <div className="input-field">
-                                <label>Minimum salary expectation:</label>
+                                <label><strong>Filter by:</strong> <br />
+                                Minimum salary expectation:</label>
                                 <div className="slider-container">
                                     <SalarySlider 
                                     min={0} 
@@ -122,25 +183,26 @@ export default class CandidateList extends React.Component {
                                     />
                                 </div>
                             </div>
+
                             
-                            <div className="input-field tech-height">
-                                <TechStack 
-                                    ref="techStack"
-                                    name="techStack"
-                                    required
-                                    raiseData={this.handleTechChange}
-                                    />
-                            </div>
-
                         </form>
-
-                        <p><b>Search for:</b> {this.state.keyword}</p>
                     </div>
-
                 </div>
 
-                {this.state.displayedCandidates.reverse().map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
-            </Fragment> 
+
+             <div className="flex-container">
+                    <div className="flex-item-small">
+                            <button onClick={this.showAllCandidates}>Show all candidates</button>
+                    </div>
+                </div>
+   
+                 <div className="flex-container">
+                    <div className="flex-item">
+                        {this.state.displayedCandidates.reverse().map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
+                    </div>
+                 </div>      
+
+        </div>
         )
     }
 }

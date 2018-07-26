@@ -3,7 +3,9 @@ import axios from './init'
 export default {
     fetchCandidates,
     fetchOneCandidate,
-    fetchSearchedCandidates
+    fetchSearchedCandidates,
+    fetchSearchedCandidatesByLocation,
+    fetchSearchedCandidatesByTech
 }
 
 async function fetchCandidates() {
@@ -22,6 +24,17 @@ async function fetchSearchedCandidates(query) {
     return candidates
 }
 
+async function fetchSearchedCandidatesByLocation(location) {
+    console.log(location)
+    const {data:candidates} = await axios.post('/search/location', location)
+    return candidates
+}
+
+async function fetchSearchedCandidatesByTech(techStack) {
+    console.log(techStack)
+    const {data:candidates} = await axios.post('/search/tech', techStack)
+    return candidates
+}
 
 
 

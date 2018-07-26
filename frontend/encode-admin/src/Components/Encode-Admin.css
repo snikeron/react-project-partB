@@ -174,9 +174,14 @@ ol li.list, ul li.list{
     margin-top: 1em;
 }
 .tech-height{
-    max-height: 5em !important;
+    max-height: 2em !important;
     padding-bottom: 3em;
 }
+
+.large-container {
+      width: 100vw;
+      display: grid;
+  }
 
 /* ********************************* CandidateInfo **************************** */
 
