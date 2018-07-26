@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import { PacmanLoader} from 'react-spinners'
 import candidateAPI from '../api/Candidate'
 import './Encode-Admin.css'
+import { CSVLink, CSVDownload } from 'react-csv';
+import { Link } from 'react-router-dom'
 
 
 export default class CandidateInfo extends Component {
@@ -49,10 +51,33 @@ export default class CandidateInfo extends Component {
             expectedJobTitle,
             expectedRoleType,
             contactSource,
-            // clientNotes,
-            // personalNotes,
+            clientNotes,
+            personalNotes,
             resumeUrl
         } = candidate
+        
+        const data = [
+            {firstName, 
+            lastName, 
+            currentJobTitle, 
+            CurrentEmployer, 
+            phoneNumber, 
+            techStack, 
+            location, 
+            emailAddress, 
+            roleType, 
+            responsibilities, 
+            priority, 
+            expectedCompany, 
+            minSalary, 
+            expectedJobTitle, 
+            expectedRoleType, 
+            contactSource, 
+            clientNotes, 
+            personalNotes, 
+            resumeUrl } 
+
+        ];
 
         return <Fragment>
             <div className="orange-box">
@@ -124,17 +149,22 @@ export default class CandidateInfo extends Component {
             
             </div>
            
-            {/* THIS SECTION IS FOR SIMON TO ADD NOTES FOR THE CANDIDATE AND FOR HIMSELF */}
-            {/* <div className = "orange-box">
+            <div className = "orange-box">
                 <p> Notes for client: </p>
                 <textarea> </textarea>            
                 <p> Notes for Myself: </p>
                 <textarea></textarea>
-            </div>  */}
+            </div> 
 
-            {/* <div>
-                EXPORT AS CSV
-            </div> */}
+            <div>
+                <CSVLink data={data} >Export as CSV file</CSVLink>
+            </div>
+            
+            <Link to={`/candidates/`}>  
+            <div>
+                <button> Back </button>
+            </div>
+            </Link>
 
         </Fragment>
     }
