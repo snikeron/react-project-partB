@@ -17,7 +17,10 @@ async function fetchOneCandidate(_id) {
     return candidate
 }
 
-
+async function updateOneCandidate(_id) {
+    const {data:candidate} = await axios.put(`/candidates/${_id}`)
+    return candidate    
+}
 
 
 

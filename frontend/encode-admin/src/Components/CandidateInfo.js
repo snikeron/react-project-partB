@@ -25,6 +25,18 @@ export default class CandidateInfo extends Component {
         })   
     }
 
+    handleChange() {
+        candidateAPI.updateOneCandidate(this.props._id)
+            .then(candidate => {
+                this.setState({
+                    candidate
+                })
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+    }
+
     render() {
         const {candidate} = this.state
         if(!candidate) {

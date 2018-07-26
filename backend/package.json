@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "seed": "nodemon ./candidates/candidatesSeed.js",
+    "drop-candidates-atlas": "nodemon ./candidates/candidatesDrop.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
