@@ -5,10 +5,8 @@ https://github.com/elhoulir/react-project-partB
 
 
 Link to the candidate form:
-<!-- Link to candidate form -->
-
-Link to the admin view:
 https://encode-form.now.sh
+
 
 ## Group Members
 - Mill Daulagala
