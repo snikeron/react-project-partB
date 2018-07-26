@@ -12,8 +12,6 @@ export default class Step5 extends Component {
     
     this.isValidated = this.isValidated.bind(this)
 
-    // this.SERVER = 'https://backend-izuntatfte.now.sh/candidates'
-    this.SERVER = 'http://localhost:3000/candidates'
   }
 
   componentWillMount = () => {
@@ -51,7 +49,7 @@ export default class Step5 extends Component {
         formData.append('file', this.state.fileCV[0]);
         
         // File gets posted first, and the resulting AWS link is stored in candidateData as resumeUrl
-        axios.post(`http://localhost:3000/upload`, formData, {
+        axios.post(`https://backend-iebjnjuzwr.now.sh/upload`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -62,7 +60,7 @@ export default class Step5 extends Component {
           console.log(candidateData)
           
           // Once candidateData has been updated with resumeUrl, post entire data to backend
-          return axios.post('http://localhost:3000/candidates', candidateData)
+          return axios.post(`https://backend-iebjnjuzwr.now.sh/candidates`, candidateData)
         }).then( (response) => {
           this.setState({
             saving: true
@@ -86,7 +84,7 @@ export default class Step5 extends Component {
         // No file input by candidate -- post candidateData to backend
         return new Promise((resolve, reject) => {
           console.log(candidateData)
-          axios.post('http://localhost:3000/candidates', candidateData)
+          axios.post(`https://backend-iebjnjuzwr.now.sh/candidates`, candidateData)
             .then( (response) => {
               this.setState({
                 saving: true
