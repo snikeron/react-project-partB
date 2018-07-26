@@ -12,12 +12,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
 
         <main className="main-wrapper">
           <Router>
             <Switch>
+              {/* admin auth ROUTE */}
               <Route exact path="/candidates" component={CandidateList} />
               <Route path="/candidates/:id" render={({ match }) => {
                 const { id } = match.params

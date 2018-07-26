@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "seed": "nodemon ./candidates/candidatesSeed.js",
+    "drop-candidates-atlas": "nodemon ./candidates/candidatesDrop.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
@@ -13,10 +14,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.279.1",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "mongoose": "^5.2.3"
+    "file-type": "^8.1.0",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.2.3",
+    "multiparty": "^4.1.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.2"

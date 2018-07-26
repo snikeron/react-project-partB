@@ -15,6 +15,7 @@ class Step3 extends Component {
       currentEmployer: props.getData().currentEmployer,
       roleType: props.getData().roleType,
       responsibilities: props.getData().responsibilities,
+      fileCV: null
     };
 
     this.validatorTypes = {
@@ -23,7 +24,7 @@ class Step3 extends Component {
       currentEmployer: Joi.string().required().label('Current Employer'),
       roleType: Joi.string().required().label('Role Type'),
       responsibilities: Joi.string().required().label('Current Responsibilities'),
-      
+    
     };
 
     this.getValidatorData = this.getValidatorData.bind(this);
@@ -31,6 +32,7 @@ class Step3 extends Component {
     this.isValidated = this.isValidated.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleTechChange = this.handleTechChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
 
   }
 
@@ -65,9 +67,16 @@ class Step3 extends Component {
       currentEmployer: this.refs.currentEmployer.value,
       roleType: this.refs.roleType.value,
       responsibilities: this.refs.responsibilities.value,
+      fileCV: this.state.fileCV
 
     }
   };
+
+  handleFileChange(e) {
+    this.setState({
+      fileCV: e.target.files
+    });
+  }
 
   handleTechChange(e) {
     let data = e.split(',')
@@ -167,6 +176,15 @@ class Step3 extends Component {
                 { ...this.state } />
               {this.props.getValidationMessages('techStack').map(this.renderHelpText)}
             </div>
+
+            <div className="input-field">
+              <label>Upload your CV (Optional)</label>
+              <input 
+                ref="fileCV"
+                name="fileCV"
+                onChange={this.handleFileChange}
+                type="file" />
+            </div> 
           
           </form>
         </div>

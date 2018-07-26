@@ -53,6 +53,7 @@ class Step4 extends Component {
 
   componentWillMount = () => {
     this.selectedCompanies = new Set()
+    window.scrollTo(0,0)
   }
 
   isValidated() {
@@ -158,6 +159,8 @@ class Step4 extends Component {
 
     return (
 
+      
+
       <div className="flex-container">
         <div className="flex-item">
           <form>
@@ -253,6 +256,8 @@ class Step4 extends Component {
                       <option value={"Word of Mouth"}>Word of Mouth</option>
                       <option value={"Direct contact from us"}>Direct contact from us</option>
                       <option value={"Google"}>Google</option>
+                      <option value={"Facebook"}>Facebook</option>
+                      <option value={"Twitter"}>Twitter</option>
                       <option value={"Other"}>Other</option>
                     </select>
                     {this.props.getValidationMessages('contactSource').map(this.renderHelpText)}

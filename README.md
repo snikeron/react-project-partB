@@ -106,27 +106,11 @@
     Below is the workflow diagram for the app:
     ![Workflow Diagram](assets/images/workflow.png)    
   
-## Interactions with client:
-  **Meetings:**
-  We met with Simon on multiple occasions. Our first meeting was at NAB bank. The rest of our meetings took place in our classrooms that we had booked. In between meetings, we kept in close contact with Simon via email messages. In our meetings, we discussed a lot about the functionality of the app. 
-
-  Meeting dates:
-  - (date): This is when we first got to know Simon. It was in this meeting that he told us about his problem and asked us for a solution. We came up with a proposed solution and Simon liked it, and that's how we started off the project. In this meeting, we made it clear to the client (Simon) that we were taking charge of the project deliverables, therefore the scope was determined by us as a project team. We also made clear what our proposed MVP (most viable product) would be and anything else outside this was a 'nice to have addition'. Simon was very respectful and appreciated that we offered the best possible solution. A key lesson learned from this meeting was that it is crucial, as a developor, you are the one who proposes the best solution and also dictates the scope and pace of project, and always keep the client focused on the solution to the main problem, and not focus on extra 'nice to have' features.  
-  - (date) in this meeting we dicussed some of the content for the candidate form questionnaire. Simon wanted to make some changes to the app and we were able to implement them, without affecting our progress. 
-  - (date) in this meeting we showed Simon our near-complete deployed version of our candidate form and he was really impressed. This was a big confidence booster for us because we were a little behind in our project timeline.
-
-Below is an image of our emails with Simon:
-<!-- photo of emails -->
-
-**Experiences:**
-Overall it was a good experience with the client. He is a really nice guy, and showed he really appreciated our efforts and hard work. 
-
-**Reactions:** We got a positive reaction out of Simon and we always had a positive vibe when we met with him. Things were always positive because we had set the expectation right from the start of the project. Simon was always kept in the loop of project progress and he was also helpful in offering any help he possibly can.
-
 ### Pain Points
 - Different states and components
 - Joi validation when deployed
 - Mongo db connection issues
+- JWT Auth for admin user
 
 ### Github 
 - Our contributions on github
