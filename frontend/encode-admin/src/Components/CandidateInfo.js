@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { PacmanLoader} from 'react-spinners'
+import { PacmanLoader } from 'react-spinners'
 import candidateAPI from '../api/Candidate'
 import './Encode-Admin.css'
 import { CSVLink, CSVDownload } from 'react-csv';
