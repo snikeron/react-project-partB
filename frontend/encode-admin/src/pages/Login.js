@@ -1,5 +1,5 @@
 import React from 'react'
-import auth from '../api/auth';
+import auth from '../api/Auth';
 import {Redirect} from 'react-router-dom'
 
 

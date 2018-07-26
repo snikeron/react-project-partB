@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CandidateInfo from './Components/CandidateInfo'
 import DefaultLayout from './layouts/DefaultLayout'
 import ProtectedRoutes from './Components/ProtectedRoutes'
-import auth from './api/auth';
+import auth from './api/Auth';
 
 
 class App extends Component {
