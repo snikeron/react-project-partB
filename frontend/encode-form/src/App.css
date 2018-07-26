@@ -6,6 +6,23 @@
   font-family: 'Raleway', sans-serif;
 }
 
+.App-logo {
+  height: 5em;
+}
+
+.App-header {
+  background-color: #000000;
+  height: 5em;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
 
 
 

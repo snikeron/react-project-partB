@@ -1,11 +1,36 @@
 const express = require('express')
 const router = express.Router()
 const Candidate = require('./Candidate')
+const JWT = require('jsonwebtoken')
+const JWT_SECRET = process.env.JWT_SECRET
 
-router.get('/', (req, res) => {
+const authorize = (req, res, next) => {
+
+    const token = req.cookies.access_token
+    console.log(req.cookies)
+    console.log('tokens',token)
+    if(!token) {
+        res.status(400)
+        next(new Error('Access Denied'))
+        return
+    }
+
+    try {
+        const payload = JWT.verify(token, JWT_SECRET)
+        if(!payload.admin) {
+            res.status(400)
+            next(new Error('Unauthorised User'))
+            return
+        }
+        next()
+    } catch(err) {
+        next(err)
+     }
+}
+
+router.get('/', authorize, (req, res) => {
     Candidate.find()
         .then(candidates => {
-            console.log(candidates)
             res.status(200).json(candidates)
         })
         .catch(err => {
@@ -60,3 +85,4 @@ router.get('/:id', (req, res, next) => {
 
 
 module.exports = router
+

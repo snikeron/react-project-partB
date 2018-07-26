@@ -168,7 +168,7 @@ class Step4 extends Component {
               {/* Drap & Drop for preferences */}
               <div className="input-field">
                 <label>Please rank in order of importance for
-                  yourself the following criteria: </label>
+                  yourself the following (from top to bottom): </label>
                 <div className="flex-container">
                   <Preference 
                     ref="priority"
