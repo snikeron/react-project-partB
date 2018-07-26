@@ -1,14 +1,32 @@
 import React, {Fragment} from 'react'
 import {Link} from 'react-router-dom'
+import logo from '../logo.svg'
 
 import './NavBar.css'
 
 function NavBar({isLoggedIn, logout}) {
-    return <nav>
-    {isLoggedIn && <Fragment>
-        <Link to="/candidates">Candidates</Link> <button onClick={()=>logout()}>Logout</button>
-    </Fragment>}
-    </nav>
+    if (isLoggedIn) {
+        return <nav className="App-header">
+        {
+            <Fragment>
+                {/* <Link to="/candidates">Candidates</Link>  */}
+                <img src={logo} className="App-logo" alt="logo" />
+                <button onClick={()=>logout()}>Logout</button>
+            </Fragment>
+        }
+        
+        </nav>
+    } else {
+        return <nav className="App-header">
+        {
+            <Fragment>
+                <img src={logo} className="App-logo" alt="logo" />
+            </Fragment>
+        }
+        
+        </nav>
+    }
+    
 }
 
 export default NavBar

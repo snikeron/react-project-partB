@@ -2,9 +2,6 @@ POST http://localhost:3000/search/
 Content-Type: application/json
 
 {
-<<<<<<< HEAD
-    "query": "Melbourne Python"
-=======
     "keyword": "melbourne"
 }
 
@@ -22,5 +19,4 @@ Content-Type: application/json
 
 {
     "location:": "Melbourne"
->>>>>>> 151e20ff8b07707fc7f77f0c7f4370b546bd13c4
 }

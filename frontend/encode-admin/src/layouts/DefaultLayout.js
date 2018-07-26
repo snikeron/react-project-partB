@@ -13,10 +13,7 @@ export default class DefaultLayout extends Component {
         
         const {isLoggedIn, children, logout} = this.props
         return <Fragment>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 <NavBar logout={logout} isLoggedIn={isLoggedIn} />
-            </header>
             <main className="main-wrapper">
                 <Switch>
                     {children}
