@@ -1,23 +1,22 @@
-POST http://localhost:3000/search
+POST http://localhost:3000/search/
 Content-Type: application/json
 
 {
-    "query": "Melbourne"
+    "keyword": "melbourne"
 }
 
 ###
-POST http://localhost:3000/search/salary
+POST http://localhost:3000/search/tech
 Content-Type: application/json
 
 {
-    "minSalary": 200
+    "techStack": ["HTML", "JavaScript"]
 }
 
 ###
-POST http://localhost:3000/search/test
+POST http://localhost:3000/search/location
 Content-Type: application/json
 
 {
-    "minSalary": 150,
     "location:": "Melbourne"
 }
