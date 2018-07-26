@@ -6,18 +6,6 @@ import Preference from './widgets/Preference'
 import Checkbox from './widgets/Checkbox'
 import SalarySlider from './widgets/SalarySlider'
 
-const companyTypes = [
-  'Enterprise Companies',
-  'Start Ups',
-  'Consultancies',
-  'Small Businesses',
-  'Technology Companies',
-  'Not For Profits',
-  'Government',
-  'Education',
-  'Utilities',
-  'Telecommunications'
-]
 
 class Step4 extends Component {
 
@@ -31,6 +19,8 @@ class Step4 extends Component {
       minSalary: props.getData().minSalary,
       expectedRoleType: props.getData().expectedRoleType,
       contactSource: props.getData().contactSource,
+      companyTypes: props.getData().companyTypes,
+      // isChecked: false
     }
 
     this.validatorTypes = {
@@ -92,41 +82,66 @@ class Step4 extends Component {
       expectedCompany: this.state.expectedCompany,
       minSalary: this.state.minSalary,
       expectedRoleType: this.refs.expectedRoleType.value,
-      contactSource: this.refs.contactSource.value
+      contactSource: this.refs.contactSource.value,
+      companyTypes: this.state.companyTypes
     }
   }
 
-  toggleCompanyTypesCheckbox = label => {
+  toggleCompanyTypesCheckbox = (id, type, isCheckedValue) => {
 
-    if (this.selectedCompanies.has(label)) {
-      this.selectedCompanies.delete(label);
+    
+    if (this.selectedCompanies.has(type)) {
+      this.selectedCompanies.delete(type);
     } else {
-      this.selectedCompanies.add(label);
+      this.selectedCompanies.add(type);
     }
-
+  
     const companies = []
 
     for (const checkbox of this.selectedCompanies) {
+      console.log(checkbox)
       companies.push(checkbox)
+      console.log(companies)
+      this.setState({
+        expectedCompany: companies
+      }, () => {
+        console.log(companies)
+      })
     }
+
+    
   
-    this.setState({
-      expectedCompany: companies
-    })
+
+    for (let i = 0; i < this.state.companyTypes.length; i++) {
+      if (this.state.companyTypes[i].id ===  id ) {
+        const items = this.state.companyTypes
+        items[i].isChecked = !isCheckedValue
+        
+        this.setState({
+          companyTypes: items
+        })
+
+      }
+    }
+
+    
+    
     
   }
 
-  createCompanyTypesCheckbox = label => (
+  createCompanyTypesCheckbox = company => (
 
     <Checkbox
-      label={label}
+      type={company.type}
       handleCheckboxChange={this.toggleCompanyTypesCheckbox}
-      key={label}
+      key={company.id}
+      id={company.id}
+      isChecked={company.isChecked}
     />
   )
 
   createCompanyTypesCheckboxes = () => (
-    companyTypes.map(this.createCompanyTypesCheckbox)
+    this.state.companyTypes.map(this.createCompanyTypesCheckbox)
   )
 
 

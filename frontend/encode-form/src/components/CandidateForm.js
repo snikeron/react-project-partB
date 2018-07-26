@@ -13,6 +13,18 @@ export default class CandidateForm extends Component {
       super(props)
   
       this.state = {
+        companyTypes : [
+          {id: 0, type: 'Enterprise Companies', isChecked: false},
+          {id: 1, type: 'Start Ups', isChecked: false},
+          {id: 2, type: 'Consultancies', isChecked: false},
+          {id: 3, type: 'Small Businesses', isChecked: false},
+          {id: 4, type: 'Technology Companies', isChecked: false},
+          {id: 5, type: 'Not For Profits', isChecked: false},
+          {id: 6, type: 'Government', isChecked: false},
+          {id: 7, type: 'Education', isChecked: false},
+          {id: 8, type: 'Utilities', isChecked: false},
+          {id: 9, type: 'Telecommunications', isChecked: false}
+        ],
         priority: [
           {
             id: "item-1",
@@ -68,6 +80,8 @@ export default class CandidateForm extends Component {
           }
         ],
         minSalary: 65,
+        expectedCompany: [],
+
         
         savedToCloud: false     
       }
@@ -118,3 +132,5 @@ export default class CandidateForm extends Component {
     }
   }
   
+
+
