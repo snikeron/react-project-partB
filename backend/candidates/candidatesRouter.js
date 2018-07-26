@@ -70,7 +70,7 @@ router.put('/:id', authorize, (req, res, next) => {
     })
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id',authorize, (req, res, next) => {
     console.log(req.params.id)
     
     Candidate.findById(req.params.id, (err, candidate) => {
