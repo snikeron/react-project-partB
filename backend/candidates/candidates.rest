@@ -45,4 +45,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/candidates/5b5023ada851b545528b755d
+GET https://encode-backend.now.sh/candidates/5b591b2bc885e6da5e8034d4

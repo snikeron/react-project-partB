@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
         })
 })
 
-router.put('/:id', authorize, (req, res, next) => {
+router.put('/:id', (req, res, next) => {
     Candidate.findByIdAndUpdate(req.params.id, req.body, function (err, candidate) {
         candidate.save()
             .then(() => {
@@ -73,7 +73,7 @@ router.put('/:id', authorize, (req, res, next) => {
     })
 })
 
-router.get('/:id',authorize, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     console.log(req.params.id)
     
     Candidate.findById(req.params.id, (err, candidate) => {

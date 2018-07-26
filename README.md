@@ -3,13 +3,12 @@
 Link to my App github repo:
 https://github.com/elhoulir/react-project-partB
 
-TODO:
+
 Link to the candidate form:
 <!-- Link to candidate form -->
 
-TODO:
 Link to the admin view:
-<!-- Link to admin view -->
+https://encode-form.now.sh
 
 ## Group Members
 - Mill Daulagala
@@ -59,11 +58,6 @@ Link to the admin view:
   ### Testing
   Due to the time constraints given for the project, we are unable to incorporate a fully test driven development scheme. However, tests were written for the functional client-end components to ensure that features built for client interaction worked. We used Jest as our testing framework for its simplicity and speedy performance.
 
-  <!-- We can talk about integrations and unit tests???? -->
-
-  ### Authorisation TODO:
-  - JWT 
-
   ### Tools used  
   - **Trello:** This help us implement an agile approach throughout the project. We were able to document our progress and keep all our project resources in one place. We used it to keep track of each task and sprint. 
 
@@ -76,13 +70,9 @@ Link to the admin view:
     Below are the project resources:
     ![Project Resources](assets/images/project_resources.png)
 
-    For a full view of the project resources, click on the (LINK HERE)
-    <!-- [Link to Trello Project Resources]() --> TODO:
-
     Below is the project timeline:
     ![Project Timeline](assets/images/project_timeline.png)    
-    For a full view of the project timeline, click on the (LINK HERE)
-    <!-- [Link to Trello Project Timeline]() --> TODO:
+ 
 
   - **Database Schema:**
     Here is the schema for our database:
@@ -113,13 +103,8 @@ Link to the admin view:
     Below is the workflow diagram for the app:
     ![Workflow Diagram](assets/images/workflow.png)    
   
-### Pain Points TODO:
-- Different states and components
+### Pain Points 
 
-- Joi validation when deployed
-
-- Mongo db connection issues
-  
 - JWT Auth for admin user:
   One of the problems we faced with the Admin view, was with the routing. Once logged in and authorised, the admin can view the candidates, however when logging out, the admin isn't redirected back to the login form. This is due to an error in our express backend routes. Due to time constraints, we were unable to fix this problem. 
 
@@ -132,16 +117,7 @@ There is plenty of room for improvement. There were a lot of features we would h
 
 ### Project Review
 
-"This project has been a great learning experience. I really enjoyed working in the team environment and learnt a lot about myself as well. I feel a great sense of self-accomplishment after completing this app, and am more motivated than ever to keep building new things to make other people's lives easier. I had a great time working with my team, we worked well with each other and I feel like we established a special bond that will last a lifetime. I look forward to future development and teamwork in the industry, I am now confident I can make a solid contribution to any project and team." - Rashid
-
-TODO:
-
-Maurice
-
-Mill
-
-Ashley
-
+This project has been a great learning experience. I really enjoyed working in the team environment and learnt a lot about myself as well. I feel a great sense of self-accomplishment after completing this app, and am more motivated than ever to keep building new things to make other people's lives easier. I had a great time working with my team, we worked well with each other and I feel like we established a special bond that will last a lifetime. I look forward to future development and teamwork in the industry, I am now confident I can make a solid contribution to any project and team."
   
 
 
