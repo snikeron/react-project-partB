@@ -12,9 +12,9 @@ export default function CandidateCard({
 }) {
     return <div className="flex-container">
                 <div className="candidate flex-item">
-                    <Link to={`/candidates/${_id}`}>  
+                    <Link to={`/candidates/${_id}`} style={{ textDecoration: 'none', color:'white' }}>  
                         <div className="candidate-details">
-                            <h3>{firstName} {lastName}</h3>
+                            <h3 className="cand-name">{firstName} {lastName}</h3>
                             <h4>{currentJobTitle}</h4>
                             <p>{location}</p> 
                         </div>

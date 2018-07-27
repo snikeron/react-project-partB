@@ -22,7 +22,7 @@ router.post('/login', (req, res) => {
         res.cookie('access_token', token, {
             // secure: false,
             httpOnly: true,
-            maxAge: 36000
+            maxAge: 1000 * 60 * 60
         })
 
         res.status(200)

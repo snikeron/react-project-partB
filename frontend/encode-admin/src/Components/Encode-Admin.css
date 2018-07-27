@@ -90,7 +90,8 @@ input[type="submit"]:hover {
     background: #FDAD28;
     color: #545454;
 }
-button {
+
+.menu {
     display: inline-block;
     background: #F54F1A;
     border: 0;
@@ -101,6 +102,31 @@ button {
     border-radius: 0.5em;
     font-size: 0.9em;
 }
+
+.menu-back {
+    display: block;
+    background: #F54F1A;
+    border: 0;
+    color: #FFFFFF;  
+    padding:  0.5em 2em;
+    margin: auto;
+    text-decoration: none;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+}
+
+.info-button {
+    display: inline-block;
+    background: #F54F1A;
+    border: 0;
+    color: #FFFFFF;  
+    padding:  0.5em 2em;
+    /* margin: 0.5em 3em; */
+    text-decoration: none;
+    border-radius: 0.5em;
+    font-size: 0.9em;
+}
+
 button:hover {
     background: #FF7900 !important;   
 }
@@ -181,13 +207,43 @@ ol li.list, ul li.list{
 .large-container {
       width: 100vw;
       display: grid;
-  }
+}
+
+.cand-container {
+    margin-top: 30px;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 3fr));
+    grid-auto-rows: minmax(50px, auto);
+}
 
 /* ********************************* CandidateInfo **************************** */
 
+.info-container {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 768px) {
+    .info-container {
+      width: 500px;
+    }
+}
+  @media (min-width: 992px) {
+    .info-container {
+      width: 700px;
+    }
+}
+  @media (min-width: 1200px) {
+    .info-container {
+      width: 800px;
+    }
+}
+
 .orange-box {
     border: 1px orange solid;
-    padding: 1em;
+    padding: 1em 4em 1em 4em;
     text-align: left;
     margin-bottom: .3em;
 }
@@ -196,6 +252,21 @@ ol li.list, ul li.list{
     list-style: bullet;
 }
 
+.success {
+    color: #FFFFFF;
+    background-color: #52e08d;
+    padding: 0.6em 1em;
+}
+
+.fail {
+    color: #FFFFFF;
+    background-color: #de5b66;
+    padding: 0.6em 1em;
+}
+
+.hide {
+    display: none;
+  }
 
 
 
@@ -213,16 +284,17 @@ ol li.list, ul li.list{
   justify-content: space-between;
  }
 
-.cand-name {
+h3.cand-name {
   font-size: 20px;
+  text-align: left;
 }
 
 .call-icon {
     background: limegreen;
     align-self: center;
     font-size: 100%;
-    width: 2em;
-    height: 2em;
+    width: 2.5em;
+    height: 2.5em;
     font-size: 20px;
     border-radius: 50%;
     display: flex;
@@ -245,3 +317,9 @@ ol li.list, ul li.list{
   text-decoration: none;
 }
 
+/* ********************************* CandidateInfo **************************** */
+.login {
+    width: 60vw;
+    margin: auto;
+    display: block;
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import auth from '../api/Auth';
 import {Redirect} from 'react-router-dom'
+import '../Components/Encode-Admin.css'
 
 
 export default function LoginForm (props) {
@@ -10,7 +11,7 @@ export default function LoginForm (props) {
     }
 
     return <div className="login">
-    <h2>Login</h2>
+    <h2>Encode Talent Management</h2>
     <form onSubmit={(e) => {
       e.preventDefault()
       const form = e.target.elements
@@ -42,7 +43,7 @@ export default function LoginForm (props) {
       </p>
 
       <p>
-        <input type="submit" value="Login"/>
+        <input type="submit" value="Login" />
       </p>
     </form>
 </div>

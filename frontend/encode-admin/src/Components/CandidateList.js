@@ -15,7 +15,7 @@ export default class CandidateList extends React.Component {
         keyword: '',
         techStack: [],
         location: 'All',
-        minSalary: 0,
+        minSalary: 200,
         sortBy: 'new-old'
     }
 
@@ -192,14 +192,13 @@ export default class CandidateList extends React.Component {
 
              <div className="flex-container">
                     <div className="flex-item-small">
-                            <button onClick={this.showAllCandidates}>Show all candidates</button>
+                            <button onClick={this.showAllCandidates} className="menu">Show all candidates</button>
                     </div>
                 </div>
    
-                 <div className="flex-container">
-                    <div className="flex-item">
+                 <div className="cand-container">
                         {this.state.displayedCandidates.reverse().map(candidate => <CandidateCard key={candidate._id} {...candidate} />)}
-                    </div>
+                    
                  </div>      
 
         </div>

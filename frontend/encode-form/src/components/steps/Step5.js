@@ -115,6 +115,7 @@ export default class Step5 extends Component {
   render() {
 
     const savingCls = this.state.saving ? 'saving' : 'hide'
+    let fileStat;
 
     const { 
       firstName,
@@ -133,6 +134,7 @@ export default class Step5 extends Component {
       minSalary,
       expectedRoleType,
       contactSource,
+      fileCV
     } = this.state
 
     if (techStack) {
@@ -151,6 +153,11 @@ export default class Step5 extends Component {
     )
     }
     
+    if (fileCV) {
+      fileStat = <strong>Yes</strong>
+    } else {
+      fileStat = <strong>No</strong>
+    }
     
 
     return (
@@ -198,8 +205,8 @@ export default class Step5 extends Component {
                 </div>
 
                 <div className="displayField">
-                  <p className="labelField">Currently in</p>
-                  <p className="resultField">{roleType} Role</p>
+                  <p className="labelField">Current Role</p>
+                  <p className="resultField">{roleType}</p>
                 </div>
 
                 <div className="displayField">
@@ -213,8 +220,8 @@ export default class Step5 extends Component {
                 </div>
 
                 <div className="displayField">
-                  <p className="labelField">Resume Uploaded</p>
-                  <p className="resultField"></p>
+                  <p className="labelField">Resume Uploaded?</p>
+                  <p className="resultField">{fileStat}</p>
                 </div>
           </div>
 

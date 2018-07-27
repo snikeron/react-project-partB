@@ -14,7 +14,7 @@ const uploadRouter = require('./upload/uploadRouter')
 app.use(express.json());
 app.use(cookieParser())
 
-let whitelist = [process.env.FORM_URL, process.env.ADMIN_URL]
+let whitelist = [process.env.FORM_URL, process.env.ADMIN_URL, process.env.FRONT_END_URL_DEV]
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {

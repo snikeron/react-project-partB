@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import logo from '../logo.svg'
 
 import './NavBar.css'
@@ -11,7 +11,7 @@ function NavBar({isLoggedIn, logout}) {
             <Fragment>
                 {/* <Link to="/candidates">Candidates</Link>  */}
                 <img src={logo} className="App-logo" alt="logo" />
-                <button onClick={()=>logout()}>Logout</button>
+                <button onClick={()=>logout()} className="menu">Logout</button>
             </Fragment>
         }
         

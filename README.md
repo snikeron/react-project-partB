@@ -7,14 +7,19 @@ https://github.com/elhoulir/react-project-partB
 Link to the candidate form:
 https://encode-form.now.sh
 
+Link to the admin reports:
+https://encode-admin.now.sh
+
 
 ## Group Members
+
 - Mill Daulagala
 - Maurice Yong
 - Rashid Elhouli
 - Ashley Tsai
 
 ## Client
+
   ![Client logo](assets/images/encode-talent-logo.jpg)
 
   Encode Talent Management provides career advocacy services for Australia’s premier IT and Digital professionals. 
