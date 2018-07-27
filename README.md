@@ -1,8 +1,12 @@
 # Part B - Project
 
-<!-- Link to github repo -->
-<!-- Link to candidate form -->
-<!-- Link to admin view -->
+Link to my App github repo:
+https://github.com/elhoulir/react-project-partB
+
+
+Link to the candidate form:
+https://encode-form.now.sh
+
 
 ## Group Members
 - Mill Daulagala
@@ -52,11 +56,6 @@
   ### Testing
   Due to the time constraints given for the project, we are unable to incorporate a fully test driven development scheme. However, tests were written for the functional client-end components to ensure that features built for client interaction worked. We used Jest as our testing framework for its simplicity and speedy performance.
 
-  <!-- We can talk about integrations and unit tests???? -->
-
-  ### Authorisation
-  - JWT 
-
   ### Tools used  
   - **Trello:** This help us implement an agile approach throughout the project. We were able to document our progress and keep all our project resources in one place. We used it to keep track of each task and sprint. 
 
@@ -69,20 +68,16 @@
     Below are the project resources:
     ![Project Resources](assets/images/project_resources.png)
 
-    For a full view of the project resources, click on the (LINK HERE)
-    <!-- [Link to Trello Project Resources]() -->
-
     Below is the project timeline:
     ![Project Timeline](assets/images/project_timeline.png)    
-    For a full view of the project timeline, click on the (LINK HERE)
-    <!-- [Link to Trello Project Timeline]() -->
+ 
 
   - **Database Schema:**
     Here is the schema for our database:
 
     ![DB Schema](assets/images/db_schema.png)
 
-  - **Wireframes:** We used figma for all our design    planning. It is a powerful tool that allows for     effective team collaboration and design. 
+  - **Wireframes:** We used figma for all our design planning. It is a powerful tool that allows for effective team collaboration and design. 
 
     Below are images of our designs:
 
@@ -106,22 +101,21 @@
     Below is the workflow diagram for the app:
     ![Workflow Diagram](assets/images/workflow.png)    
   
-### Pain Points
-- Different states and components
-- Joi validation when deployed
-- Mongo db connection issues
-- JWT Auth for admin user
+### Pain Points 
+
+- JWT Auth for admin user:
+  One of the problems we faced with the Admin view, was with the routing. Once logged in and authorised, the admin can view the candidates, however when logging out, the admin isn't redirected back to the login form. This is due to an error in our express backend routes. Due to time constraints, we were unable to fix this problem. 
 
 ### Github 
-- Our contributions on github
-- colloboration
-- forking 
+  We used github to collaborate and share our code. Each time a new feature was added, it was pushed up to github and merged into the master branch. Github was used to securely save our code. Throughout the project, we learnt a lot about using the github commands and functions; things like forking,pull requests, branching and merging. 
 
 ### Future development
 
+There is plenty of room for improvement. There were a lot of features we would have liked to add but due to time constraints, we were unable to include everything. The app has a lot of potential to help many people, and with the right support, it can be used as a commercial product.
 
-### Lessons learnt 
+### Project Review
 
+This project has been a great learning experience. I really enjoyed working in the team environment and learnt a lot about myself as well. I feel a great sense of self-accomplishment after completing this app, and am more motivated than ever to keep building new things to make other people's lives easier. I had a great time working with my team, we worked well with each other and I feel like we established a special bond that will last a lifetime. I look forward to future development and teamwork in the industry, I am now confident I can make a solid contribution to any project and team."
   
 
 
