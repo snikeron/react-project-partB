@@ -1,9 +1,5 @@
 # Part B - Project
 
-Link to my App github repo:
-https://github.com/elhoulir/react-project-partB
-
-
 Link to the candidate form:
 https://encode-form.now.sh
 
